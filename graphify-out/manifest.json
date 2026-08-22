@@ -1,0 +1,2727 @@
+{
+  "VersionAndroid/adb_cheatsheet.sh": {
+    "mtime": 1787296554.4191968,
+    "ast_hash": "110dab93e7b037da7907c2f9c57c3dfb",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/build.gradle.kts": {
+    "mtime": 1787197871.4644687,
+    "ast_hash": "d97934d5f68d41ab0d586ebb23aa4d76",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/androidTest/java/by/alexandr7035/banking/ExampleInstrumentedTest.kt": {
+    "mtime": 1787197871.464677,
+    "ast_hash": "845987c1a214ec6ab020baab8a0cbc9a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/MainActivity.kt": {
+    "mtime": 1787197871.4648561,
+    "ast_hash": "b7d97a05fb1052e6ebf4f42624920907",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/BankingApp.kt": {
+    "mtime": 1787197871.4649494,
+    "ast_hash": "42127dbcbc113c1271591c0226ee83cb",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/AppModule.kt": {
+    "mtime": 1787197871.4650126,
+    "ast_hash": "441b4b416234183d50e895a63e606b28",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/data/DataModule.kt": {
+    "mtime": 1787197871.4650989,
+    "ast_hash": "9653ec137c86c42bb591a8ba68e32a8d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/data/WorkerModule.kt": {
+    "mtime": 1787197871.4651852,
+    "ast_hash": "3502d21bb00b802d8b59fa481baace24",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/AccountUseCases.kt": {
+    "mtime": 1787197871.4651852,
+    "ast_hash": "239fb72a3a6d3a16ba1e9ae7a91eb1a3",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/AppLockUseCases.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "4ca8d666a05fad0933076453232a8d06",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/CardUseCasesModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "f651a1ff456b8e523b32a12e70e503d9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/ConnectionsModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "04ea96248dc57092202ac81038170b45",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/ContactsModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "77c77bc517272422519faaf137809d24",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/LoginUseCasesModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "91288ad3dbda9240e166489f52f3287b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/OnboardingModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "33f4bffd4c61d088bd290ac604a2892a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/OtpUseCasesModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "a04cfc402e1c169a603c1effe09005e4",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/ProfileUseCasesModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "048ed96131fbc630e1032a1bb7ec78a0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/SavingsUseCasesModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "9888d57bdf906fe5136215fa73827cd2",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/SignUpModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "1f219e7d8c04b471993bc4063809f527",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/TransactionsModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "0282eebae264082da044a16eaabf9f29",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/domain/ValidationUseCasesModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "49933eac2b5a5995f33202b0a7ccc562",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/di/presentation/PresentationModule.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "db62ab1218abf552645796aae91f2928",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/core/extensions/CollectionExtensions.kt": {
+    "mtime": 1787197871.4652948,
+    "ast_hash": "36f3267bb70829cb7bdefd97af7be7ea",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/account/AccountRepositoryMock.kt": {
+    "mtime": 1787197871.465993,
+    "ast_hash": "7daf4ba9f6bf998ab2bdf7d3d2e8fe4b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/app/AppRepositoryImpl.kt": {
+    "mtime": 1787197871.466003,
+    "ast_hash": "92eb347753427c72073106ec9eba14b1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/app/AppSettignsRepository.kt": {
+    "mtime": 1787197871.4661329,
+    "ast_hash": "9cc489702cd1aff75f43ea6890c41651",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/app/PrefKeys.kt": {
+    "mtime": 1787197871.4661329,
+    "ast_hash": "799ed58d643a7b22a0c12f478b385170",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/app_lock/AppLockRepositoryImpl.kt": {
+    "mtime": 1787197871.4661329,
+    "ast_hash": "9046354ba2ddd30c22ac6d1e29bcb8c5",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/app_lock/CryptoUtils.kt": {
+    "mtime": 1787197871.4662712,
+    "ast_hash": "638af3ec2e1b0e4567175aa6486934de",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/cards/CardsRepositoryMock.kt": {
+    "mtime": 1787197871.4662712,
+    "ast_hash": "a0babc00202ec59f2fea3ddd60c4f531",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/cards/MockCardConstants.kt": {
+    "mtime": 1787197871.4663963,
+    "ast_hash": "4398913f2c67f550d63c44db3c931bbf",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/cards/cache/CardEntity.kt": {
+    "mtime": 1787197871.4663963,
+    "ast_hash": "b0783c3a0180abf582efcc5b3ec779e2",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/cards/cache/CardsDao.kt": {
+    "mtime": 1787197871.466495,
+    "ast_hash": "e2f0ee6bea5af78d4838b05a39e9592a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/contacts/ContactsRepositoryMock.kt": {
+    "mtime": 1787197871.466495,
+    "ast_hash": "fd28aa3fdb7134d111941d257dca09b3",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/db/CacheDatabase.kt": {
+    "mtime": 1787197871.466495,
+    "ast_hash": "f338d45bdc0db770304ae991205f5a34",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/db/convertors/MoneyAmountConvertor.kt": {
+    "mtime": 1787197871.466653,
+    "ast_hash": "aba097c9e4b39bbb80aa4a643c84196c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/helpers/MoneyExtensions.kt": {
+    "mtime": 1787197871.466653,
+    "ast_hash": "72e69426430dd220db5d2b436a509b99",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/login/LoginRepositoryMock.kt": {
+    "mtime": 1787197871.466653,
+    "ast_hash": "22d54dfa2649212c5cc82c8d3eac65db",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/otp/OtpRepositoryMock.kt": {
+    "mtime": 1787197871.466653,
+    "ast_hash": "146fb4f80481c79d03bedc84e85677ad",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/profile/ProfileRepositoryMock.kt": {
+    "mtime": 1787197871.466653,
+    "ast_hash": "461dd49474b22d199f255b6f322510a5",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/savings/SavingsRepositoryMock.kt": {
+    "mtime": 1787197871.466653,
+    "ast_hash": "c1fa0f06e99e38bce45975ea625469b9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/signup/SignUpRepositoryMock.kt": {
+    "mtime": 1787197871.467003,
+    "ast_hash": "33ef14e5c0997c287a2571f2d00d4110",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/transactions/TransactionRepositoryMock.kt": {
+    "mtime": 1787197871.467003,
+    "ast_hash": "cb8aac4125447c809f16b2f4edd0427d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/transactions/TransactionSource.kt": {
+    "mtime": 1787197871.4672298,
+    "ast_hash": "d55cba92b854676748a1bdbc751853b1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/transactions/TransactionWorker.kt": {
+    "mtime": 1787197871.4672298,
+    "ast_hash": "62cd6ca647f622aee088d59ddb1876d2",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/transactions/db/TransactionDao.kt": {
+    "mtime": 1787197871.4672298,
+    "ast_hash": "3699ce2ea36b16b8a62f5f2a71566c90",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/data/transactions/db/TransactionEntity.kt": {
+    "mtime": 1787197871.4674447,
+    "ast_hash": "519472c499db2977bffa89fee132037e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/core/AppError.kt": {
+    "mtime": 1787197871.4675136,
+    "ast_hash": "650d44297ccbf1bbc22ccf222919abb9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/core/ErrorType.kt": {
+    "mtime": 1787197871.467561,
+    "ast_hash": "bd520ab837be18bccda17b2ccdebe04d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/core/OperationResult.kt": {
+    "mtime": 1787197871.467561,
+    "ast_hash": "57a3151e5da82497d2451f98c7ff0a29",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/AccountRepository.kt": {
+    "mtime": 1787197871.4676523,
+    "ast_hash": "94ebd65a65d19053ba0a5711e808f53c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/GetCardBalanceObservableUseCase.kt": {
+    "mtime": 1787197871.4677017,
+    "ast_hash": "159496f7463405b9e8dd30836dcdf296",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/GetTotalAccountBalanceUseCase.kt": {
+    "mtime": 1787197871.4677017,
+    "ast_hash": "ab2a19546a7796943cb5ca29ef22886e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/account_topup/GetSuggestedTopUpValuesUseCase.kt": {
+    "mtime": 1787197871.4677017,
+    "ast_hash": "1c112d4715124d30feb289ad7694c61c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/account_topup/TopUpAccountUseCase.kt": {
+    "mtime": 1787197871.467827,
+    "ast_hash": "57be7e2c4f0a8436777c11a3b1781493",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/model/BalanceCurrency.kt": {
+    "mtime": 1787197871.467827,
+    "ast_hash": "205d620c8751395ec0bdb3ba27285a1e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/model/MoneyAmount.kt": {
+    "mtime": 1787197871.4679098,
+    "ast_hash": "a9a9e71fbe7c1290328e389949508b58",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/send_money/GetSuggestedSendValuesForCardBalance.kt": {
+    "mtime": 1787197871.4679098,
+    "ast_hash": "fb417c045a4e39bf3b8ac84c556e1c89",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/account/send_money/SendMoneyUseCase.kt": {
+    "mtime": 1787197871.4680037,
+    "ast_hash": "be3e0b7376b8bbfaae7e0a8d67de672c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/AppLockRepository.kt": {
+    "mtime": 1787197871.4680037,
+    "ast_hash": "94de8cb88229d4cc03430cb4c036c4cb",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/AuthenticateWithPinUseCase.kt": {
+    "mtime": 1787197871.4681184,
+    "ast_hash": "ce0d8001f5929738f6dec775181a6373",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/CheckAppLockUseCase.kt": {
+    "mtime": 1787197871.4681184,
+    "ast_hash": "5fd659458c55c800275405f718b4e6be",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/CheckAppLockedWithBiometricsUseCase.kt": {
+    "mtime": 1787197871.4681184,
+    "ast_hash": "6aca1263fff750639568faba584c3541",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/CheckIfBiometricsAvailableUseCase.kt": {
+    "mtime": 1787197871.4681184,
+    "ast_hash": "680219b37538914151c2995002ab6267",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/SetupAppLockUseCase.kt": {
+    "mtime": 1787197871.4681184,
+    "ast_hash": "fb1ea8deb8bf9bf136cdec5cd6582a18",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/SetupAppLockedWithBiometricsUseCase.kt": {
+    "mtime": 1787197871.4681184,
+    "ast_hash": "83e8779ca0f93929298e38983cfd9382",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/model/AuthenticationResult.kt": {
+    "mtime": 1787197871.4681184,
+    "ast_hash": "ca26f4558f54e88682946f1065a50923",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/app_lock/model/BiometricsAvailability.kt": {
+    "mtime": 1787197871.4683416,
+    "ast_hash": "1a796a06d6b95cebe8cbad33b16d58c0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/AddCardUseCase.kt": {
+    "mtime": 1787197871.4683416,
+    "ast_hash": "b2b30de4c00b14118bbf22200380669b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/CardsRepository.kt": {
+    "mtime": 1787197871.4684322,
+    "ast_hash": "67e7a21cd1e0940b911842be77f7f0d4",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/GetAllCardsUseCase.kt": {
+    "mtime": 1787197871.4684322,
+    "ast_hash": "6bff166008bda3ac99a87879f50bffd5",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/GetCardByIdUseCase.kt": {
+    "mtime": 1787197871.4684322,
+    "ast_hash": "d24064f1bed6ee7505f9382ab3931bc7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/GetDefaultCardUseCase.kt": {
+    "mtime": 1787197871.4684322,
+    "ast_hash": "29eb279255dbc97e3d133a117aa2c894",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/GetHomeCardsUseCase.kt": {
+    "mtime": 1787197871.4684322,
+    "ast_hash": "fe59a454eaf1a42fe7e9a819b732da1c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/RemoveCardUseCase.kt": {
+    "mtime": 1787197871.4684322,
+    "ast_hash": "ee259e15f4ce40ef6971d8dc5a066654",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/SetCardAsPrimaryUseCase.kt": {
+    "mtime": 1787197871.4684322,
+    "ast_hash": "a9b447aa3267ab76ad50e53af56d13a4",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/model/AddCardPayload.kt": {
+    "mtime": 1787197871.4684322,
+    "ast_hash": "6d4ef28fcaa6c7ad23913ff07940705f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/model/CardType.kt": {
+    "mtime": 1787197871.4687085,
+    "ast_hash": "28d56dd36239bdeed7f6f876c596d08a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/cards/model/PaymentCard.kt": {
+    "mtime": 1787197871.4687085,
+    "ast_hash": "d74ef482bbe062d425299f27fee2f47d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/connections/LoadUserFromQrCodeUseCase.kt": {
+    "mtime": 1787197871.4687085,
+    "ast_hash": "31a49e9b24bd2e505f970ff36a382e12",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/contacts/Contact.kt": {
+    "mtime": 1787197871.4687085,
+    "ast_hash": "b650a79cc801b5394b5144529e5a9301",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/contacts/ContactsRepository.kt": {
+    "mtime": 1787197871.4688802,
+    "ast_hash": "fdaefe2159d3ae705515868b719b9d2c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/contacts/GetContactByIdUseCase.kt": {
+    "mtime": 1787197871.4688802,
+    "ast_hash": "83f930b1a1f6866df4372d34a442127b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/contacts/GetContactsUseCase.kt": {
+    "mtime": 1787197871.4688802,
+    "ast_hash": "8f0dd42f37ef1f57539f023070602dd6",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/contacts/GetRecentContactUseCase.kt": {
+    "mtime": 1787197871.4688802,
+    "ast_hash": "066359637a08b21434991e399dbd1148",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/login/CheckIfLoggedInUseCase.kt": {
+    "mtime": 1787197871.4688802,
+    "ast_hash": "8bebf9f0ba8d094ef093ba3c5302ea19",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/login/LoginRepository.kt": {
+    "mtime": 1787197871.469038,
+    "ast_hash": "67f4362b7881ac0ee931fc2a9e762371",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/login/LoginWithEmailUseCase.kt": {
+    "mtime": 1787197871.469038,
+    "ast_hash": "462e9b24bad5429947fcac17c7e8a847",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/login/LogoutUseCase.kt": {
+    "mtime": 1787197871.469038,
+    "ast_hash": "b57ad33cdc2ac094ea11ae68118f805b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/onboarding/CheckIfPassedOnboardingUseCase.kt": {
+    "mtime": 1787197871.469038,
+    "ast_hash": "55af73a80dfd81f4b2b77ab78998aad0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/onboarding/PassOnboardingUseCase.kt": {
+    "mtime": 1787197871.4692154,
+    "ast_hash": "5b3c1987f7c89a9b4fa07978a7843f50",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/otp/OtpRepository.kt": {
+    "mtime": 1787197871.4692154,
+    "ast_hash": "11ab88ad3717d5251b0dba7690ac5271",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/otp/RequestOtpGenerationUseCase.kt": {
+    "mtime": 1787197871.4693036,
+    "ast_hash": "ac29ea4bb5f1b57e6d877cf24a526a5d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/otp/model/OtpConfiguration.kt": {
+    "mtime": 1787197871.4693036,
+    "ast_hash": "cd3364aa42260f97de6285849183e009",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/otp/model/OtpGenerationResponse.kt": {
+    "mtime": 1787197871.46939,
+    "ast_hash": "a9cd7bbba790a0fa57cbbe98ca62d54a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/otp/model/OtpOperationType.kt": {
+    "mtime": 1787197871.46939,
+    "ast_hash": "b9d1008f52c9be66dc64c28a329d19dd",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/otp/model/OtpType.kt": {
+    "mtime": 1787197871.46939,
+    "ast_hash": "b9ad19419a168c57aaf7cfcf9cec3c2d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/otp/model/OtpVerificationResponse.kt": {
+    "mtime": 1787197871.46939,
+    "ast_hash": "617c1087051df81bead8447596df00fa",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/profile/GetCompactProfileUseCase.kt": {
+    "mtime": 1787197871.46939,
+    "ast_hash": "f90251e090b34f3f9274db19c946404e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/profile/ProfileRepository.kt": {
+    "mtime": 1787197871.4695427,
+    "ast_hash": "cdf7a4ef9601413ea9d64df5de2a428f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/profile/model/CompactProfile.kt": {
+    "mtime": 1787197871.4695427,
+    "ast_hash": "a6502942538c078d836ed979c35b6e4c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/profile/model/ProfileTier.kt": {
+    "mtime": 1787197871.4696221,
+    "ast_hash": "4722c7cc66961402145af4fd6c03f52a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/qr_codes/GenerateQrCodeUseCase.kt": {
+    "mtime": 1787197871.4696221,
+    "ast_hash": "d070eafc1a7003905d9177d10ce9cf16",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/qr_codes/model/QrPurpose.kt": {
+    "mtime": 1787197871.4697137,
+    "ast_hash": "1cad1e396cd7fa75925f904b7f6616b2",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/savings/GetAllSavingsUseCase.kt": {
+    "mtime": 1787197871.4697137,
+    "ast_hash": "34dabcb0cfa46061cde63c40f496fe85",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/savings/GetHomeSavingsUseCase.kt": {
+    "mtime": 1787197871.4698126,
+    "ast_hash": "128dac636171685e7899b2f817fa0c17",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/savings/GetSavingByIdUseCase.kt": {
+    "mtime": 1787197871.4698126,
+    "ast_hash": "fd03a1437f90645a521ecd324a813c77",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/savings/SavingsRepository.kt": {
+    "mtime": 1787197871.4698126,
+    "ast_hash": "a1707f3df82639f0b225ad425c36467c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/savings/model/Saving.kt": {
+    "mtime": 1787197871.4698126,
+    "ast_hash": "047f70615963d589f11d7dcfaa3994ae",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/signup/ConfirmSignUpWithEmailUseCase.kt": {
+    "mtime": 1787197871.4698126,
+    "ast_hash": "2b1453125dea6ae0b236d40f08e1fc32",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/signup/SignUpPayload.kt": {
+    "mtime": 1787197871.469994,
+    "ast_hash": "abdb0d248a9051998de5943c46b38e19",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/signup/SignUpRepository.kt": {
+    "mtime": 1787197871.469994,
+    "ast_hash": "e2a36d427c565066d16f166e50c5c1ca",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/signup/SignUpWithEmailUseCase.kt": {
+    "mtime": 1787197871.4700034,
+    "ast_hash": "18d192260fb1ce9fe743fb8b732b435b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/transactions/GetTransactionsUseCase.kt": {
+    "mtime": 1787197871.4700034,
+    "ast_hash": "12e0e42788141f35bbade02979ec138d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/transactions/ObserveTransactionStatusUseCase.kt": {
+    "mtime": 1787197871.470156,
+    "ast_hash": "481ef19e0eb1e0593d63fd7f46269ee3",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/transactions/TransactionRepository.kt": {
+    "mtime": 1787197871.470156,
+    "ast_hash": "51fd2c046d1cedbd803e7217b6cdd185",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/transactions/model/Transaction.kt": {
+    "mtime": 1787197871.470156,
+    "ast_hash": "1de24e20d71826d24071cdddb3c9e764",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/transactions/model/TransactionRowPayload.kt": {
+    "mtime": 1787197871.470262,
+    "ast_hash": "e1a303c709964f43a799f02a319f6e12",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/transactions/model/TransactionStatus.kt": {
+    "mtime": 1787197871.470262,
+    "ast_hash": "fbf5d9070e9fa6e020600236bf0baabc",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/transactions/model/TransactionType.kt": {
+    "mtime": 1787197871.470262,
+    "ast_hash": "d8facfbcd86eca966a3f2d358c3d8e56",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/validation/ValidateBillingAddressUseCase.kt": {
+    "mtime": 1787197871.470262,
+    "ast_hash": "750f81c0fe3d057425ae34e9d29f5927",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/validation/ValidateCardExpirationUseCase.kt": {
+    "mtime": 1787197871.470398,
+    "ast_hash": "2c0764b1f3fa6d8aab824234254e9987",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/validation/ValidateCardHolderUseCase.kt": {
+    "mtime": 1787197871.470398,
+    "ast_hash": "7de49094076b405f7e7f437d1a01ad66",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/validation/ValidateCardNumberUseCase.kt": {
+    "mtime": 1787197871.470398,
+    "ast_hash": "763188a0e44639744628285b4f4cbaba",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/validation/ValidateCvvCodeUseCase.kt": {
+    "mtime": 1787197871.470398,
+    "ast_hash": "cbcb5619ac76d3fee698742f832d1d35",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/validation/ValidateEmailUseCase.kt": {
+    "mtime": 1787197871.470398,
+    "ast_hash": "664dd29f7358e51fa97a802cb3efe30b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/validation/ValidatePasswordUseCase.kt": {
+    "mtime": 1787197871.470398,
+    "ast_hash": "3afbe34669e1a01d0ceb4ae3f47aaa0f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/domain/features/validation/model/ValidationResult.kt": {
+    "mtime": 1787197871.470398,
+    "ast_hash": "b0442b043060d54476da43695eef07c7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/AppContainerScreen.kt": {
+    "mtime": 1787197871.4706414,
+    "ast_hash": "4411613c697f263b37c9352c9e349e06",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/AppIntent.kt": {
+    "mtime": 1787197871.4708378,
+    "ast_hash": "202160764fbb36a146144b8176430ff9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/AppState.kt": {
+    "mtime": 1787197871.4708378,
+    "ast_hash": "536b3c5d40b1ac99a3f13f9a1081434d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/AppViewModel.kt": {
+    "mtime": 1787197871.4708378,
+    "ast_hash": "13da149ca2139ce72f54cc7b77107490",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/host_utils/LocalSnackbarHostState.kt": {
+    "mtime": 1787197871.4708378,
+    "ast_hash": "b13c579926c2665564cf123e76cec951",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/navigation/AppBottomNav.kt": {
+    "mtime": 1787197871.4710033,
+    "ast_hash": "2fcaa04ececf0571031d091c4ae0acd6",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/navigation/AppNavHost.kt": {
+    "mtime": 1787197871.4710033,
+    "ast_hash": "a039d1ee68335c2f1e85bbbaac1de070",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/navigation/graphs/CreateAppLockGraph.kt": {
+    "mtime": 1787197871.4710033,
+    "ast_hash": "5a2aca622f278382d9de72a50a747cf0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/navigation/graphs/SignUpGraph.kt": {
+    "mtime": 1787197871.4712758,
+    "ast_hash": "a1e87baf321dcaf5dced92c7b9cf3381",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/navigation/model/ConditionalNavigation.kt": {
+    "mtime": 1787197871.4712758,
+    "ast_hash": "f272e8835262361ff0be0f2ede2b0549",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/navigation/model/NavDestinations.kt": {
+    "mtime": 1787197871.4713683,
+    "ast_hash": "48b67fc6ef970ce4652fc228909c15c4",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/app_host/navigation/model/NavIconPair.kt": {
+    "mtime": 1787197871.4713683,
+    "ast_hash": "b0ff4bd4358f69922e6fa3f175f4670d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/Buttons.kt": {
+    "mtime": 1787197871.4713683,
+    "ast_hash": "781d88fb6bde07b1a4d929639874dfc1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/CheckBox.kt": {
+    "mtime": 1787197871.4715354,
+    "ast_hash": "622106a04737f72a54eee3d146b5e900",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/CustomSlider.kt": {
+    "mtime": 1787197871.4715354,
+    "ast_hash": "4d15ebe96f303e1bcfa2fa87a533969a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/HorseshoeProgressIndicator.kt": {
+    "mtime": 1787197871.4715354,
+    "ast_hash": "f3a493f75ce25cc737d8666191c6fa51",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/ProgressBar.kt": {
+    "mtime": 1787197871.4715354,
+    "ast_hash": "1a744d4b3795ad5692f1da9aeec6e22b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/ScreenPreview.kt": {
+    "mtime": 1787197871.4715354,
+    "ast_hash": "711fabcdfbf95a3feed56c70351fecfb",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/ScreenSectionDivider.kt": {
+    "mtime": 1787197871.4715354,
+    "ast_hash": "09413705f7ee6273c74fc5a763fd8276",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/Toolbar.kt": {
+    "mtime": 1787197871.4715354,
+    "ast_hash": "3754bcaae00bcd91e74f1752b241affb",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/bottomnav/M2BottomNavigation.kt": {
+    "mtime": 1787197871.4715354,
+    "ast_hash": "5de8ce8483931d9e0922ddf2354bfbd9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/cards/PrimaryCard.kt": {
+    "mtime": 1787197871.4720035,
+    "ast_hash": "e6d63bb7a82f5febac19fad517a6a452",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/decoration/DecorationShapes.kt": {
+    "mtime": 1787197871.4720035,
+    "ast_hash": "6bc33c2689bd6fb9f360852e439db1cc",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/decoration/SkeletonShape.kt": {
+    "mtime": 1787197871.472226,
+    "ast_hash": "0797f5136e126ebc849c6c89fe613166",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/dialogs/DatePickerDialog.kt": {
+    "mtime": 1787197871.472226,
+    "ast_hash": "cef3df1e16fb71d25c2b580b97a46051",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/dialogs/SuccessDialog.kt": {
+    "mtime": 1787197871.4725466,
+    "ast_hash": "91c00b3480eb8d90289765d909886805",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/error/ErrorFullScreen.kt": {
+    "mtime": 1787197871.4725466,
+    "ast_hash": "8b2b94dd71b535b1dea5de7ff461a471",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/error/ErrorListItem.kt": {
+    "mtime": 1787197871.4726925,
+    "ast_hash": "29a33ba6f2b63e8c22f57c1d95d8116e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/forms/FormField.kt": {
+    "mtime": 1787197871.4726925,
+    "ast_hash": "458a32cb923b03a8e0e244d9759eb0a6",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/header/ScreenHeaderLayout.kt": {
+    "mtime": 1787197871.4726925,
+    "ast_hash": "1e65c6a6f4aa8a3945ad33f7dc635103",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/images/DebugPlaceholder.kt": {
+    "mtime": 1787197871.4730034,
+    "ast_hash": "6b4c67080e3c6734937d76e82449091b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/layout/SimpleGridView.kt": {
+    "mtime": 1787197871.4730034,
+    "ast_hash": "5b52301e1409e040349a8c13bbfd99ca",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/modifiers/DashedBorder.kt": {
+    "mtime": 1787197871.4730034,
+    "ast_hash": "eecd9e7516e475eb03168f572a85241a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/pages/DotsPagerIndicator.kt": {
+    "mtime": 1787197871.4730034,
+    "ast_hash": "5c6ebf2e83b542b28563b7f6b33dc2ea",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/pages/Page.kt": {
+    "mtime": 1787197871.4733317,
+    "ast_hash": "fe0428a62333fe2616bb52e0cd0d41d3",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/pages/PagerTabs.kt": {
+    "mtime": 1787197871.4733317,
+    "ast_hash": "13aadc54958dbef368c034dedd521f13",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/permissions/PermissionContentHelper.kt": {
+    "mtime": 1787197871.4733317,
+    "ast_hash": "9ebc20ed8a89eee2a17af7309881431f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/permissions/PermissionExplanationDialog.kt": {
+    "mtime": 1787197871.47347,
+    "ast_hash": "9c52459fd0a4d85b525e8265b48c27ed",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/qr/QrBitmapPainter.kt": {
+    "mtime": 1787197871.47347,
+    "ast_hash": "98d23e01103f5bb604e627ab10db5696",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/qr/QrCodeCard.kt": {
+    "mtime": 1787197871.4736478,
+    "ast_hash": "102572dbc7c69ad04566b2e05e33e56b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/search/SearchField.kt": {
+    "mtime": 1787197871.4736478,
+    "ast_hash": "73c165c60bba4e97011cc73c8de7c9f5",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/snackbar/ResultSnackBar.kt": {
+    "mtime": 1787197871.4736478,
+    "ast_hash": "b66d61a64fbdf4aae495d08314051919",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/snackbar/ResultSnackBarVisuals.kt": {
+    "mtime": 1787197871.4739022,
+    "ast_hash": "0415893fa10263c2c09d8591cc030cb8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/snackbar/SnackBarMode.kt": {
+    "mtime": 1787197871.4739022,
+    "ast_hash": "e6b153d4523057a1dec98ce6cf92f457",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/snackbar/SnackbarColors.kt": {
+    "mtime": 1787197871.4739022,
+    "ast_hash": "fc1c4cb987ef9240b11d03995976867f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/text_display/SpannableText.kt": {
+    "mtime": 1787197871.4739022,
+    "ast_hash": "54c4f061d820952b9bdc46c361747926",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/text_fields/OTPField.kt": {
+    "mtime": 1787197871.4740036,
+    "ast_hash": "4cd318754a10424aaa47eb62d1d504f7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/components/text_fields/OutlinedTextFields.kt": {
+    "mtime": 1787197871.4741478,
+    "ast_hash": "17e3dbc4bfa92899c1402bb62fcb941c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/effects/EnterScreenEffect.kt": {
+    "mtime": 1787197871.4742434,
+    "ast_hash": "34411f86af3d7acea809d68bfe328d7e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/effects/OnLifecycleEvent.kt": {
+    "mtime": 1787197871.4743047,
+    "ast_hash": "6afd762905b899cfce0ebd5bdeb7af31",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/effects/OnResumeEffect.kt": {
+    "mtime": 1787197871.4743047,
+    "ast_hash": "97a318b3ef83f029a2b3ad098e9d6026",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/error/UiErrorMapper.kt": {
+    "mtime": 1787197871.4743047,
+    "ast_hash": "1977099803eeba257eda522f4f1506d7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/extensions/ContextExtensions.kt": {
+    "mtime": 1787197871.4743047,
+    "ast_hash": "94652266d9ebc0e018df367f4f8212d5",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/extensions/StringExtensions.kt": {
+    "mtime": 1787197871.4744983,
+    "ast_hash": "56daaa89b31003d1fbf765b27c403df9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/extensions/TimeExtensions.kt": {
+    "mtime": 1787197871.4744983,
+    "ast_hash": "28243eb4be0c1d913d85acf24f1c80fb",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/notifications/NotificationUi.kt": {
+    "mtime": 1787197871.4744983,
+    "ast_hash": "99c6a47fd08497bc479ecf27cb9660c1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/notifications/TransactionNotificationHelper.kt": {
+    "mtime": 1787197871.4746144,
+    "ast_hash": "cdd919ce35119a5d66c7aa82c7b047d8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/permissions/PermissionHelper.kt": {
+    "mtime": 1787197871.4746144,
+    "ast_hash": "b3cdafae09676bbfdf09299a2a2c47d8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/permissions/PermissionHelperCompositionLocal.kt": {
+    "mtime": 1787197871.4747329,
+    "ast_hash": "359a5fc4b32ce508540541338b263dbb",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/core/resources/UiText.kt": {
+    "mtime": 1787197871.4747329,
+    "ast_hash": "3b9c23d8fbd66d25e324c955f25a9b86",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/AmountPickersState.kt": {
+    "mtime": 1787197871.4747329,
+    "ast_hash": "675d3dc57df44059a81fece4956cd840",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/CardPickerState.kt": {
+    "mtime": 1787197871.4748707,
+    "ast_hash": "f7f4a59554139d68394d03e7568a7a15",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/ContactPickerState.kt": {
+    "mtime": 1787197871.4748707,
+    "ast_hash": "b14f2edfc02a2cd21c52f658a288f3ed",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/MoneyAmountUi.kt": {
+    "mtime": 1787197871.4748707,
+    "ast_hash": "d1921a72da178e833972e36773dee57a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/action_send/SendMoneyScreen.kt": {
+    "mtime": 1787197871.4748707,
+    "ast_hash": "8f6173152df327db987bb8e99632d4b8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/action_send/SendMoneyScreenIntent.kt": {
+    "mtime": 1787197871.4750218,
+    "ast_hash": "21b0201e3b1decf04577a73856259f78",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/action_send/SendMoneyScreenState.kt": {
+    "mtime": 1787197871.4750218,
+    "ast_hash": "dfc6a68cb8d4574f5d6cfaaf931972a1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/action_send/SendMoneyViewModel.kt": {
+    "mtime": 1787197871.4750218,
+    "ast_hash": "43ba409a08aa489342ca03813eda88e0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/action_topup/TopUpScreen.kt": {
+    "mtime": 1787197871.4750218,
+    "ast_hash": "a4f272074cf62b0851334ebc86831331",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/action_topup/TopUpScreenIntent.kt": {
+    "mtime": 1787197871.4751997,
+    "ast_hash": "1f6d739ff3492fc9072a8896a78a8b3f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/action_topup/TopUpScreenState.kt": {
+    "mtime": 1787197871.4751997,
+    "ast_hash": "a7a99b5cf1fe98fba20217cef9e2ad47",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/action_topup/TopUpScreenViewModel.kt": {
+    "mtime": 1787197871.4751997,
+    "ast_hash": "e311f3079a94d57e803f0e69162e939d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/components/BalanceGridPicker.kt": {
+    "mtime": 1787197871.4751997,
+    "ast_hash": "8d71e79762ce9190f4697638f7e1024b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/components/BalanceSliderPicker.kt": {
+    "mtime": 1787197871.4754443,
+    "ast_hash": "5dfc793fec3c9c141d7dd10995999c39",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/components/account_actions/AccountAction.kt": {
+    "mtime": 1787197871.4754443,
+    "ast_hash": "56d52209b52505c6472f702cf8905bc9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_account/components/account_actions/AccountActionRow.kt": {
+    "mtime": 1787197871.4755473,
+    "ast_hash": "079c2647de5861be4531a6d516d7c8c2",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/components/AppLockScreenUi.kt": {
+    "mtime": 1787197871.4756274,
+    "ast_hash": "a12fe233a4fde9414ccc6b1536e474a8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/components/AppLockUiState.kt": {
+    "mtime": 1787197871.4757485,
+    "ast_hash": "948ddc05ec9ca32504b4e8851f60e45f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/core/AppLockIntent.kt": {
+    "mtime": 1787197871.4757485,
+    "ast_hash": "f6b9a04d8dcfc77db38b2d7805b6a91a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/core/AppLockViewModel.kt": {
+    "mtime": 1787197871.475843,
+    "ast_hash": "83bbc4ea673e0f2732c4d48db3508ae7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/core/BiometricsViewModel.kt": {
+    "mtime": 1787197871.475843,
+    "ast_hash": "759b01cf44c8826b6db43a93623ea9c9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/core/biometrics/BiometricAuthResult.kt": {
+    "mtime": 1787197871.475843,
+    "ast_hash": "9b7004221e0805d391dffb98836d39a0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/core/biometrics/BiometricsHelper.kt": {
+    "mtime": 1787197871.4759984,
+    "ast_hash": "70b18f0539c77fbbc96c18bfcf6849c2",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/core/biometrics/BiometricsIntent.kt": {
+    "mtime": 1787197871.4759984,
+    "ast_hash": "0781efa9689a0c082a5c9106749f82f5",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/core/biometrics/BiometricsPromptUi.kt": {
+    "mtime": 1787197871.4760036,
+    "ast_hash": "9bec7aade08458c8ca9b1c268c0aa82a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/lock_screen/LockScreen.kt": {
+    "mtime": 1787197871.4760036,
+    "ast_hash": "096fdb4b36ede403c92018ecff49edbc",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/lock_screen/LockScreenState.kt": {
+    "mtime": 1787197871.4761949,
+    "ast_hash": "b0cdb328ea197bcdfbfb31f44e321ab7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/lock_screen/LockScreenViewModel.kt": {
+    "mtime": 1787197871.4761949,
+    "ast_hash": "07eb65b1ea5bc7c8c3271219188c8f4c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/setup_applock/biometrics/EnableBiometricsScreen.kt": {
+    "mtime": 1787197871.476316,
+    "ast_hash": "52dd798a914f6fb761a18f9ba2793af0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/setup_applock/biometrics/EnableBiometricsState.kt": {
+    "mtime": 1787197871.4763746,
+    "ast_hash": "bee305064f2bc541a8e9b69bc074dcd3",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/setup_applock/biometrics/EnableBiometricsViewModel.kt": {
+    "mtime": 1787197871.4763746,
+    "ast_hash": "77ea770129601359476f8e825d73366a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/setup_applock/pin/CreatePinScreen.kt": {
+    "mtime": 1787197871.4763746,
+    "ast_hash": "e1b009f17c9439dc8551c64eedc7294c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/setup_applock/pin/CreatePinState.kt": {
+    "mtime": 1787197871.4766586,
+    "ast_hash": "65aab0cae00e99c58fd441b865476d0c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/setup_applock/pin/CreatePinViewModel.kt": {
+    "mtime": 1787197871.4766586,
+    "ast_hash": "43a6a3fc17230ec90cf53e1bfa79c48c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_lock/setup_applock/pin/PinCreatedResult.kt": {
+    "mtime": 1787197871.4766586,
+    "ast_hash": "a276e551e6379d7cd3eafc53f44f43ce",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_settings/AppSettingsScreen.kt": {
+    "mtime": 1787197871.4766586,
+    "ast_hash": "3b5097e9ab98a679b900cb049895b1d8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_settings/AppSettingsState.kt": {
+    "mtime": 1787197871.476968,
+    "ast_hash": "5d4a0f6b11e8a230e3370bef765ad81b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_app_settings/AppSettingsViewModel.kt": {
+    "mtime": 1787197871.476968,
+    "ast_hash": "400dbed54cbcf43294f5a1fe18073b86",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/components/CardNetworkLogo.kt": {
+    "mtime": 1787197871.4770036,
+    "ast_hash": "d25716a7ba34ac998c49fa5fbe4c8b2e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/components/CardTextFields.kt": {
+    "mtime": 1787197871.4773376,
+    "ast_hash": "c1f45c1d8091668ed21def49446de510",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/components/PanelCardPicker.kt": {
+    "mtime": 1787197871.4773376,
+    "ast_hash": "97983074d4319e5b8db52e5fedc12fd1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/components/PaymentCard.kt": {
+    "mtime": 1787197871.4773376,
+    "ast_hash": "7f94045392910c00912b745631b3764b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/components/SmallCardIcon.kt": {
+    "mtime": 1787197871.4773376,
+    "ast_hash": "a5597f506548a3203ac4ccf4855fbe35",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/dialog_card_picker/CardPickerDialog.kt": {
+    "mtime": 1787197871.4773376,
+    "ast_hash": "b73a43e9905546773d94f0b8cb0d81bc",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/dialog_card_picker/CardPickerIntent.kt": {
+    "mtime": 1787197871.4777236,
+    "ast_hash": "0959a4cf751c8def76fa429c4a7cc4f1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/dialog_card_picker/CardPickerState.kt": {
+    "mtime": 1787197871.4777236,
+    "ast_hash": "feec456b0dee231151b6e24eb8051ddd",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/dialog_card_picker/CardPickerViewModel.kt": {
+    "mtime": 1787197871.4777236,
+    "ast_hash": "2503e190492f46f7e6c9268046a1734e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/helpers/CardUiHelpers.kt": {
+    "mtime": 1787197871.4777236,
+    "ast_hash": "ef2783f0086d1148a0bb094f17edaad0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/model/CardUi.kt": {
+    "mtime": 1787197871.4777236,
+    "ast_hash": "972ad4fd2c0650ef9c01fd06912204f2",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_add_card/AddCardFormFields.kt": {
+    "mtime": 1787197871.4777236,
+    "ast_hash": "9b9312d934754a041bf8fd2368c081dd",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_add_card/AddCardIntent.kt": {
+    "mtime": 1787197871.4780366,
+    "ast_hash": "f8200226031deb7459b406fec2f1948c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_add_card/AddCardScreen.kt": {
+    "mtime": 1787197871.4780366,
+    "ast_hash": "cf01f5e681a19c68a70d11f6ba79c6c1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_add_card/AddCardState.kt": {
+    "mtime": 1787197871.4780366,
+    "ast_hash": "4b40459067d61b60a43dfbe838c7a512",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_add_card/AddCardViewModel.kt": {
+    "mtime": 1787197871.4780366,
+    "ast_hash": "1b2453dd4ca616188e5a7034a6844ea7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_add_card/UiField.kt": {
+    "mtime": 1787197871.4780366,
+    "ast_hash": "d6627e2c4f96671b92f98d70799f6875",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_details/CardDetailsIntent.kt": {
+    "mtime": 1787197871.4780366,
+    "ast_hash": "d03c6ed50be5be4783c04b4e2937f05a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_details/CardDetailsScreen.kt": {
+    "mtime": 1787197871.478278,
+    "ast_hash": "36fc8cbdd377ccf04c8cbf7f0847c3b9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_details/CardDetailsState.kt": {
+    "mtime": 1787197871.478278,
+    "ast_hash": "8d2eb5c45e619531a3be8d4781fa28f8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_details/CardDetailsViewModel.kt": {
+    "mtime": 1787197871.478278,
+    "ast_hash": "49d6905df9e6886ff5bad10f3e548d3f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_details/ConfirmDeleteCardDialog.kt": {
+    "mtime": 1787197871.478278,
+    "ast_hash": "28e2932a8362444a6ec0888b69892994",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_list/CardListIntent.kt": {
+    "mtime": 1787197871.478278,
+    "ast_hash": "270e825b7822f824a3d3405e8036964a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_list/CardListScreen.kt": {
+    "mtime": 1787197871.478528,
+    "ast_hash": "3bb26731482a9a046777faf8ad52ae62",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_list/CardListState.kt": {
+    "mtime": 1787197871.478528,
+    "ast_hash": "eeefc6c4724e60c3b8349aae78116b52",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_cards/screen_card_list/CardListViewModel.kt": {
+    "mtime": 1787197871.478528,
+    "ast_hash": "8e383b891c42dcf273e9437213c58e22",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/components/ContactCard.kt": {
+    "mtime": 1787197871.478752,
+    "ast_hash": "e07ca7c32a3a84a563eca8ee07663795",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/components/ContactPicker.kt": {
+    "mtime": 1787197871.478821,
+    "ast_hash": "c4f96860aabc76dd5f84027dcb159b2c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/dialog_contact_picker/ContactPickerDialog.kt": {
+    "mtime": 1787197871.478821,
+    "ast_hash": "f211ac84598a5fbb917d50ab4ae0d877",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/dialog_contact_picker/ContactPickerDialogIntent.kt": {
+    "mtime": 1787197871.478965,
+    "ast_hash": "bd87c954c85b6554c7c88d83174cc042",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/dialog_contact_picker/ContactPickerDialogState.kt": {
+    "mtime": 1787197871.478965,
+    "ast_hash": "ddbca457a5ee2f8ceea0c8e644459c4f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/dialog_contact_picker/ContactPickerDialogViewModel.kt": {
+    "mtime": 1787197871.478965,
+    "ast_hash": "1183c3bcf4a2977a505c18f2324c8f35",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/model/ContactUi.kt": {
+    "mtime": 1787197871.4790037,
+    "ast_hash": "c9af14c7e0f7832516b7e0ab5492c3fd",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/scanned_contact/ScannedContactIntent.kt": {
+    "mtime": 1787197871.4790037,
+    "ast_hash": "32d9c8d8ebe7643286d7039adfbbb794",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/scanned_contact/ScannedContactScreen.kt": {
+    "mtime": 1787197871.4791813,
+    "ast_hash": "8f5808b10d3674899ff39ad85c915c6a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/scanned_contact/ScannedContactScreenState.kt": {
+    "mtime": 1787197871.4791813,
+    "ast_hash": "71ac565c4e200d0588ff0015f9d5b923",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_contacts/scanned_contact/ScannedContactViewModel.kt": {
+    "mtime": 1787197871.4791813,
+    "ast_hash": "b968898d046cdc2e00c11c2638a47076",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_help/HelpItem.kt": {
+    "mtime": 1787197871.4791813,
+    "ast_hash": "cf7dc5f950b3c228119d7907d448d7f0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_help/HelpScreen.kt": {
+    "mtime": 1787197871.4793496,
+    "ast_hash": "598569c92b74460cbabf2a960154ee7a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_home/HomeScreen.kt": {
+    "mtime": 1787197871.4793496,
+    "ast_hash": "da140412751418d2e433b354288ad10e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_home/HomeViewModel.kt": {
+    "mtime": 1787197871.4795885,
+    "ast_hash": "7125afb777136db912eb69eff66bcf84",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_home/components/AccountActionPanel.kt": {
+    "mtime": 1787197871.4795885,
+    "ast_hash": "cd712c246df761b317c735cc86c01aa1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_home/model/HomeIntent.kt": {
+    "mtime": 1787197871.4795885,
+    "ast_hash": "1043b2dd40bf0fc7d192d712d66a4561",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_home/model/HomeState.kt": {
+    "mtime": 1787197871.4798014,
+    "ast_hash": "f3aad7bdeb2349c808dd7b2ef0f4852c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_login/LoginIntent.kt": {
+    "mtime": 1787197871.4798014,
+    "ast_hash": "476d2fe8648dd35a005265866b5c58b5",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_login/LoginScreen.kt": {
+    "mtime": 1787197871.4798894,
+    "ast_hash": "1f43f5c8144b4aaac3d1b71b8d4be7c8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_login/LoginScreenState.kt": {
+    "mtime": 1787197871.4798894,
+    "ast_hash": "c636cc2775116b1d170176226a50dc33",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_login/LoginViewModel.kt": {
+    "mtime": 1787197871.4798894,
+    "ast_hash": "669d6f91b6f700a09744b96323cc8f9d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_logout/LogoutDialog.kt": {
+    "mtime": 1787197871.4800038,
+    "ast_hash": "41bfedeb37c799c62516e1d57559bbb7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_logout/LogoutIntent.kt": {
+    "mtime": 1787197871.4801168,
+    "ast_hash": "36a7caa80607e9a08899d90511435abb",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_logout/LogoutState.kt": {
+    "mtime": 1787197871.4801168,
+    "ast_hash": "40cbfc498cb16f34ffdca8fb58a96a7f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_logout/LogoutViewModel.kt": {
+    "mtime": 1787197871.4801168,
+    "ast_hash": "08052130d55a4eb06eaadac302473e43",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_onboarding/OnboardingIntent.kt": {
+    "mtime": 1787197871.4801168,
+    "ast_hash": "402851d54360869d0cc4067473c9cafe",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_onboarding/OnboardingPage.kt": {
+    "mtime": 1787197871.4802542,
+    "ast_hash": "eb1a0566d0b461bfd608d9dd7520f645",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_onboarding/OnboardingScreen.kt": {
+    "mtime": 1787197871.4802542,
+    "ast_hash": "0e51c51b0f631f4f8da884383810686d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_onboarding/OnboardingViewModel.kt": {
+    "mtime": 1787197871.4802542,
+    "ast_hash": "ac07e8ca831ad8aaf3e4134c383f296c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_otp/OtpConfirmationIntent.kt": {
+    "mtime": 1787197871.4802542,
+    "ast_hash": "2ca313f722b0943246782bc987583760",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_otp/OtpConfirmationScreen.kt": {
+    "mtime": 1787197871.480429,
+    "ast_hash": "281dc6ae7ed74123e89850c602352ecc",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_otp/OtpConfirmationState.kt": {
+    "mtime": 1787197871.480429,
+    "ast_hash": "6a67340c625e00a3ada9579afb225704",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_otp/OtpViewModel.kt": {
+    "mtime": 1787197871.480429,
+    "ast_hash": "fbf7e1ba85ad723f92a87b5c4fc74569",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/ProfileScreen.kt": {
+    "mtime": 1787197871.480429,
+    "ast_hash": "9ff98e5a352ed109f4e631c1663c0bd1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/ProfileScreenIntent.kt": {
+    "mtime": 1787197871.480613,
+    "ast_hash": "882f8a5b4cffa2d82006e7e9893ddb32",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/ProfileScreenState.kt": {
+    "mtime": 1787197871.480613,
+    "ast_hash": "973525d4bcbe22fbf84be9f53592bbe6",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/ProfileViewModel.kt": {
+    "mtime": 1787197871.480613,
+    "ast_hash": "e3642e9189df56eac8fc6ea46646ae6e",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/components/ProfileCard.kt": {
+    "mtime": 1787197871.480613,
+    "ast_hash": "bcaa8d97158ce87b35f0cb91fbfb56e0",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/menu/MenuEntry.kt": {
+    "mtime": 1787197871.480613,
+    "ast_hash": "4b7a93cf7be91ba16f11c7af5ae6f70b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/menu/MenuItem.kt": {
+    "mtime": 1787197871.480861,
+    "ast_hash": "0096843001efd7c1fa7a5d982837d5c8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/menu/MenuItemsList.kt": {
+    "mtime": 1787197871.480861,
+    "ast_hash": "06fbb6d5d83fe05e61926d73ad89b6ca",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_profile/model/ProfileUi.kt": {
+    "mtime": 1787197871.480861,
+    "ast_hash": "2d88db496c887af63e146cf11d3dd866",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_qr_codes/DisplayQrDialog.kt": {
+    "mtime": 1787197871.4810038,
+    "ast_hash": "cbe575c199f2b93062c1e7789d802971",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_qr_codes/DisplayQrIntent.kt": {
+    "mtime": 1787197871.4810038,
+    "ast_hash": "3d049bf4999f27d0eae71b63bf0b41a9",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_qr_codes/DisplayQrState.kt": {
+    "mtime": 1787197871.4810038,
+    "ast_hash": "fd736ff41844452a2f16046ade04ff89",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_qr_codes/DisplayQrViewModel.kt": {
+    "mtime": 1787197871.4810038,
+    "ast_hash": "5368145a18fb0d79b6351c93f2b30fee",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_qr_codes/scan_qr/ScanQrDialog.kt": {
+    "mtime": 1787197871.4810038,
+    "ast_hash": "47ac762493bd94665515bdd072804134",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/SavingsListIntent.kt": {
+    "mtime": 1787197871.482004,
+    "ast_hash": "b7d07ed551828e7793eb16226b3b5b2d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/SavingsListState.kt": {
+    "mtime": 1787197871.4825191,
+    "ast_hash": "7b7cbe8c149a70515f546d0854f4dce1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/SavingsScreen.kt": {
+    "mtime": 1787197871.4825191,
+    "ast_hash": "68ed481c25d76a0879098bb60ed02b14",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/SavingsViewModel.kt": {
+    "mtime": 1787197871.4825191,
+    "ast_hash": "6b5d82e938f7c93587fe988bf9637f28",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/components/SavingCard.kt": {
+    "mtime": 1787197871.4825191,
+    "ast_hash": "1ae89840b7996f478669e326def74eee",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/model/SavingUi.kt": {
+    "mtime": 1787197871.4825191,
+    "ast_hash": "9c7f735e4ab17b355da6d8abac5d3e99",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/screen_saving_details/SavingDetailsIntent.kt": {
+    "mtime": 1787197871.4825191,
+    "ast_hash": "0a64066a247467bedbc0247ed93d35a1",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/screen_saving_details/SavingDetailsScreen.kt": {
+    "mtime": 1787197871.4830039,
+    "ast_hash": "2c699e201b8ff399414ffee6082aed78",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/screen_saving_details/SavingDetailsState.kt": {
+    "mtime": 1787197871.4830039,
+    "ast_hash": "a2b70b1c4f3f2fe226419bbfaa3e0d82",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_savings/screen_saving_details/SavingDetailsViewModel.kt": {
+    "mtime": 1787197871.4830039,
+    "ast_hash": "23cb3ebb28b373929a08f9090517e94a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_signup/InitSIgnUpIntent.kt": {
+    "mtime": 1787197871.4830039,
+    "ast_hash": "3a84a1a97aa54718b7a5d51e09047676",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_signup/InitSignUpScreen.kt": {
+    "mtime": 1787197871.4833493,
+    "ast_hash": "b82827e535dd8d54e9690124a29e611a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_signup/InitSignUpState.kt": {
+    "mtime": 1787197871.4833493,
+    "ast_hash": "53f4c97ac398189763605da1faf3c366",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_signup/InitSignUpViewModel.kt": {
+    "mtime": 1787197871.4833493,
+    "ast_hash": "1b4099a3958f7e16772ba92da87df7ec",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_signup/confirm_signup/ConfirmEmailSignUpVIewModel.kt": {
+    "mtime": 1787197871.4833493,
+    "ast_hash": "e2ea152c1acb609cca08903dd571df04",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_signup/confirm_signup/ConfirmSIgnUpScreen.kt": {
+    "mtime": 1787197871.4837236,
+    "ast_hash": "c3ed7a60197fb34d520409463e52160f",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_signup/confirm_signup/ConfirmSignUpScreenState.kt": {
+    "mtime": 1787197871.4837236,
+    "ast_hash": "40677df1ebb2f7448ea3583c959e423b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_signup/finish_signup/CompleteSignUpScreen.kt": {
+    "mtime": 1787197871.4837236,
+    "ast_hash": "7cfaf10b1fd3c890ace7a5ace77d0122",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_transactions/TransactionHistoryIntent.kt": {
+    "mtime": 1787197871.4837236,
+    "ast_hash": "62a4e9d65535a1a41c087a986eb5fe32",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_transactions/TransactionHistoryScreen.kt": {
+    "mtime": 1787197871.484035,
+    "ast_hash": "cfb8dfe722e4b995b8e06f85d26ebba2",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_transactions/TransactionHistoryState.kt": {
+    "mtime": 1787197871.484035,
+    "ast_hash": "aab6bce2dd3bbc588e10fc2b6e2589bf",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_transactions/TransactionHistoryViewModel.kt": {
+    "mtime": 1787197871.484035,
+    "ast_hash": "040470f0d13d86b4b02e03141a4e98bd",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_transactions/components/TransactionCard.kt": {
+    "mtime": 1787197871.484035,
+    "ast_hash": "4fdc847f73263a022db12a9ecdadc360",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_transactions/model/TransactionUi.kt": {
+    "mtime": 1787197871.484035,
+    "ast_hash": "9b6ff8f41697df528ddf4817524608d5",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/feature_webview/WebViewScreen.kt": {
+    "mtime": 1787197871.484035,
+    "ast_hash": "b7b29e4921734fe668a54d379f68e46c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/theme/Color.kt": {
+    "mtime": 1787197871.484035,
+    "ast_hash": "cb1bb189f042e5cb36b280b107e7aa67",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/theme/Theme.kt": {
+    "mtime": 1787197871.4845195,
+    "ast_hash": "8c58d30aec262645f08310ced37db233",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/java/by/alexandr7035/banking/ui/theme/Type.kt": {
+    "mtime": 1787197871.4845195,
+    "ast_hash": "ad51371433ab364e48e927a64298f241",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/test/java/by/alexandr7035/banking/ExampleUnitTest.kt": {
+    "mtime": 1787197871.4958715,
+    "ast_hash": "50aa8040f1a8d5e911ab60917d226b38",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/build.gradle.kts": {
+    "mtime": 1787197871.4958715,
+    "ast_hash": "5467eaadbfb1ab1deb30ac6609f6a916",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/gradlew": {
+    "mtime": 1787197871.4965923,
+    "ast_hash": "02c16663c6f0aa37f98d94d698c22b8c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/settings.gradle.kts": {
+    "mtime": 1787197871.4965923,
+    "ast_hash": "15b74cafa41de8787ee7c63090143243",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/components.json": {
+    "mtime": 1787357498.9013152,
+    "ast_hash": "fc5c9e9a7b93eeb2f7b4e1ce0959e4a6",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/eslint.config.mjs": {
+    "mtime": 1787357498.9022105,
+    "ast_hash": "cb7483f17b0c69aa4c202278344db86c",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/next.config.ts": {
+    "mtime": 1787357498.9023,
+    "ast_hash": "daad32b4de0b92afe04301ebf0a6cc76",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/package.json": {
+    "mtime": 1787357498.9030502,
+    "ast_hash": "16d57af0ac10162353b376255f8b63cc",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/postcss.config.mjs": {
+    "mtime": 1787357498.90497,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(auth)/layout.tsx": {
+    "mtime": 1787357498.9142056,
+    "ast_hash": "c5b38a73783ff97002e5e69c62a19a8b",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(auth)/sign-in/page.tsx": {
+    "mtime": 1787357498.9142997,
+    "ast_hash": "f361c4625e3232a3ba6c53093919ceb4",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(auth)/sign-up/page.tsx": {
+    "mtime": 1787357498.9142997,
+    "ast_hash": "b5438af3390972911fb26b2f1aefa0c7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/accounts/loading.tsx": {
+    "mtime": 1787357498.914527,
+    "ast_hash": "0011cc815bcaea5a2aab37743dfd4b53",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/accounts/page.tsx": {
+    "mtime": 1787357498.9145846,
+    "ast_hash": "e1c141fd19745a5555ec89aa1ae228ab",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/analytics/loading.tsx": {
+    "mtime": 1787357498.9145846,
+    "ast_hash": "de4359bdd79dbad99ea71b5a280e2b84",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/analytics/page.tsx": {
+    "mtime": 1787357498.914675,
+    "ast_hash": "2e2bc473d113354e2ef4cefeeeaefcff",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/budgets/page.tsx": {
+    "mtime": 1787357498.914675,
+    "ast_hash": "a288f51ab2474e4b953e90dc294c61b7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/cards/page.tsx": {
+    "mtime": 1787357498.914675,
+    "ast_hash": "bbfcf30027742ed35d80caf4dcd1470a",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/crypto/loading.tsx": {
+    "mtime": 1787357498.914675,
+    "ast_hash": "a2058c2f71d41fba933b31ff7b3c6bdb",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/crypto/page.tsx": {
+    "mtime": 1787357498.914895,
+    "ast_hash": "341ba940bc298c0f95fc6aafc32b8280",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/dashboard/loading.tsx": {
+    "mtime": 1787357498.914895,
+    "ast_hash": "7b166b8e8337c30f0be213bd3409a1ce",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/dashboard/page.tsx": {
+    "mtime": 1787357498.9149802,
+    "ast_hash": "ad818402e19a5a5f463b0d4a44cde956",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/investments/loading.tsx": {
+    "mtime": 1787357498.9149802,
+    "ast_hash": "9998b20cc64840623dec60e48a560c30",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/investments/page.tsx": {
+    "mtime": 1787357498.9150946,
+    "ast_hash": "f075295fbd15a85518f635456d9b2f7b",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/layout.tsx": {
+    "mtime": 1787357498.9150946,
+    "ast_hash": "e9c1848f188ed83746253f2ca5e7d1e4",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/notifications/page.tsx": {
+    "mtime": 1787357498.9150946,
+    "ast_hash": "5484a70b7e16204cc327611301ce566c",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/settings/page.tsx": {
+    "mtime": 1787357498.9150946,
+    "ast_hash": "fd62229b39f911c00dafdf967ddd0e5e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/support/loading.tsx": {
+    "mtime": 1787357498.9150946,
+    "ast_hash": "8bac3ee56819072c126f02bd97b8ccfe",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/support/page.tsx": {
+    "mtime": 1787357498.915336,
+    "ast_hash": "2d8922e47183b8fb97be644e653bedb5",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/transactions/loading.tsx": {
+    "mtime": 1787357498.915336,
+    "ast_hash": "dcdba4cb867f1e6c09fedb4a673f1811",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/transactions/page.tsx": {
+    "mtime": 1787357498.915418,
+    "ast_hash": "fb7f147ad483d866c89fb39c0cd3af23",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/(dashboard)/transfers/page.tsx": {
+    "mtime": 1787357498.915418,
+    "ast_hash": "9c50fee1a401202e91be2708b27634b4",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/layout.tsx": {
+    "mtime": 1787357498.915418,
+    "ast_hash": "bab0756fad8fe5a56a9661955f1a0a12",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/not-found.tsx": {
+    "mtime": 1787357498.915418,
+    "ast_hash": "271b0022cc46601e7ec24f7f309a2943",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/page.tsx": {
+    "mtime": 1787357498.915418,
+    "ast_hash": "2fcf065b5f5b84d96247e45ab637ccc7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/accounts/account-grid.tsx": {
+    "mtime": 1787357498.9157238,
+    "ast_hash": "0e7b7f9344dbf676177961b886018e69",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/accounts/account-summary.tsx": {
+    "mtime": 1787357498.915827,
+    "ast_hash": "1cb220865e953a5496ca758dc66339a7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/accounts/accounts-page-client.tsx": {
+    "mtime": 1787357498.915827,
+    "ast_hash": "b27532ab8a8c2627381a395748dc4a02",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/accounts/add-account.tsx": {
+    "mtime": 1787357498.915827,
+    "ast_hash": "5e6d187ce1eb4f1de939e8961374ddb2",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/analytics/ai-insights.tsx": {
+    "mtime": 1787357498.915827,
+    "ast_hash": "ce0c59fc6b84c6a6962067a8417f897d",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/analytics/category-donut.tsx": {
+    "mtime": 1787357498.9162114,
+    "ast_hash": "c1dc98cf94788a040be7b61fb361e3ce",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/analytics/month-comparison.tsx": {
+    "mtime": 1787357498.9162114,
+    "ast_hash": "f44ec2669e7a10dd7c1beb8d466b5d8c",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/analytics/recurring-detector.tsx": {
+    "mtime": 1787357498.9162114,
+    "ast_hash": "57d14a6f4bafcd135e46c5c65fea04a7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/analytics/spending-heatmap.tsx": {
+    "mtime": 1787357498.9162114,
+    "ast_hash": "6e73ca0b67ea6d39bf893be6774f40ce",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/app-sidebar.tsx": {
+    "mtime": 1787357498.9162114,
+    "ast_hash": "097e3d1664ccea086da309c31a9b07b4",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/budgets/budget-rings.tsx": {
+    "mtime": 1787357498.9162114,
+    "ast_hash": "654c685bc926857821e7e321924b8378",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/budgets/month-projection.tsx": {
+    "mtime": 1787357498.9166853,
+    "ast_hash": "811987eca6b1cb021ff139423955728d",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/budgets/savings-goals.tsx": {
+    "mtime": 1787357498.9166853,
+    "ast_hash": "80952f3dd4b1bb73b535d13b91b60f2c",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/budgets/spending-calendar.tsx": {
+    "mtime": 1787357498.9166853,
+    "ast_hash": "96188f9311d99b4f9da89d3467b59a16",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/cards/card-controls.tsx": {
+    "mtime": 1787357498.9166853,
+    "ast_hash": "378b13049ef28fd87a0b53df78427096",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/cards/card-list.tsx": {
+    "mtime": 1787357498.9169512,
+    "ast_hash": "54d415012cd75aab03d629e0534bd876",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/cards/cards-page-client.tsx": {
+    "mtime": 1787357498.9169512,
+    "ast_hash": "959a12357c9b9f31c026629e2a7227ae",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/cards/interactive-card.tsx": {
+    "mtime": 1787357498.9169512,
+    "ast_hash": "0f27ef471d0f3f8dbd57d916c36f85cf",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/cards/virtual-card-generator.tsx": {
+    "mtime": 1787357498.9169512,
+    "ast_hash": "01a51072735edfc594fd068a991ee91c",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/command-palette.tsx": {
+    "mtime": 1787357498.9169512,
+    "ast_hash": "540a22058df8df760f9b4b004d63f086",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/crypto/coin-insight.tsx": {
+    "mtime": 1787357498.91697,
+    "ast_hash": "691ecd88a40244bc04e11cb90db2abea",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/crypto/crypto-page-client.tsx": {
+    "mtime": 1787357498.91697,
+    "ast_hash": "405fe7f614030315f077946a81f32173",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/crypto/market-overview.tsx": {
+    "mtime": 1787357498.91697,
+    "ast_hash": "11269d6bff2cfd0e2bb0720ad975e56c",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/crypto/my-balance.tsx": {
+    "mtime": 1787357498.91697,
+    "ast_hash": "5aa24c96df6085e68a70c2c9e6da6c3b",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/crypto/my-portfolio.tsx": {
+    "mtime": 1787357498.91697,
+    "ast_hash": "cff61c033f341a431cbecca7cc9b75df",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/crypto/top-coins.tsx": {
+    "mtime": 1787357498.91697,
+    "ast_hash": "ad6134a06f24d1c071cfcf47b86eae37",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/crypto/trade-form.tsx": {
+    "mtime": 1787357498.91697,
+    "ast_hash": "5977d4e0d397c2cdc451f5da740ef20a",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dashboard/account-cards.tsx": {
+    "mtime": 1787357498.9179702,
+    "ast_hash": "ae18dcaf87c1b5dff5c9f1456e0fb0b3",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dashboard/dashboard-customizer.tsx": {
+    "mtime": 1787357498.918781,
+    "ast_hash": "e300288bff23ef6cb2ed2394d26f6c83",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dashboard/financial-overview.tsx": {
+    "mtime": 1787357498.918781,
+    "ast_hash": "b6cd8eb3009cbea88f0d6d001ea5bdc1",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dashboard/health-score.tsx": {
+    "mtime": 1787357498.918781,
+    "ast_hash": "2df85e7bf0e686a75dcf943ab416efc6",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dashboard/money-movement.tsx": {
+    "mtime": 1787357498.918781,
+    "ast_hash": "57e4af4435d42420784fa0f5572932fd",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dashboard/quick-transfer.tsx": {
+    "mtime": 1787357498.918781,
+    "ast_hash": "fdb540b01ba5e8618d33c266f3ec1503",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dashboard/recent-transactions.tsx": {
+    "mtime": 1787357498.918781,
+    "ast_hash": "692cb647928acaf78913ee43d6d07e37",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dashboard/spending-limit.tsx": {
+    "mtime": 1787357498.91897,
+    "ast_hash": "ea57eb0c0810c6fff28294e757852e8b",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/dynamic-breadcrumb.tsx": {
+    "mtime": 1787357498.91897,
+    "ast_hash": "2048e50a0685ae100186b6ccbef3d2ad",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/empty-state.tsx": {
+    "mtime": 1787357498.91897,
+    "ast_hash": "70e6d18e58376f450033661610174693",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/globe-demo.tsx": {
+    "mtime": 1787357498.91897,
+    "ast_hash": "fb44f27563e62f1e6e8de03ad094ae61",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/investments/holdings-table.tsx": {
+    "mtime": 1787357498.91897,
+    "ast_hash": "4cc5934a3ae4126ab08280249c4965c1",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/investments/live-ticker.tsx": {
+    "mtime": 1787357498.919865,
+    "ast_hash": "6af0157941942e10bfc4b46db4e4dc0c",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/investments/performance-chart.tsx": {
+    "mtime": 1787357498.919865,
+    "ast_hash": "9c5963b932f6bf709fd896dffc79da63",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/investments/portfolio-allocation.tsx": {
+    "mtime": 1787357498.919865,
+    "ast_hash": "1bff461fdc58d8aef513e66ae865537f",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/investments/watchlist.tsx": {
+    "mtime": 1787357498.919865,
+    "ast_hash": "7130eb217a449408a4d6e616e414d497",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/nav-main.tsx": {
+    "mtime": 1787357498.919865,
+    "ast_hash": "d510d8a3500ed85b4f89ea49998cce80",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/nav-secondary.tsx": {
+    "mtime": 1787357498.919865,
+    "ast_hash": "a457451840ba2e11008e8ae1aaa0fa76",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/nav-user.tsx": {
+    "mtime": 1787357498.919865,
+    "ast_hash": "342505b06ea6ce5f34c13be4be029829",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/notifications/notifications-page-client.tsx": {
+    "mtime": 1787357498.9199703,
+    "ast_hash": "aaae64bb9aa4e5402f634d2f4305ad48",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/settings/settings-page-client.tsx": {
+    "mtime": 1787357498.9199703,
+    "ast_hash": "3d00ce80d6baa04c5bbadb3be0007c6d",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/support/support-page-client.tsx": {
+    "mtime": 1787357498.9199703,
+    "ast_hash": "7ef6a410fbe3a0e1b027fc675cbce5ba",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/theme-toggle.tsx": {
+    "mtime": 1787357498.9199703,
+    "ast_hash": "92dea35a8c88a6cfc98c126cf4513f21",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transactions/transaction-actions.tsx": {
+    "mtime": 1787357498.9199703,
+    "ast_hash": "4385cb98e636b5f61b03525e06c4fc7d",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transactions/transaction-filters.tsx": {
+    "mtime": 1787357498.921119,
+    "ast_hash": "81d62af718df52658b09c5a0d4fc4cf7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transactions/transaction-summary.tsx": {
+    "mtime": 1787357498.921119,
+    "ast_hash": "79cbab0ccb0f39c5bfec9d76c7e261c0",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transactions/transaction-table.tsx": {
+    "mtime": 1787357498.921119,
+    "ast_hash": "a16c1d05c3b7da0ea34601371fa74622",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transactions/transactions-page-client.tsx": {
+    "mtime": 1787357498.921119,
+    "ast_hash": "fbf5c9f2894c68f43d0eb7b5d8defa16",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transfers/quick-send.tsx": {
+    "mtime": 1787357498.921119,
+    "ast_hash": "9a0221f932ee11d95801d1692fdda02a",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transfers/transfer-list.tsx": {
+    "mtime": 1787357498.9214735,
+    "ast_hash": "54e9ed1295225e348f62f65cba05ddf4",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transfers/transfer-stats.tsx": {
+    "mtime": 1787357498.9214735,
+    "ast_hash": "d803d629913dd78d0fbfa47b42ac975e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/transfers/transfers-page-client.tsx": {
+    "mtime": 1787357498.9214735,
+    "ast_hash": "92981a37a1a3ace0de89575ac192c77c",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/avatar.tsx": {
+    "mtime": 1787357498.9214735,
+    "ast_hash": "8b41492907a73176027427a3f0fd2302",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/badge.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "e4ec840217040d5630ee6ed7213a1d72",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/breadcrumb.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "930d294d904c67a97eadeb26f5ac6cb1",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/button.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "705bf3552a39e0c722665ccbecb30654",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/calendar.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "b2ebfd1248458219a4fa6b7628f124de",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/card.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "77a10bd948ca424972a28e704a3df604",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/chart.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "ea3aef621225b35027a63a606b632c54",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/checkbox.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "b2348d074d43a3597b5622982f1978b6",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/collapsible.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "bc00817a4471ae1d76774aa4c50a7c31",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/command.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "a25ff237f1693d4196bd45681996572a",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/dialog.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "d9618a63d34473ec512321cc12d43692",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/dropdown-menu.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "e6107cbb2088437e76a858f75b5a0280",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/globe.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "ee4dfd6c64474613019280d113841495",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/input-group.tsx": {
+    "mtime": 1787357498.9216905,
+    "ast_hash": "e416a1443c87bacbba5ac124ee292dd5",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/input.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "0607b02d99a2e92f9509223f36ccc6ec",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/popover.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "5e697fcc6dcfa06acb4d79e51ae4dbf7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/progress.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "aa71e8ceb68b33af5ed5799f42cd873e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/select.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "ab95f478cb74d1906b07425c15b124cc",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/separator.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "3de2dca3e47ab29c4b1f632671545628",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/sheet.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "43ad8bec991f7a28d2aa22d4f374e6b7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/sidebar.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "96944ebc5f66755ed062aeaa1a875a1e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/skeleton.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "0e6e825c43d858d98c9903f4da975382",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/slider.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "1ddc476cffc083f68378a07276c64546",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/switch.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "049ff4b9c939a42157e99d6bbdeaaaec",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/table.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "44f87727e60080863edb00fdd2fcd8da",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/tabs.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "429035bc858475cd3bcedbb08a5ba8da",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/textarea.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "d448d2a90e48542e51b93a1189127bf2",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/components/ui/tooltip.tsx": {
+    "mtime": 1787357498.9219701,
+    "ast_hash": "6566a444ce6c0a87d6611903430534fa",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/data/globe.json": {
+    "mtime": 1787357498.9239702,
+    "ast_hash": "dc8361a285f855500cb7a5163d1e9421",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/data/seed.ts": {
+    "mtime": 1787357498.9249704,
+    "ast_hash": "624cfb94b54a0946bc936f8343e7008e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/hooks/use-mobile.ts": {
+    "mtime": 1787357498.9249704,
+    "ast_hash": "209b5193af16624cdd89d3591480dd48",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/lib/utils.ts": {
+    "mtime": 1787357498.9249704,
+    "ast_hash": "5a6fd53fdcf2be529e9cc0b718fde352",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/tsconfig.json": {
+    "mtime": 1787357498.9249704,
+    "ast_hash": "ee17fd1c97c735e9f3564e3f5251f125",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1787363217.712223,
+    "ast_hash": "1cd7641717715838379bb4d522af621d",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/DineroAtuCuenta_WEB_plan.md": {
+    "mtime": 1787336095.0948486,
+    "ast_hash": "9589707cccdd10b6105490dea0e1cdff",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/DineroAtuCuenta_plan.md": {
+    "mtime": 1787198351.0286434,
+    "ast_hash": "34010fc0af28d197f8d8872f00dd39cd",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/README.md": {
+    "mtime": 1787197871.4640028,
+    "ast_hash": "9c365be31f1a3581e5844dd14d853c99",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/.github/CODE_OF_CONDUCT.md": {
+    "mtime": 1787357498.8989697,
+    "ast_hash": "3a821712f9a5eef3487810a6d9119d1e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/.github/CONTRIBUTING.md": {
+    "mtime": 1787357498.8999052,
+    "ast_hash": "737f83657a93900a129a46c24eedab21",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/.github/FUNDING.yml": {
+    "mtime": 1787357498.900034,
+    "ast_hash": "42c750e90780dad097c2ff73b1fa1bc7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/.github/ISSUE_TEMPLATE/bug_report.yml": {
+    "mtime": 1787357498.900034,
+    "ast_hash": "fbc5fd7d33f173fac99f141b9edab5f9",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/.github/ISSUE_TEMPLATE/config.yml": {
+    "mtime": 1787357498.9002843,
+    "ast_hash": "108150a06999d94928297e47aee0ca18",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/.github/ISSUE_TEMPLATE/feature_request.yml": {
+    "mtime": 1787357498.9002843,
+    "ast_hash": "9367c5c99f1453158487158c9d9d62a0",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/.github/PULL_REQUEST_TEMPLATE.md": {
+    "mtime": 1787357498.9002843,
+    "ast_hash": "9be19ff5f8cf67089746a654386585a2",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/.github/workflows/ci.yml": {
+    "mtime": 1787357498.9002843,
+    "ast_hash": "b9a3743f5c52d66a9c9e2e7833d1a1de",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/AGENTS.md": {
+    "mtime": 1787357498.9002843,
+    "ast_hash": "9e09241799026ac05be315a2f0b50055",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/CHANGELOG.md": {
+    "mtime": 1787357498.9002843,
+    "ast_hash": "e273f9b101fa66ad7a70df2d0b234bd8",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/CLAUDE.md": {
+    "mtime": 1787357498.9002843,
+    "ast_hash": "5c27369b226fcf2be8a6cfe52224e767",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/README.md": {
+    "mtime": 1787357498.9013152,
+    "ast_hash": "13f2712baa4223d8bfb25e1b4e3880a1",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/pnpm-workspace.yaml": {
+    "mtime": 1787358128.2418017,
+    "ast_hash": "0f12ac4af72db4e53490a14d436a2bdd",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/drawable/ic_splash_inner.png": {
+    "mtime": 1787197871.486004,
+    "ast_hash": "375812b6471c51159e51c9a33ef79bce",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/drawable/logo.png": {
+    "mtime": 1787197871.4870043,
+    "ast_hash": "3deb4a1d5b65662ddb7f2f4c60afb30a",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/drawable/logo_variant.png": {
+    "mtime": 1787197871.4870043,
+    "ast_hash": "6c7c4fcc3e7b6ada1dd063f2c24fa6e7",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+    "mtime": 1787197871.4945734,
+    "ast_hash": "0e280a6cdfa5fc54e1bf8ab4e2c3a6b8",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-hdpi/ic_launcher_round.png": {
+    "mtime": 1787197871.4946775,
+    "ast_hash": "43766912e619049c46bc0cfad4c06e42",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+    "mtime": 1787197871.4946775,
+    "ast_hash": "3ef5df0fd90f5c1402a5f3e3a034731b",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-mdpi/ic_launcher_round.png": {
+    "mtime": 1787197871.4947836,
+    "ast_hash": "0372d955c96de144f1b0001d72bad5a6",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+    "mtime": 1787197871.4947836,
+    "ast_hash": "d58956ae101a3566fe7699650c7affd6",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png": {
+    "mtime": 1787197871.4948876,
+    "ast_hash": "893946b2e75a3de1e204006c3cfe75ed",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+    "mtime": 1787197871.4948876,
+    "ast_hash": "e45b12c366c5a324cc85871d6d9726ab",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png": {
+    "mtime": 1787197871.4950395,
+    "ast_hash": "501a7f6d7e7270f5932205875b4a797c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+    "mtime": 1787197871.4950395,
+    "ast_hash": "04288e2f5adb5464cc5c3a119473c16c",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png": {
+    "mtime": 1787197871.4952297,
+    "ast_hash": "e10873192851334c56ee1c1d7f768343",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/screen.png": {
+    "mtime": 1787296166.6634,
+    "ast_hash": "f68d4431d4e4717ecf98164fd56b2360",
+    "semantic_hash": ""
+  },
+  "VersionAndroid/repos/Banking-App-Mock-Compose/screen2.png": {
+    "mtime": 1787296185.4731617,
+    "ast_hash": "cc1327bc9a4a318d3c5fc56895583089",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/1.jpg": {
+    "mtime": 1787357498.9065847,
+    "ast_hash": "aea73d662c3f04b9d1ac82f93c4e4b90",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/11.jpg": {
+    "mtime": 1787357498.9067082,
+    "ast_hash": "7e3010afaa1819dc88eedecfdec54472",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/12.jpg": {
+    "mtime": 1787357498.9067082,
+    "ast_hash": "2183e493f36bb1d97d188fdd02aefa8b",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/16.jpg": {
+    "mtime": 1787357498.9067082,
+    "ast_hash": "7c0ca9eb4de8084619db9f640aa7563e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/3.jpg": {
+    "mtime": 1787357498.9067082,
+    "ast_hash": "6706a88fe6be822235e6e6f9dc0f1335",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/5.jpg": {
+    "mtime": 1787357498.9067082,
+    "ast_hash": "8671a1f4e3308f4223ca22e4dc83efb9",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/68.jpg": {
+    "mtime": 1787357498.9067082,
+    "ast_hash": "dff11d7848bc3da7cb2229d441a5fb6a",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/8.jpg": {
+    "mtime": 1787357498.9067082,
+    "ast_hash": "32b754ff9148b98fe96ca8c5af15e765",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/9.jpg": {
+    "mtime": 1787357498.9067082,
+    "ast_hash": "acc24a9105aed28319a95eead8bb5336",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/avatars/user.jpg": {
+    "mtime": 1787357498.9069698,
+    "ast_hash": "6a3a418a1809ea5d2263409578cae56b",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/adobe-com.png": {
+    "mtime": 1787357498.9069698,
+    "ast_hash": "bf3cd016df3d8fa903bac167cacc890a",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/airbnb-com.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "27d60f4d44519f985f9c8fa722a251df",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/ally-com.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "5a85b59a3bc47e67e6984bd829bc2a4e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/amazon-com.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "052961a9a9e327c1aeca2ed045185d56",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/amd-com.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "d92da2028eb0098953b8caad23e8e956",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/apple-com.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "8c113170bdc8577b09f76904f8cbe53e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/avax-network.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "9253eac92d2ed82fa757e33267da3c4f",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/aws-amazon-com.svg": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "e626e0ffb032a2f6fbef879e5548a767",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/bitcoin-com.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "f82773c3d6bf33ec06c1941e61ceb44f",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/block-xyz.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "8058415050b9f92e430db9d09fcc4880",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/bnbchain-org.png": {
+    "mtime": 1787357498.907692,
+    "ast_hash": "d175d670b70c9a015fb52784aca9f998",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/cardano-org.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "e2f52949f7f0d3bd251380aa796c5750",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/chase-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "dd3dbabcf4d955e275d76defd90e6e13",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/coinbase-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "97da4fe0254767477b857fc358fee306",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/delta-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "7f27c4825ad08b758228318822b02592",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/dogecoin-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "ddd5eb879f267f9cd3c2ef2d743ef2e6",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/doordash-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "e1603591b2215b15c2b2b7d38ae35cc2",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/ethereum-org.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "eab426738733bd3ab3b007f9d4546954",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/fidelity-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "2957ea9ce4c9f9cdd8b6c4c8161de1bf",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/figma-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "83cc34a67914c4e3e42c8ff08da22c1a",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/github-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "c74db019c53f33ed2fe5e036a497d032",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/google-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "6f2b740853aef68e779ab34caf6d72f0",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/linkedin-com.png": {
+    "mtime": 1787357498.90797,
+    "ast_hash": "bf5576a62ab3db0ab1d2bbc69a2246fa",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/marcus-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "034ea9841615a474ee983be2e1d46464",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/mastercard-com.svg": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "5de6df5c4042b8de4dacc74299ea2db5",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/meta-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "d8b60b3361e9c2898c77d62c139b0551",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/microsoft-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "00f803d48ca109613c74c4cbfcc33d14",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/netflix-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "6b10969fe868df69e21b97875148f0c9",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/notion-so.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "94af2eb0788478085bf5a511132b525e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/nvidia-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "b8e470cb39ec478e21df976fa5c8a0de",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/openai-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "b5ebb358db2b7d213437c428ff8776a6",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/paypal-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "162324e52829ca16ad8ca2c18ae34b29",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/ripple-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "55a57ca86538873cc257e136bdada8ab",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/salesforce-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "68a0a4e9f21670652d0c5b574664d7a7",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/shell-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "5e93b92f567a8f56c489ee1c149be123",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/slack-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "fd8d410070ec11afa5cd5a87ed402919",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/solana-com.png": {
+    "mtime": 1787357498.9089699,
+    "ast_hash": "e2d2e5ab97fc2259ccd127f29106c5f1",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/spotify-com.png": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "15a4d954e5259764b5bbd1b7ed0e1a3e",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/starbucks-com.png": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "257a166532185ff9240c4e64e3b9f745",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/stripe-com.png": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "5029acc15f7ba9fafeed314298139826",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/target-com.png": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "18fb03c75fe0a273e27644bf6be70c8b",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/tesla-com.png": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "4d77fd154d5629127a5dbea011609549",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/uber-com.png": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "df28545e4c02c207af22ca790930e3ec",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/vercel-com.png": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "748031d7f933258cfd1de5cf90bb860a",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/visa-com.svg": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "de2aff855e9a1aaefcbcb5b67897d834",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/logos/wise-com.png": {
+    "mtime": 1787357498.90997,
+    "ast_hash": "c004332526d7e73455aac3a3382b05a6",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/public/screenshots/shadcn-fintech.png": {
+    "mtime": 1787357498.91297,
+    "ast_hash": "d0eba52e37d0d3500f91bfbbcac18eb2",
+    "semantic_hash": ""
+  },
+  "VersionWeb/repoInterfaz/src/app/icon.svg": {
+    "mtime": 1787357498.915418,
+    "ast_hash": "834aecae687d880daef2e4dc4b833e69",
+    "semantic_hash": ""
+  }
+}
