@@ -46,21 +46,21 @@ export function AccountCard({ account, index, onSelect }: AccountCardProps) {
         {/* Institution row */}
         <div className="flex items-center gap-2">
           {imgError ? (
-            <div className="flex size-8 items-center justify-center rounded-full bg-muted">
-              <BuildingIcon className="size-4 text-muted-foreground" />
+            <div className="flex size-12 items-center justify-center rounded-lg bg-muted">
+              <BuildingIcon className="size-5 text-muted-foreground" />
             </div>
           ) : (
             <Image
               src={account.institutionLogo}
               alt={account.institution}
-              width={32}
-              height={32}
+              width={48}
+              height={48}
               unoptimized
-              className="size-8 rounded-full bg-muted object-cover"
+              className="size-12 rounded-lg bg-muted object-cover"
               onError={() => setImgError(true)}
             />
           )}
-          <span className="text-xs text-muted-foreground">
+          <span className="text-sm font-medium text-muted-foreground">
             {account.institution}
           </span>
         </div>
