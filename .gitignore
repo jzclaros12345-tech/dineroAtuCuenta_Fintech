@@ -1,0 +1,48 @@
+# ══════════════════════════════════════════════
+# SECRETOS Y CREDENCIALES — NUNCA subir
+# ══════════════════════════════════════════════
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.keystore
+!debug.keystore
+keystore.properties
+secrets.yaml
+secrets.yml
+*secret*
+*credentials*
+service-account*.json
+firebase-adminsdk*.json
+
+# ══════════════════════════════════════════════
+# DEPENDENCIAS Y BUILDS (pesados, no necesarios en git)
+# ══════════════════════════════════════════════
+node_modules/
+.next/
+out/
+build/
+dist/
+.pnpm-store/
+
+# Android
+*.apk
+*.aab
+.gradle/
+local.properties
+
+# ══════════════════════════════════════════════
+# SISTEMA Y EDITOR
+# ══════════════════════════════════════════════
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# ══════════════════════════════════════════════
+# VERCEL
+# ══════════════════════════════════════════════
+.vercel
