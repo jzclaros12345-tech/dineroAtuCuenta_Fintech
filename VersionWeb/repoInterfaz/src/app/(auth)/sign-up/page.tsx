@@ -76,7 +76,7 @@ export default function SignUpPage() {
             <LandmarkIcon className="size-4" />
           </div>
           <span className="text-sm font-semibold text-white">
-            Shadcn Fintech
+            dineroAtucuenta
           </span>
         </Link>
 

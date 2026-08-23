@@ -72,7 +72,7 @@ export default function SignInPage() {
             <LandmarkIcon className="size-4" />
           </div>
           <span className="text-sm font-semibold text-white">
-            Shadcn Fintech
+            dineroAtucuenta
           </span>
         </Link>
 

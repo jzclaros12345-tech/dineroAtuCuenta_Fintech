@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "src/components/accounts/account-grid.tsx": {
-    "mtime": 1787357498.9157238,
-    "ast_hash": "0e7b7f9344dbf676177961b886018e69",
+    "mtime": 1787435827.408663,
+    "ast_hash": "2d84221460e6968ed65cb91fdb8e3a5b",
     "semantic_hash": ""
   },
   "src/components/accounts/account-summary.tsx": {
@@ -595,8 +595,8 @@
     "semantic_hash": ""
   },
   "src/data/seed.ts": {
-    "mtime": 1787357498.9249704,
-    "ast_hash": "624cfb94b54a0946bc936f8343e7008e",
+    "mtime": 1787434126.717407,
+    "ast_hash": "b003408cc4e68991b925628247316ba8",
     "semantic_hash": ""
   },
   "src/hooks/use-mobile.ts": {
@@ -725,8 +725,8 @@
     "semantic_hash": ""
   },
   "public/avatars/user.jpg": {
-    "mtime": 1787357498.9069698,
-    "ast_hash": "6a3a418a1809ea5d2263409578cae56b",
+    "mtime": 1787434280.575452,
+    "ast_hash": "985e7c0a8ff2a608d7d26204f70c0d8c",
     "semantic_hash": ""
   },
   "public/logos/adobe-com.png": {
@@ -737,11 +737,6 @@
   "public/logos/airbnb-com.png": {
     "mtime": 1787357498.907692,
     "ast_hash": "27d60f4d44519f985f9c8fa722a251df",
-    "semantic_hash": ""
-  },
-  "public/logos/ally-com.png": {
-    "mtime": 1787357498.907692,
-    "ast_hash": "5a85b59a3bc47e67e6984bd829bc2a4e",
     "semantic_hash": ""
   },
   "public/logos/amazon-com.png": {
@@ -789,16 +784,6 @@
     "ast_hash": "e2f52949f7f0d3bd251380aa796c5750",
     "semantic_hash": ""
   },
-  "public/logos/chase-com.png": {
-    "mtime": 1787357498.90797,
-    "ast_hash": "dd3dbabcf4d955e275d76defd90e6e13",
-    "semantic_hash": ""
-  },
-  "public/logos/coinbase-com.png": {
-    "mtime": 1787357498.90797,
-    "ast_hash": "97da4fe0254767477b857fc358fee306",
-    "semantic_hash": ""
-  },
   "public/logos/delta-com.png": {
     "mtime": 1787357498.90797,
     "ast_hash": "7f27c4825ad08b758228318822b02592",
@@ -819,11 +804,6 @@
     "ast_hash": "eab426738733bd3ab3b007f9d4546954",
     "semantic_hash": ""
   },
-  "public/logos/fidelity-com.png": {
-    "mtime": 1787357498.90797,
-    "ast_hash": "2957ea9ce4c9f9cdd8b6c4c8161de1bf",
-    "semantic_hash": ""
-  },
   "public/logos/figma-com.png": {
     "mtime": 1787357498.90797,
     "ast_hash": "83cc34a67914c4e3e42c8ff08da22c1a",
@@ -842,11 +822,6 @@
   "public/logos/linkedin-com.png": {
     "mtime": 1787357498.90797,
     "ast_hash": "bf5576a62ab3db0ab1d2bbc69a2246fa",
-    "semantic_hash": ""
-  },
-  "public/logos/marcus-com.png": {
-    "mtime": 1787357498.9089699,
-    "ast_hash": "034ea9841615a474ee983be2e1d46464",
     "semantic_hash": ""
   },
   "public/logos/mastercard-com.svg": {
@@ -954,11 +929,6 @@
     "ast_hash": "de2aff855e9a1aaefcbcb5b67897d834",
     "semantic_hash": ""
   },
-  "public/logos/wise-com.png": {
-    "mtime": 1787357498.90997,
-    "ast_hash": "c004332526d7e73455aac3a3382b05a6",
-    "semantic_hash": ""
-  },
   "public/screenshots/shadcn-fintech.png": {
     "mtime": 1787357498.91297,
     "ast_hash": "d0eba52e37d0d3500f91bfbbcac18eb2",
@@ -967,6 +937,41 @@
   "src/app/icon.svg": {
     "mtime": 1787357498.915418,
     "ast_hash": "834aecae687d880daef2e4dc4b833e69",
+    "semantic_hash": ""
+  },
+  "public/logos/banco-ganadero.png": {
+    "mtime": 1787450196.0,
+    "ast_hash": "65837ebc5e54fa1572c6b6e5df009ef7",
+    "semantic_hash": ""
+  },
+  "public/logos/banco-mercantil.png": {
+    "mtime": 1787450196.0,
+    "ast_hash": "0a77a63ba3cc3a86cb4eff984f809c29",
+    "semantic_hash": ""
+  },
+  "public/logos/banco-nacional.png": {
+    "mtime": 1787450196.0,
+    "ast_hash": "d73b8a734343f1bc435e231f854ab64d",
+    "semantic_hash": ""
+  },
+  "public/logos/banco-union.png": {
+    "mtime": 1787450196.0,
+    "ast_hash": "ea9023ab5a7ec6e30fb28c514bcb6fda",
+    "semantic_hash": ""
+  },
+  "public/logos/bancosol.png": {
+    "mtime": 1787450196.0,
+    "ast_hash": "b4f88274b0db252840713676cf527887",
+    "semantic_hash": ""
+  },
+  "public/logos/user.jpg": {
+    "mtime": 1787448016.0,
+    "ast_hash": "985e7c0a8ff2a608d7d26204f70c0d8c",
+    "semantic_hash": ""
+  },
+  "public/logos/yape.png": {
+    "mtime": 1787450196.0,
+    "ast_hash": "420617a25e78597e24864f470a90a91a",
     "semantic_hash": ""
   }
 }

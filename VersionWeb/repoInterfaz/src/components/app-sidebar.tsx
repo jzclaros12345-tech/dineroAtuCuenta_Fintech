@@ -34,8 +34,8 @@ import {
 
 const data = {
   user: {
-    name: "Abderrahim G.",
-    email: "abderrahim@fintech.com",
+    name: "Albert almanz Legacy.",
+    email: "albert12345@fintech.com",
     avatar: "/avatars/user.jpg",
   },
   navDaily: [
@@ -75,9 +75,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <LandmarkIcon className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">Shadcn Fintech</span>
+                <span className="truncate font-semibold">dineroAtucuenta</span>
                 <span className="truncate text-xs text-muted-foreground">
-                  Finance Dashboard
+                  Al instante, sin vueltas.
                 </span>
               </div>
             </SidebarMenuButton>
