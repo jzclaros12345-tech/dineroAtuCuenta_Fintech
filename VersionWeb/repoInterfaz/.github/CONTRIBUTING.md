@@ -1,3 +1,4 @@
+<!-- @fp-path: .github/CONTRIBUTING.md -->
 # Contributing to Shadcn Fintech
 
 Thank you for considering contributing to **Shadcn Fintech**! Every contribution is valuable, whether it's reporting bugs, suggesting improvements, adding features, or improving documentation.

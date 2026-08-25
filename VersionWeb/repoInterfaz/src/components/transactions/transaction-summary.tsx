@@ -1,3 +1,4 @@
+// @fp-path: src/components/transactions/transaction-summary.tsx
 import { ArrowDownLeftIcon, ArrowUpRightIcon, HashIcon, TrendingUpIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"

@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/transactions/page.tsx
 import { TransactionsPageClient } from "@/components/transactions/transactions-page-client"
 
 export default function Page() {

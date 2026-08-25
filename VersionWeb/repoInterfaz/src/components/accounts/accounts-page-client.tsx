@@ -1,6 +1,8 @@
+// @fp-path: src/components/accounts/accounts-page-client.tsx
 "use client"
 
 import { useMemo, useState } from "react"
+import { useTranslations } from "next-intl"
 
 import { bankAccounts, type BankAccount } from "@/data/seed"
 import { cn } from "@/lib/utils"
@@ -9,19 +11,20 @@ import { AccountCard } from "@/components/accounts/account-grid"
 import { AddAccount } from "@/components/accounts/add-account"
 import { EmptyState } from "@/components/empty-state"
 
-const filterTabs = [
-  { value: "all", label: "All" },
-  { value: "checking", label: "Checking" },
-  { value: "savings", label: "Savings" },
-  { value: "crypto", label: "Crypto" },
-  { value: "investment", label: "Investment" },
-] as const
-
-type AccountType = (typeof filterTabs)[number]["value"]
+type AccountType = "all" | "checking" | "savings" | "crypto" | "investment"
 
 export function AccountsPageClient() {
+  const t = useTranslations()
   const [selectedType, setSelectedType] = useState<AccountType>("all")
   const [accounts, setAccounts] = useState<BankAccount[]>(bankAccounts)
+
+  const filterTabs = [
+    { value: "all", label: t("accounts.filterTabs.all") },
+    { value: "checking", label: t("accounts.filterTabs.checking") },
+    { value: "savings", label: t("accounts.filterTabs.savings") },
+    { value: "crypto", label: t("accounts.filterTabs.crypto") },
+    { value: "investment", label: t("accounts.filterTabs.investment") },
+  ] as const
 
   const filtered = useMemo(
     () =>
@@ -62,8 +65,8 @@ export function AccountsPageClient() {
       {filtered.length === 0 ? (
         <EmptyState
           variant="filter"
-          title="No accounts in this category"
-          description="You don't have any accounts of this type yet. Try a different filter or link a new account."
+          title={t("accounts.emptyState.title")}
+          description={t("accounts.emptyState.description")}
         />
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">

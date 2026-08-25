@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/slider.tsx
 import { Slider as SliderPrimitive } from "@base-ui/react/slider"
 
 import { cn } from "@/lib/utils"

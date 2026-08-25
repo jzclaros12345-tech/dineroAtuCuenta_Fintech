@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/switch.tsx
 "use client"
 
 import { Switch as SwitchPrimitive } from "@base-ui/react/switch"

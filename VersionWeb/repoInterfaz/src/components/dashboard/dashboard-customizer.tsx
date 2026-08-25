@@ -1,3 +1,4 @@
+// @fp-path: src/components/dashboard/dashboard-customizer.tsx
 "use client"
 
 import { useState } from "react"

@@ -1,3 +1,4 @@
+// @fp-path: src/components/globe-demo.tsx
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";

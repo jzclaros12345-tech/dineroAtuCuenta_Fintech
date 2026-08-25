@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/crypto/page.tsx
 import { CryptoPageClient } from "@/components/crypto/crypto-page-client"
 
 export default function Page() {

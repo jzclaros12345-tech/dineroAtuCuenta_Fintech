@@ -1,3 +1,4 @@
+// @fp-path: src/components/investments/live-ticker.tsx
 "use client"
 
 import { useMemo } from "react"

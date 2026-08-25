@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/input-group.tsx
 "use client"
 
 import * as React from "react"

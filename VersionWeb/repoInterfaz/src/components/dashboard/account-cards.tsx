@@ -1,6 +1,8 @@
+// @fp-path: src/components/dashboard/account-cards.tsx
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import { useTranslations } from "next-intl"
 import { accountCards, walletBalance } from "@/data/seed"
 import {
   CreditCardIcon,
@@ -60,11 +62,18 @@ const newCardOptions = [
 ]
 
 export function AccountCards() {
+  const t = useTranslations("dashboard.accountCards")
   const [cards, setCards] = useState(initialCards)
   const [order, setOrder] = useState(() => initialCards.map((_, i) => i))
   const [addState, setAddState] = useState<AddState>("idle")
   const [newCardType, setNewCardType] = useState("savings")
   const [newCardName, setNewCardName] = useState("")
+
+  const newCardOptions = [
+    { value: "savings", label: t("savingsAccount"), currency: "$", style: "bg-emerald-600 text-white", icon: <TrendingUpIcon className="size-5 opacity-30" />, chipColor: "bg-white/20" },
+    { value: "business", label: t("businessAccount"), currency: "$", style: "bg-violet-600 text-white", icon: <CreditCardIcon className="size-5 opacity-30" />, chipColor: "bg-white/20" },
+    { value: "travel", label: t("travelCard"), currency: "€", style: "bg-amber-600 text-white", icon: <EuroIcon className="size-5 opacity-30" />, chipColor: "bg-white/20" },
+  ]
 
   const cycle = useCallback(() => {
     setOrder((prev) => {
@@ -181,7 +190,7 @@ export function AccountCards() {
                   >
                     <CheckCircle2Icon className="size-10 text-emerald-500" />
                   </motion.div>
-                  <p className="text-sm font-semibold">Card added!</p>
+                  <p className="text-sm font-semibold">{t("cardAdded")}</p>
                   <p className="text-xs text-muted-foreground">
                     {newCardName || newCardOptions.find((o) => o.value === newCardType)?.label}
                   </p>
@@ -189,12 +198,12 @@ export function AccountCards() {
               ) : addState === "adding" ? (
                 <div className="flex flex-1 flex-col items-center justify-center gap-3">
                   <LoaderCircleIcon className="size-8 animate-spin text-muted-foreground" />
-                  <p className="text-sm text-muted-foreground">Creating card...</p>
+                  <p className="text-sm text-muted-foreground">{t("creatingCard")}</p>
                 </div>
               ) : (
                 <div className="flex flex-1 flex-col gap-3">
                   <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold">Add New Card</p>
+                    <p className="text-sm font-semibold">{t("addNewCard")}</p>
                     <Button
                       variant="ghost"
                       size="icon"
@@ -217,14 +226,14 @@ export function AccountCards() {
                     </SelectContent>
                   </Select>
                   <Input
-                    placeholder="Card name (optional)"
+                    placeholder={t("cardNamePlaceholder")}
                     value={newCardName}
                     onChange={(e) => setNewCardName(e.target.value)}
                     className="h-9 text-xs"
                   />
                   <Button className="h-9 gap-2 text-xs" onClick={handleAdd}>
                     <PlusIcon className="size-3.5" />
-                    Create Card
+                    {t("createCard")}
                   </Button>
                 </div>
               )}
@@ -236,7 +245,7 @@ export function AccountCards() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <CreditCardIcon className="size-3.5" />
-            <span>{cards.length} cards</span>
+            <span>{t("cards", { count: String(cards.length) })}</span>
           </div>
           <Button
             variant="outline"
@@ -250,13 +259,13 @@ export function AccountCards() {
 
         {/* Wallet balance */}
         <div className="space-y-1.5 border-t pt-5">
-          <p className="text-xs font-medium text-muted-foreground">Wallet Balance</p>
+          <p className="text-xs font-medium text-muted-foreground">{t("walletBalance")}</p>
           <p className="text-3xl font-bold tabular-nums tracking-tight">
             ${walletBalance.amount.toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </p>
           <div className="flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
             <TrendingUpIcon className="size-4" />
-            <span>+{walletBalance.changePercent}% this month</span>
+            <span>{t("changePercent", { pct: String(walletBalance.changePercent) })}</span>
           </div>
         </div>
       </CardContent>

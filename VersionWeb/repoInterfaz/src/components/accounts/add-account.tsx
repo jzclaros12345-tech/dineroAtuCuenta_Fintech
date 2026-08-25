@@ -1,6 +1,8 @@
+// @fp-path: src/components/accounts/add-account.tsx
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 import { PlusIcon, CheckIcon, LoaderIcon } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
 
@@ -25,10 +27,10 @@ interface AddAccountProps {
 type Step = "idle" | "form" | "loading" | "success"
 
 const accountTypes = [
-  { value: "checking", label: "Checking" },
-  { value: "savings", label: "Savings" },
-  { value: "crypto", label: "Crypto" },
-  { value: "investment", label: "Investment" },
+  { value: "checking", labelKey: "typeChecking" },
+  { value: "savings", labelKey: "typeSavings" },
+  { value: "crypto", labelKey: "typeCrypto" },
+  { value: "investment", labelKey: "typeInvestment" },
 ] as const
 
 const typeColors: Record<string, string> = {
@@ -39,6 +41,7 @@ const typeColors: Record<string, string> = {
 }
 
 export function AddAccount({ onAdd }: AddAccountProps) {
+  const t = useTranslations("accounts.addAccount")
   const [step, setStep] = useState<Step>("idle")
   const [institution, setInstitution] = useState("")
   const [accountType, setAccountType] = useState("")
@@ -96,7 +99,7 @@ export function AddAccount({ onAdd }: AddAccountProps) {
               <div className="flex size-10 items-center justify-center rounded-full bg-muted">
                 <PlusIcon className="size-5" />
               </div>
-              <span className="text-sm font-medium">Link New Account</span>
+              <span className="text-sm font-medium">{t("linkNewAccount")}</span>
             </motion.div>
           )}
 
@@ -110,7 +113,7 @@ export function AddAccount({ onAdd }: AddAccountProps) {
               onClick={(e) => e.stopPropagation()}
             >
               <Input
-                placeholder="Institution name"
+                placeholder={t("institutionPlaceholder")}
                 value={institution}
                 onChange={(e) => setInstitution(e.target.value)}
               />
@@ -119,18 +122,18 @@ export function AddAccount({ onAdd }: AddAccountProps) {
                 onValueChange={(v) => v && setAccountType(v)}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Account type" />
+                  <SelectValue placeholder={t("accountTypePlaceholder")} />
                 </SelectTrigger>
                 <SelectContent>
-                  {accountTypes.map((t) => (
-                    <SelectItem key={t.value} value={t.value}>
-                      {t.label}
+                  {accountTypes.map((at) => (
+                    <SelectItem key={at.value} value={at.value}>
+                      {t(at.labelKey)}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
               <Input
-                placeholder="Account number"
+                placeholder={t("accountNumberPlaceholder")}
                 value={accountNumber}
                 onChange={(e) => setAccountNumber(e.target.value)}
               />
@@ -146,7 +149,7 @@ export function AddAccount({ onAdd }: AddAccountProps) {
                     setAccountNumber("")
                   }}
                 >
-                  Cancel
+                  {t("cancel")}
                 </Button>
                 <Button
                   size="sm"
@@ -154,7 +157,7 @@ export function AddAccount({ onAdd }: AddAccountProps) {
                   disabled={!institution || !accountType || !accountNumber}
                   onClick={handleConnect}
                 >
-                  Connect
+                  {t("connect")}
                 </Button>
               </div>
             </motion.div>
@@ -169,7 +172,7 @@ export function AddAccount({ onAdd }: AddAccountProps) {
               className="flex flex-col items-center gap-2 text-muted-foreground"
             >
               <LoaderIcon className="size-6 animate-spin" />
-              <span className="text-sm">Connecting...</span>
+              <span className="text-sm">{t("connecting")}</span>
             </motion.div>
           )}
 
@@ -184,7 +187,7 @@ export function AddAccount({ onAdd }: AddAccountProps) {
               <div className="flex size-10 items-center justify-center rounded-full bg-emerald-500/10">
                 <CheckIcon className="size-5" />
               </div>
-              <span className="text-sm font-medium">Connected!</span>
+              <span className="text-sm font-medium">{t("connected")}</span>
             </motion.div>
           )}
         </AnimatePresence>

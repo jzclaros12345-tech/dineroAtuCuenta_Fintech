@@ -1,3 +1,4 @@
+<!-- @fp-path: README.md -->
 # dineroAtucuenta
 
 Dashboard financiero personal — cuentas, tarjetas, transferencias,

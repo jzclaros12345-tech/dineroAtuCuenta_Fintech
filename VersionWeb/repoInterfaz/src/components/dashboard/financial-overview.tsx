@@ -1,3 +1,4 @@
+// @fp-path: src/components/dashboard/financial-overview.tsx
 "use client"
 
 import { useMemo, useState } from "react"

@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/cards/page.tsx
 import { CardsPageClient } from "@/components/cards/cards-page-client"
 
 export default function Page() {

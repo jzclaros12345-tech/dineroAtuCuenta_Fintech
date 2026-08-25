@@ -1,3 +1,4 @@
+// @fp-path: src/components/dashboard/health-score.tsx
 "use client"
 
 import { useEffect, useRef, useState } from "react"

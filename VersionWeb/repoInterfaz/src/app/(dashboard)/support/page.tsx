@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/support/page.tsx
 import { SupportPageClient } from "@/components/support/support-page-client"
 
 export default function Page() {

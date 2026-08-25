@@ -1,3 +1,4 @@
+// @fp-path: src/components/transfers/transfer-stats.tsx
 import { ArrowUpRightIcon, ArrowDownLeftIcon, ClockIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"

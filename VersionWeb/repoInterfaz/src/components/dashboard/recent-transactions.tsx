@@ -1,4 +1,6 @@
+// @fp-path: src/components/dashboard/recent-transactions.tsx
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 import {
   Card,
   CardContent,
@@ -24,14 +26,15 @@ const categoryColors: Record<string, string> = {
 }
 
 export function RecentTransactions() {
+  const t = useTranslations("dashboard.recentTransactions")
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
         <CardTitle className="text-base font-semibold">
-          Recent Transactions
+          {t("title")}
         </CardTitle>
         <Button variant="outline" size="sm" className="h-8 gap-1 text-xs">
-          See All
+          {t("seeAll")}
           <ChevronRightIcon className="size-3" />
         </Button>
       </CardHeader>
@@ -40,10 +43,10 @@ export function RecentTransactions() {
           <div className="min-w-[600px] space-y-1">
             {/* Header */}
             <div className="grid grid-cols-[1fr_140px_100px_120px_32px] gap-4 border-b pb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              <span>Merchant</span>
-              <span className="hidden sm:inline">Transaction ID</span>
-              <span className="text-right">Amount</span>
-              <span className="hidden md:inline">Date</span>
+              <span>{t("merchant")}</span>
+              <span className="hidden sm:inline">{t("transactionId")}</span>
+              <span className="text-right">{t("amount")}</span>
+              <span className="hidden md:inline">{t("date")}</span>
               <span />
             </div>
 

@@ -1,3 +1,4 @@
+// @fp-path: src/components/analytics/month-comparison.tsx
 "use client"
 
 import { useMemo } from "react"

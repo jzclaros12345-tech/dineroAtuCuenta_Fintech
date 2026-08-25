@@ -1,10 +1,13 @@
+// @fp-path: src/components/app-sidebar.tsx
 "use client"
 
 import * as React from "react"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
+import { LanguageToggle } from "@/components/language-toggle"
 import {
   Sidebar,
   SidebarContent,
@@ -32,39 +35,44 @@ import {
   UserPlusIcon,
 } from "lucide-react"
 
-const data = {
-  user: {
-    name: "Albert almanz Legacy.",
-    email: "albert12345@fintech.com",
-    avatar: "/avatars/user.jpg",
-  },
-  navDaily: [
-    { title: "Overview", url: "/dashboard", icon: <LayoutDashboardIcon /> },
-    { title: "Accounts", url: "/accounts", icon: <WalletIcon /> },
-    { title: "Transactions", url: "/transactions", icon: <ArrowLeftRightIcon /> },
-    { title: "Cards", url: "/cards", icon: <CreditCardIcon /> },
-  ],
-  navMoney: [
-    { title: "Transfers", url: "/transfers", icon: <SendIcon /> },
-    { title: "Investments", url: "/investments", icon: <TrendingUpIcon /> },
-    { title: "Crypto", url: "/crypto", icon: <BitcoinIcon /> },
-  ],
-  navInsights: [
-    { title: "Analytics", url: "/analytics", icon: <ChartAreaIcon /> },
-    { title: "Budgets", url: "/budgets", icon: <TargetIcon /> },
-  ],
-  navAuth: [
-    { title: "Sign In", url: "/sign-in", icon: <LogInIcon /> },
-    { title: "Sign Up", url: "/sign-up", icon: <UserPlusIcon /> },
-  ],
-  navSecondary: [
-    { title: "Notifications", url: "/notifications", icon: <BellIcon /> },
-    { title: "Settings", url: "/settings", icon: <SettingsIcon /> },
-    { title: "Help & Support", url: "/support", icon: <LifeBuoyIcon /> },
-  ],
+const user = {
+  name: "Albert almanz Legacy.",
+  email: "albert12345@fintech.com",
+  avatar: "/avatars/user.jpg",
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const t = useTranslations()
+
+  const navDaily = [
+    { title: t("sidebar.overview"), url: "/dashboard", icon: <LayoutDashboardIcon /> },
+    { title: t("sidebar.accounts"), url: "/accounts", icon: <WalletIcon /> },
+    { title: t("sidebar.transactions"), url: "/transactions", icon: <ArrowLeftRightIcon /> },
+    { title: t("sidebar.cards"), url: "/cards", icon: <CreditCardIcon /> },
+  ]
+
+  const navMoney = [
+    { title: t("sidebar.transfers"), url: "/transfers", icon: <SendIcon /> },
+    { title: t("sidebar.investments"), url: "/investments", icon: <TrendingUpIcon /> },
+    { title: t("sidebar.crypto"), url: "/crypto", icon: <BitcoinIcon /> },
+  ]
+
+  const navInsights = [
+    { title: t("sidebar.analytics"), url: "/analytics", icon: <ChartAreaIcon /> },
+    { title: t("sidebar.budgets"), url: "/budgets", icon: <TargetIcon /> },
+  ]
+
+  const navAuth = [
+    { title: t("sidebar.signIn"), url: "/sign-in", icon: <LogInIcon /> },
+    { title: t("sidebar.signUp"), url: "/sign-up", icon: <UserPlusIcon /> },
+  ]
+
+  const navSecondary = [
+    { title: t("sidebar.notifications"), url: "/notifications", icon: <BellIcon /> },
+    { title: t("sidebar.settings"), url: "/settings", icon: <SettingsIcon /> },
+    { title: t("sidebar.helpSupport"), url: "/support", icon: <LifeBuoyIcon /> },
+  ]
+
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader>
@@ -85,14 +93,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navDaily} label="Daily" />
-        <NavMain items={data.navMoney} label="Money" />
-        <NavMain items={data.navInsights} label="Insights" />
-        <NavMain items={data.navAuth} label="Auth" />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavMain items={navDaily} label={t("nav.daily")} />
+        <NavMain items={navMoney} label={t("nav.money")} />
+        <NavMain items={navInsights} label={t("nav.insights")} />
+        <NavMain items={navAuth} label={t("nav.auth")} />
+        <NavSecondary items={navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <div className="flex items-center justify-between px-2 pb-1">
+          <LanguageToggle />
+        </div>
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
   )

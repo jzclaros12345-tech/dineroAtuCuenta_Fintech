@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/collapsible.tsx
 "use client"
 
 import { Collapsible as CollapsiblePrimitive } from "@base-ui/react/collapsible"

@@ -1,3 +1,4 @@
+// @fp-path: src/components/investments/holdings-table.tsx
 "use client"
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"

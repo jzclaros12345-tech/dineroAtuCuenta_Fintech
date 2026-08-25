@@ -1,3 +1,4 @@
+// @fp-path: src/components/crypto/top-coins.tsx
 "use client"
 
 import * as React from "react"

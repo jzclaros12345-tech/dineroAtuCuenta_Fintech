@@ -1,3 +1,4 @@
+// @fp-path: src/components/investments/watchlist.tsx
 "use client"
 
 import { useState } from "react"

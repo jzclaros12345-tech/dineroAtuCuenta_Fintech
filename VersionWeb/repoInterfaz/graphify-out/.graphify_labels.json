@@ -39,5 +39,6 @@
   "37": "postcss.config.mjs",
   "38": "(auth)/layout.tsx",
   "39": "app/page.tsx",
-  "40": "CLAUDE.md"
+  "40": "CLAUDE.md",
+  "41": "check_i18n.sh"
 }

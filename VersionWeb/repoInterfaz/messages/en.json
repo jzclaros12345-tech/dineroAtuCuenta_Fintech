@@ -1,0 +1,515 @@
+{
+  "common": {
+    "close": "Close",
+    "more": "More"
+  },
+  "nav": {
+    "daily": "Daily",
+    "money": "Money",
+    "insights": "Insights",
+    "auth": "Auth"
+  },
+  "sidebar": {
+    "overview": "Overview",
+    "accounts": "Accounts",
+    "transactions": "Transactions",
+    "cards": "Cards",
+    "transfers": "Transfers",
+    "investments": "Investments",
+    "crypto": "Crypto",
+    "analytics": "Analytics",
+    "budgets": "Budgets",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "helpSupport": "Help & Support",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "breadcrumb": {
+    "dashboard": "Dashboard",
+    "accounts": "Accounts",
+    "transactions": "Transactions",
+    "transfers": "Transfers",
+    "cards": "Cards",
+    "crypto": "Crypto",
+    "analytics": "Analytics",
+    "investments": "Investments",
+    "budgets": "Budgets",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "support": "Support"
+  },
+  "commandPalette": {
+    "placeholder": "Type a command or search...",
+    "noResults": "No results found.",
+    "groupPages": "Pages",
+    "groupRecentTransactions": "Recent Transactions",
+    "groupQuickTransfer": "Quick Transfer",
+    "groupCrypto": "Crypto",
+    "groupTheme": "Theme",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode",
+    "systemTheme": "System Theme",
+    "sendTo": "Send to {name}",
+    "dashboard": "Dashboard",
+    "accounts": "Accounts",
+    "transactions": "Transactions",
+    "transfers": "Transfers",
+    "cards": "Cards",
+    "crypto": "Crypto",
+    "analytics": "Analytics",
+    "investments": "Investments",
+    "budgets": "Budgets",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "helpSupport": "Help & Support",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "navUser": {
+    "upgradePro": "Upgrade to Pro",
+    "account": "Account",
+    "billing": "Billing",
+    "logOut": "Log out"
+  },
+  "notificationDropdown": {
+    "notifications": "Notifications",
+    "unread": "{count} unread",
+    "processing": "Processing...",
+    "accepted": "Accepted",
+    "declined": "Declined",
+    "viewAll": "View all notifications"
+  },
+  "emptyState": {
+    "accounts": {
+      "title": "No accounts linked",
+      "description": "Connect your bank accounts to see balances, track spending, and manage everything in one place."
+    },
+    "transactions": {
+      "title": "No transactions yet",
+      "description": "Your transactions will appear here once you link an account or make your first transfer."
+    },
+    "cards": {
+      "title": "No cards added",
+      "description": "Add a physical or virtual card to manage spending limits, freeze cards, and track payments."
+    },
+    "transfers": {
+      "title": "No transfers yet",
+      "description": "Send money to friends, family, or businesses. Your transfer history will show up here."
+    },
+    "investments": {
+      "title": "No investments",
+      "description": "Start building your portfolio by connecting a brokerage account or making your first investment."
+    },
+    "crypto": {
+      "title": "No crypto assets",
+      "description": "Buy, sell, or transfer cryptocurrency to get started. Real-time prices update every 3 seconds."
+    },
+    "analytics": {
+      "title": "Not enough data",
+      "description": "Analytics will become available once you have at least one month of transaction history."
+    },
+    "budgets": {
+      "title": "No budgets set",
+      "description": "Create your first budget to track spending by category and get alerts when you're close to limits."
+    },
+    "notifications": {
+      "title": "All caught up!",
+      "description": "You have no notifications right now. We'll let you know when something needs your attention."
+    },
+    "search": {
+      "title": "No results found",
+      "description": "Try adjusting your search terms or check for typos."
+    },
+    "filter": {
+      "title": "No matching results",
+      "description": "No items match your current filters. Try adjusting or clearing your filters."
+    },
+    "generic": {
+      "title": "Nothing here yet",
+      "description": "This section is empty. Content will appear here when data becomes available."
+    }
+  },
+  "languageToggle": {
+    "label": "Language"
+  },
+  "themeToggle": {
+    "toggle": "Toggle theme"
+  },
+  "notFound": {
+    "description": "This page doesn't exist.",
+    "backToDashboard": "Back to Dashboard"
+  },
+  "dashboard": {
+    "accountCards": {
+      "cardAdded": "Card added!",
+      "creatingCard": "Creating card...",
+      "addNewCard": "Add New Card",
+      "cardNamePlaceholder": "Card name (optional)",
+      "createCard": "Create Card",
+      "cards": "{count} cards",
+      "walletBalance": "Wallet Balance",
+      "changePercent": "+{pct}% this month",
+      "savingsAccount": "Savings Account",
+      "businessAccount": "Business Account",
+      "travelCard": "Travel Card"
+    },
+    "spendingLimit": {
+      "title": "Monthly Spending Limit",
+      "budget": "Budget",
+      "spend": "Spend",
+      "remaining": "Remaining"
+    },
+    "moneyMovement": {
+      "title": "Money Movement",
+      "7days": "7 days",
+      "30days": "30 days",
+      "90days": "90 days",
+      "moneyIn": "Money In",
+      "moneyOut": "Money Out",
+      "netFlow": "Net Flow"
+    },
+    "recentTransactions": {
+      "title": "Recent Transactions",
+      "seeAll": "See All",
+      "merchant": "Merchant",
+      "transactionId": "Transaction ID",
+      "amount": "Amount",
+      "date": "Date"
+    }
+  },
+  "accounts": {
+    "filterTabs": {
+      "all": "All",
+      "checking": "Checking",
+      "savings": "Savings",
+      "crypto": "Crypto",
+      "investment": "Investment"
+    },
+    "emptyState": {
+      "title": "No accounts in this category",
+      "description": "You don't have any accounts of this type yet. Try a different filter or link a new account."
+    },
+    "nicknames": {
+      "Primary Checking": "Primary Checking",
+      "High-Yield Savings": "High-Yield Savings",
+      "Ahorro Ganadero": "Ahorro Ganadero",
+      "Brokerage Account": "Brokerage Account",
+      "Travel Fund": "Travel Fund",
+      "Billetera Yape": "Billetera Yape"
+    }
+  },
+  "transactions": {
+    "merchant": "Merchant",
+    "transactionId": "Transaction ID",
+    "amount": "Amount",
+    "date": "Date",
+    "status": "Status",
+    "viewReceipt": "View Receipt",
+    "paidWithCard": "Paid with card ending ****{last4}"
+  },
+  "transactionFilters": {
+    "searchPlaceholder": "Search transactions...",
+    "allTypes": "All types",
+    "income": "Income",
+    "expense": "Expense",
+    "allStatuses": "All statuses",
+    "completed": "Completed",
+    "pending": "Pending",
+    "failed": "Failed",
+    "exportCsv": "Export CSV",
+    "clearFilters": "Clear filters"
+  },
+  "transfers": {
+    "tabs": {
+      "all": "All",
+      "sent": "Sent",
+      "received": "Received",
+      "scheduled": "Scheduled"
+    },
+    "quickSend": {
+      "title": "Quick Send",
+      "sent": "{amount} sent!",
+      "to": "To {name}",
+      "labelTo": "To",
+      "sendingTo": "Sending to",
+      "labelAmount": "Amount",
+      "labelNote": "Note",
+      "noteOptional": "(optional)",
+      "notePlaceholder": "What's it for?",
+      "sending": "Sending...",
+      "send": "Send"
+    },
+    "list": {
+      "noNote": "No note"
+    }
+  },
+  "cards": {
+    "nicknames": {
+      "Main Debit": "Main Debit",
+      "Travel Credit": "Travel Credit",
+      "Virtual Shopping": "Virtual Shopping",
+      "Business Expense": "Business Expense"
+    },
+    "controls": {
+      "freeze": "Freeze Card",
+      "unfreeze": "Unfreeze Card",
+      "frozen": "Frozen",
+      "active": "Active",
+      "dailyLimit": "Daily Limit",
+      "monthlySpend": "Monthly Spend",
+      "monthlyLimit": "Monthly Limit"
+    },
+    "virtualGenerator": {
+      "generate": "Generate Virtual Card"
+    }
+  },
+  "crypto": {
+    "myPortfolio": {
+      "title": "My Portfolio",
+      "totalAssets": "Total Assets",
+      "profit30d": "Profit in last 30 days",
+      "buyMore": "Buy More",
+      "sell": "Sell",
+      "viewChart": "View Chart"
+    },
+    "coinInsight": {
+      "insight": "{coinName} Insight",
+      "moreInsight": "More Insight",
+      "bullish": "Bullish",
+      "bearish": "Bearish",
+      "open": "Open",
+      "high": "High",
+      "low": "Low",
+      "close": "Close"
+    },
+    "myBalance": {
+      "title": "My Balance",
+      "totalProfit": "Total Profit",
+      "avgGrowing": "Avg. Growing",
+      "bestToken": "Best Token",
+      "toppedUp": "Topped up {val}",
+      "withdrew": "Withdrew {val}",
+      "enterAmountTopUp": "Enter amount...",
+      "enterAmountWithdraw": "Enter amount...",
+      "confirm": "Confirm",
+      "processing": "Processing...",
+      "topUp": "Top Up",
+      "withdraw": "Withdraw"
+    },
+    "marketOverview": {
+      "title": "Market Overview",
+      "allCoins": "All",
+      "gainers": "Gainers",
+      "losers": "Losers"
+    },
+    "tradeForm": {
+      "buy": "Buy",
+      "sell": "Sell"
+    }
+  },
+  "analytics": {
+    "spendingHeatmap": {
+      "title": "Spending Heatmap",
+      "less": "Less",
+      "more": "More"
+    },
+    "marketOverview": {
+      "title": "Market Overview",
+      "topGainers": "Top Gainers",
+      "topLosers": "Top Losers"
+    }
+  },
+  "investments": {
+    "performanceChart": {
+      "title": "Performance",
+      "myPortfolio": "My Portfolio",
+      "sp500": "S&P 500"
+    },
+    "watchlist": {
+      "title": "Watchlist",
+      "empty": "Your watchlist is empty.",
+      "add": "Add to Watchlist",
+      "removeAria": "Remove {symbol}"
+    },
+    "portfolioAllocation": {
+      "title": "Portfolio Allocation",
+      "totalValue": "Total Value"
+    },
+    "holdingsTable": {
+      "symbol": "Symbol",
+      "quantity": "Quantity"
+    }
+  },
+  "budgets": {
+    "savingsGoals": {
+      "title": "Savings Goals",
+      "onTrack": "On track",
+      "behind": "Behind",
+      "perMonth": "/mo",
+      "target": "Target: {date}"
+    }
+  },
+  "settings": {
+    "tabs": {
+      "profile": "Profile",
+      "security": "Security",
+      "notifications": "Notifications",
+      "billing": "Billing",
+      "appearance": "Appearance"
+    },
+    "profile": {
+      "title": "Profile Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "saveChanges": "Save changes",
+      "saving": "Saving..."
+    },
+    "security": {
+      "title": "Security",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "changePassword": "Change password",
+      "twoFactor": "Two-factor authentication",
+      "twoFactorDesc": "Add an extra layer of security to your account"
+    },
+    "notifications": {
+      "title": "Notification Preferences",
+      "transactions": "Transactions",
+      "transactionsDesc": "Get alerts for payments and transfers",
+      "security": "Security",
+      "securityDesc": "Login alerts and account changes",
+      "budgetAlerts": "Budget Alerts",
+      "budgetAlertsDesc": "Notifications when you approach limits",
+      "marketing": "Marketing",
+      "marketingDesc": "Product news and special offers",
+      "weeklyReport": "Weekly Report",
+      "weeklyReportDesc": "Weekly financial activity summary",
+      "priceAlerts": "Price Alerts",
+      "priceAlertsDesc": "Crypto price movement alerts"
+    },
+    "billing": {
+      "title": "Plan & Billing",
+      "currentPlan": "Current plan",
+      "freePlan": "Free Plan",
+      "proPlan": "Pro Plan",
+      "upgradeToPro": "Upgrade to Pro",
+      "cancelPlan": "Cancel Plan",
+      "perMonth": "/month"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "support": {
+    "tabs": {
+      "faq": "FAQ",
+      "tickets": "Tickets",
+      "chat": "Chat",
+      "contact": "Contact"
+    },
+    "ticketStatus": {
+      "open": "Open",
+      "inProgress": "In Progress",
+      "resolved": "Resolved"
+    },
+    "newTicket": "New Ticket",
+    "chatPlaceholder": "Type your message...",
+    "send": "Send",
+    "contactChannels": {
+      "email": "Email",
+      "phone": "Phone",
+      "livechat": "Live Chat"
+    }
+  },
+  "notifications": {
+    "markAllRead": "Mark all as read",
+    "allTab": "All",
+    "unreadTab": "Unread"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your account",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "signInButton": "Sign In",
+      "signingIn": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up",
+      "encrypted": "256-bit SSL encrypted"
+    },
+    "signUp": {
+      "title": "Create your account",
+      "subtitle": "Start managing your finances today",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "terms": "I agree to the terms and conditions",
+      "privacyPolicy": "privacy policy",
+      "signUpButton": "Sign Up",
+      "signingUp": "Signing up...",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in"
+    }
+  },
+  "categories": {
+    "Entertainment": "Entertainment",
+    "Technology": "Technology",
+    "Income": "Income",
+    "Design": "Design",
+    "AI Tools": "AI Tools",
+    "Productivity": "Productivity",
+    "Transport": "Transport",
+    "Shopping": "Shopping",
+    "Subscriptions": "Subscriptions",
+    "Health & Fitness": "Health & Fitness",
+    "Travel": "Travel",
+    "Education": "Education",
+    "Food & Dining": "Food & Dining",
+    "Savings": "Savings"
+  },
+  "sectors": {
+    "Technology": "Technology",
+    "Consumer": "Consumer",
+    "Automotive": "Automotive",
+    "Financial": "Financial"
+  },
+  "status": {
+    "completed": "Completed",
+    "pending": "Pending",
+    "failed": "Failed",
+    "scheduled": "Scheduled"
+  },
+  "systemStatus": {
+    "operational": "Operational",
+    "degraded": "Degraded"
+  },
+  "recurringStatus": {
+    "wanted": "Wanted",
+    "review": "Review",
+    "unset": "Unset"
+  },
+  "cryptoTxType": {
+    "buy": "Buy",
+    "sell": "Sell",
+    "swap": "Swap",
+    "receive": "Receive",
+    "send": "Send"
+  },
+  "priority": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  }
+}

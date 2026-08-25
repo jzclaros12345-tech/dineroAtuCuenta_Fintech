@@ -1,3 +1,4 @@
+// @fp-path: src/components/analytics/spending-heatmap.tsx
 "use client"
 
 import { useMemo } from "react"

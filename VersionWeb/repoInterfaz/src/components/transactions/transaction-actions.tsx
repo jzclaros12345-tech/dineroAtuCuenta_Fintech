@@ -1,3 +1,4 @@
+// @fp-path: src/components/transactions/transaction-actions.tsx
 "use client"
 
 import { AnimatePresence, motion } from "motion/react"

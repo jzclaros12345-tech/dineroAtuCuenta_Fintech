@@ -1,3 +1,4 @@
+// @fp-path: src/components/crypto/market-overview.tsx
 "use client"
 
 import * as React from "react"

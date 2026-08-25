@@ -1,6 +1,8 @@
+// @fp-path: src/components/transfers/transfers-page-client.tsx
 "use client"
 
 import { useMemo, useState } from "react"
+import { useTranslations } from "next-intl"
 
 import { transferRecords, type TransferRecord } from "@/data/seed"
 import { cn } from "@/lib/utils"
@@ -10,16 +12,17 @@ import { QuickSend } from "@/components/transfers/quick-send"
 
 type TabKey = "all" | "sent" | "received" | "scheduled"
 
-const tabs: { key: TabKey; label: string }[] = [
-  { key: "all", label: "All" },
-  { key: "sent", label: "Sent" },
-  { key: "received", label: "Received" },
-  { key: "scheduled", label: "Scheduled" },
-]
-
 export function TransfersPageClient() {
+  const t = useTranslations("transfers.tabs")
   const [activeTab, setActiveTab] = useState<TabKey>("all")
   const [transfers, setTransfers] = useState<TransferRecord[]>(transferRecords)
+
+  const tabs: { key: TabKey; label: string }[] = [
+    { key: "all", label: t("all") },
+    { key: "sent", label: t("sent") },
+    { key: "received", label: t("received") },
+    { key: "scheduled", label: t("scheduled") },
+  ]
 
   const filtered = useMemo(() => {
     if (activeTab === "all") return transfers

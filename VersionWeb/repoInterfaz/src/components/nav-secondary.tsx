@@ -1,6 +1,8 @@
+// @fp-path: src/components/nav-secondary.tsx
 "use client"
 
 import * as React from "react"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import {
   SidebarGroup,
@@ -66,6 +68,7 @@ const typeColor: Record<string, string> = {
 }
 
 function NotificationDropdown({ icon, badge }: { icon: React.ReactNode; badge: number }) {
+  const t = useTranslations("notificationDropdown")
   const latest = notifications.slice(0, 6)
   const [actionStates, setActionStates] = React.useState<Record<string, "idle" | "loading" | "accepted" | "declined">>({})
 
@@ -84,7 +87,7 @@ function NotificationDropdown({ icon, badge }: { icon: React.ReactNode; badge: n
         }
       >
         {icon}
-        <span className="flex-1">Notifications</span>
+        <span className="flex-1">{t("notifications")}</span>
         {badge > 0 && (
           <span className="flex size-4.5 items-center justify-center rounded-full bg-primary text-[10px] font-semibold leading-none text-primary-foreground tabular-nums">
             {badge}
@@ -93,10 +96,10 @@ function NotificationDropdown({ icon, badge }: { icon: React.ReactNode; badge: n
       </PopoverTrigger>
       <PopoverContent side="right" align="end" sideOffset={8} className="w-80 p-0">
         <div className="flex items-center justify-between border-b px-4 py-3">
-          <p className="text-sm font-semibold">Notifications</p>
+          <p className="text-sm font-semibold">{t("notifications")}</p>
           {badge > 0 && (
             <span className="text-[10px] font-medium text-muted-foreground">
-              {badge} unread
+              {t("unread", { count: badge })}
             </span>
           )}
         </div>
@@ -167,19 +170,19 @@ function NotificationDropdown({ icon, badge }: { icon: React.ReactNode; badge: n
                       {state === "loading" && (
                         <div className="flex items-center gap-1.5 py-1 text-[11px] text-muted-foreground">
                           <LoaderIcon className="size-3 animate-spin" />
-                          Processing...
+                          {t("processing")}
                         </div>
                       )}
                       {state === "accepted" && (
                         <div className="flex items-center gap-1.5 py-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
                           <CheckCircleIcon className="size-3" />
-                          Accepted
+                          {t("accepted")}
                         </div>
                       )}
                       {state === "declined" && (
                         <div className="flex items-center gap-1.5 py-1 text-[11px] font-medium text-muted-foreground">
                           <XIcon className="size-3" />
-                          Declined
+                          {t("declined")}
                         </div>
                       )}
                     </div>
@@ -194,7 +197,7 @@ function NotificationDropdown({ icon, badge }: { icon: React.ReactNode; badge: n
             href="/notifications"
             className="flex items-center justify-center rounded-md py-1.5 text-xs font-medium text-primary hover:bg-muted transition-colors"
           >
-            View all notifications
+            {t("viewAll")}
           </Link>
         </div>
       </PopoverContent>

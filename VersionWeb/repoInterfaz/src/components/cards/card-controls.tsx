@@ -1,3 +1,4 @@
+// @fp-path: src/components/cards/card-controls.tsx
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"

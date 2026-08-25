@@ -1,7 +1,9 @@
+// @fp-path: src/components/dynamic-breadcrumb.tsx
 "use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,24 +13,27 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
-const labelMap: Record<string, string> = {
-  dashboard: "Dashboard",
-  accounts: "Accounts",
-  transactions: "Transactions",
-  transfers: "Transfers",
-  cards: "Cards",
-  crypto: "Crypto",
-  analytics: "Analytics",
-  investments: "Investments",
-  budgets: "Budgets",
-  settings: "Settings",
-  notifications: "Notifications",
-  "sign-in": "Sign In",
-  "sign-up": "Sign Up",
+// Map URL segments to translation keys in the "breadcrumb" namespace
+const segmentKeyMap: Record<string, string> = {
+  dashboard: "dashboard",
+  accounts: "accounts",
+  transactions: "transactions",
+  transfers: "transfers",
+  cards: "cards",
+  crypto: "crypto",
+  analytics: "analytics",
+  investments: "investments",
+  budgets: "budgets",
+  settings: "settings",
+  notifications: "notifications",
+  "sign-in": "signIn",
+  "sign-up": "signUp",
+  support: "support",
 }
 
 export function DynamicBreadcrumb() {
   const pathname = usePathname()
+  const t = useTranslations("breadcrumb")
   const segments = pathname.split("/").filter(Boolean)
 
   if (segments.length === 0) return null
@@ -38,7 +43,11 @@ export function DynamicBreadcrumb() {
       <BreadcrumbList>
         {segments.map((segment, index) => {
           const href = "/" + segments.slice(0, index + 1).join("/")
-          const label = labelMap[segment] || segment.charAt(0).toUpperCase() + segment.slice(1)
+          const key = segmentKeyMap[segment]
+          // Use translated label if we have a mapping, otherwise capitalize the raw segment
+          const label = key
+            ? t(key as Parameters<typeof t>[0])
+            : segment.charAt(0).toUpperCase() + segment.slice(1)
           const isLast = index === segments.length - 1
 
           return (

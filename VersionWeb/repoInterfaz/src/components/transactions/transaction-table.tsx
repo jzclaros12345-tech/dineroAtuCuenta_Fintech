@@ -1,5 +1,7 @@
+// @fp-path: src/components/transactions/transaction-table.tsx
 "use client"
 
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { AnimatePresence, motion } from "motion/react"
 import { EmptyState } from "@/components/empty-state"
@@ -39,18 +41,18 @@ const fmt = (n: number) =>
     minimumFractionDigits: 2,
   }).format(Math.abs(n))
 
-function statusBadge(status: FullTransaction["status"]) {
+function statusBadge(status: FullTransaction["status"], ts: (key: string) => string) {
   switch (status) {
     case "completed":
-      return <Badge variant="default">Completed</Badge>
+      return <Badge variant="default">{ts("completed")}</Badge>
     case "pending":
       return (
         <Badge variant="outline" className="text-amber-500 dark:text-amber-400">
-          Pending
+          {ts("pending")}
         </Badge>
       )
     case "failed":
-      return <Badge variant="destructive">Failed</Badge>
+      return <Badge variant="destructive">{ts("failed")}</Badge>
   }
 }
 
@@ -61,6 +63,8 @@ export function TransactionTable({
   expandedId,
   setExpandedId,
 }: TransactionTableProps) {
+  const t = useTranslations("transactions")
+  const ts = useTranslations("status")
   const allSelected =
     transactions.length > 0 && transactions.every((t) => selectedIds.has(t.id))
 
@@ -102,11 +106,11 @@ export function TransactionTable({
                 className="size-4 cursor-pointer rounded accent-primary"
               />
             </TableHead>
-            <TableHead>Merchant</TableHead>
-            <TableHead className="hidden sm:table-cell">Transaction ID</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
-            <TableHead className="hidden md:table-cell">Date</TableHead>
-            <TableHead className="hidden lg:table-cell">Status</TableHead>
+            <TableHead>{t("merchant")}</TableHead>
+            <TableHead className="hidden sm:table-cell">{t("transactionId")}</TableHead>
+            <TableHead className="text-right">{t("amount")}</TableHead>
+            <TableHead className="hidden md:table-cell">{t("date")}</TableHead>
+            <TableHead className="hidden lg:table-cell">{t("status")}</TableHead>
             <TableHead className="w-10" />
           </TableRow>
         </TableHeader>
@@ -132,6 +136,8 @@ export function TransactionTable({
                 onToggleExpand={() =>
                   setExpandedId(isExpanded ? null : tx.id)
                 }
+                t={t}
+                ts={ts}
               />
             )
           })}
@@ -148,12 +154,16 @@ function TransactionRow({
   isExpanded,
   onToggleSelect,
   onToggleExpand,
+  t,
+  ts,
 }: {
   tx: FullTransaction
   isSelected: boolean
   isExpanded: boolean
   onToggleSelect: () => void
   onToggleExpand: () => void
+  t: (key: string, params?: Record<string, string>) => string
+  ts: (key: string) => string
 }) {
   return (
     <>
@@ -217,7 +227,7 @@ function TransactionRow({
         </TableCell>
 
         <TableCell className="hidden lg:table-cell">
-          {statusBadge(tx.status)}
+          {statusBadge(tx.status, ts)}
         </TableCell>
 
         <TableCell>
@@ -258,7 +268,7 @@ function TransactionRow({
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <CreditCardIcon className="size-3.5 shrink-0" />
                       <span className="tabular-nums">
-                        Paid with card ending ****{tx.cardLast4}
+                        {t("paidWithCard", { last4: tx.cardLast4 })}
                       </span>
                     </div>
                   )}
@@ -272,7 +282,7 @@ function TransactionRow({
 
                   <Button variant="ghost" size="xs" className="ml-auto">
                     <FileTextIcon className="size-3.5" />
-                    View Receipt
+                    {t("viewReceipt")}
                   </Button>
                 </div>
               </motion.div>

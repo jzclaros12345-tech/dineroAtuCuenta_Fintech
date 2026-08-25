@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/separator.tsx
 "use client"
 
 import { Separator as SeparatorPrimitive } from "@base-ui/react/separator"

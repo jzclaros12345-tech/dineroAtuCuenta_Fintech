@@ -1,7 +1,9 @@
+// @fp-path: src/components/crypto/my-portfolio.tsx
 "use client"
 
 import * as React from "react"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 import { MoreHorizontalIcon, TrendingUpIcon, TrendingDownIcon } from "lucide-react"
 import { motion } from "motion/react"
 import {
@@ -39,6 +41,7 @@ interface MyPortfolioProps {
 }
 
 export function MyPortfolio({ prices, originalPrices, selectedCoin, onSelectCoin }: MyPortfolioProps) {
+  const t = useTranslations("crypto.myPortfolio")
   const top3 = cryptoCoins.slice(0, 3)
 
   const total = top3.reduce((s, c) => s + c.holdings * (prices[c.id] ?? c.price), 0)
@@ -64,9 +67,9 @@ export function MyPortfolio({ prices, originalPrices, selectedCoin, onSelectCoin
     <Card className="lg:col-span-4">
       <CardHeader>
         <div className="flex items-center gap-2">
-          <CardTitle>My Portfolio</CardTitle>
+          <CardTitle>{t("title")}</CardTitle>
           <Badge variant="secondary" className="text-xs tabular-nums">
-            {top3.length} Total Assets
+            {t("totalAssets", { count: top3.length })}
           </Badge>
         </div>
         <CardAction>
@@ -90,7 +93,7 @@ export function MyPortfolio({ prices, originalPrices, selectedCoin, onSelectCoin
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-xs text-muted-foreground">
-          Profit in last 30 days
+          {t("profitLast30Days")}
         </p>
 
         {/* allocation bar */}
@@ -165,9 +168,9 @@ export function MyPortfolio({ prices, originalPrices, selectedCoin, onSelectCoin
                     <MoreHorizontalIcon className="size-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent side="bottom" align="end">
-                    <DropdownMenuItem>Buy More</DropdownMenuItem>
-                    <DropdownMenuItem>Sell</DropdownMenuItem>
-                    <DropdownMenuItem onSelect={() => onSelectCoin(seg.coin.id)}>View Chart</DropdownMenuItem>
+                    <DropdownMenuItem>{t("buyMore")}</DropdownMenuItem>
+                    <DropdownMenuItem>{t("sell")}</DropdownMenuItem>
+                    <DropdownMenuItem onSelect={() => onSelectCoin(seg.coin.id)}>{t("viewChart")}</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>

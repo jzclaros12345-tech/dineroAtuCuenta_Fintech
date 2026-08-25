@@ -1,3 +1,4 @@
+// @fp-path: src/components/accounts/account-grid.tsx
 "use client"
 
 import { useState } from "react"

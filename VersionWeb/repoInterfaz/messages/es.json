@@ -1,0 +1,515 @@
+{
+  "common": {
+    "close": "Cerrar",
+    "more": "Más"
+  },
+  "nav": {
+    "daily": "Diario",
+    "money": "Dinero",
+    "insights": "Análisis",
+    "auth": "Auth"
+  },
+  "sidebar": {
+    "overview": "Resumen",
+    "accounts": "Cuentas",
+    "transactions": "Transacciones",
+    "cards": "Tarjetas",
+    "transfers": "Transferencias",
+    "investments": "Inversiones",
+    "crypto": "Cripto",
+    "analytics": "Analíticas",
+    "budgets": "Presupuestos",
+    "notifications": "Notificaciones",
+    "settings": "Ajustes",
+    "helpSupport": "Ayuda y Soporte",
+    "signIn": "Iniciar Sesión",
+    "signUp": "Registrarse"
+  },
+  "breadcrumb": {
+    "dashboard": "Tablero",
+    "accounts": "Cuentas",
+    "transactions": "Transacciones",
+    "transfers": "Transferencias",
+    "cards": "Tarjetas",
+    "crypto": "Cripto",
+    "analytics": "Analíticas",
+    "investments": "Inversiones",
+    "budgets": "Presupuestos",
+    "settings": "Ajustes",
+    "notifications": "Notificaciones",
+    "signIn": "Iniciar Sesión",
+    "signUp": "Registrarse",
+    "support": "Soporte"
+  },
+  "commandPalette": {
+    "placeholder": "Escribe un comando o busca...",
+    "noResults": "Sin resultados.",
+    "groupPages": "Páginas",
+    "groupRecentTransactions": "Transacciones Recientes",
+    "groupQuickTransfer": "Transferencia Rápida",
+    "groupCrypto": "Cripto",
+    "groupTheme": "Tema",
+    "lightMode": "Modo Claro",
+    "darkMode": "Modo Oscuro",
+    "systemTheme": "Tema del Sistema",
+    "sendTo": "Enviar a {name}",
+    "dashboard": "Tablero",
+    "accounts": "Cuentas",
+    "transactions": "Transacciones",
+    "transfers": "Transferencias",
+    "cards": "Tarjetas",
+    "crypto": "Cripto",
+    "analytics": "Analíticas",
+    "investments": "Inversiones",
+    "budgets": "Presupuestos",
+    "settings": "Ajustes",
+    "notifications": "Notificaciones",
+    "helpSupport": "Ayuda y Soporte",
+    "signIn": "Iniciar Sesión",
+    "signUp": "Registrarse"
+  },
+  "navUser": {
+    "upgradePro": "Mejorar a Pro",
+    "account": "Cuenta",
+    "billing": "Facturación",
+    "logOut": "Cerrar sesión"
+  },
+  "notificationDropdown": {
+    "notifications": "Notificaciones",
+    "unread": "{count} sin leer",
+    "processing": "Procesando...",
+    "accepted": "Aceptado",
+    "declined": "Rechazado",
+    "viewAll": "Ver todas las notificaciones"
+  },
+  "emptyState": {
+    "accounts": {
+      "title": "Sin cuentas vinculadas",
+      "description": "Conecta tus cuentas bancarias para ver saldos, rastrear gastos y gestionar todo en un solo lugar."
+    },
+    "transactions": {
+      "title": "Sin transacciones aún",
+      "description": "Tus transacciones aparecerán aquí una vez que vincules una cuenta o realices tu primera transferencia."
+    },
+    "cards": {
+      "title": "Sin tarjetas agregadas",
+      "description": "Agrega una tarjeta física o virtual para gestionar límites de gasto, congelar tarjetas y rastrear pagos."
+    },
+    "transfers": {
+      "title": "Sin transferencias aún",
+      "description": "Envía dinero a amigos, familiares o empresas. Tu historial de transferencias aparecerá aquí."
+    },
+    "investments": {
+      "title": "Sin inversiones",
+      "description": "Empieza a construir tu portafolio conectando una cuenta de corretaje o realizando tu primera inversión."
+    },
+    "crypto": {
+      "title": "Sin activos cripto",
+      "description": "Compra, vende o transfiere criptomonedas para empezar. Los precios en tiempo real se actualizan cada 3 segundos."
+    },
+    "analytics": {
+      "title": "Datos insuficientes",
+      "description": "Las analíticas estarán disponibles una vez que tengas al menos un mes de historial de transacciones."
+    },
+    "budgets": {
+      "title": "Sin presupuestos establecidos",
+      "description": "Crea tu primer presupuesto para rastrear gastos por categoría y recibir alertas cuando estés cerca de los límites."
+    },
+    "notifications": {
+      "title": "¡Todo al día!",
+      "description": "No tienes notificaciones en este momento. Te avisaremos cuando algo necesite tu atención."
+    },
+    "search": {
+      "title": "Sin resultados",
+      "description": "Intenta ajustar tus términos de búsqueda o revisa si hay errores tipográficos."
+    },
+    "filter": {
+      "title": "Sin resultados coincidentes",
+      "description": "Ningún elemento coincide con tus filtros actuales. Intenta ajustarlos o borrarlos."
+    },
+    "generic": {
+      "title": "Nada por aquí aún",
+      "description": "Esta sección está vacía. El contenido aparecerá aquí cuando haya datos disponibles."
+    }
+  },
+  "languageToggle": {
+    "label": "Idioma"
+  },
+  "themeToggle": {
+    "toggle": "Cambiar tema"
+  },
+  "notFound": {
+    "description": "Esta página no existe.",
+    "backToDashboard": "Volver al Tablero"
+  },
+  "dashboard": {
+    "accountCards": {
+      "cardAdded": "¡Tarjeta agregada!",
+      "creatingCard": "Creando tarjeta...",
+      "addNewCard": "Agregar Nueva Tarjeta",
+      "cardNamePlaceholder": "Nombre de la tarjeta (opcional)",
+      "createCard": "Crear Tarjeta",
+      "cards": "{count} tarjetas",
+      "walletBalance": "Saldo de Billetera",
+      "changePercent": "+{pct}% este mes",
+      "savingsAccount": "Cuenta de Ahorro",
+      "businessAccount": "Cuenta Empresarial",
+      "travelCard": "Tarjeta de Viaje"
+    },
+    "spendingLimit": {
+      "title": "Límite de Gasto Mensual",
+      "budget": "Presupuesto",
+      "spend": "Gasto",
+      "remaining": "Restante"
+    },
+    "moneyMovement": {
+      "title": "Movimiento de Dinero",
+      "7days": "7 días",
+      "30days": "30 días",
+      "90days": "90 días",
+      "moneyIn": "Dinero Entrante",
+      "moneyOut": "Dinero Saliente",
+      "netFlow": "Flujo Neto"
+    },
+    "recentTransactions": {
+      "title": "Transacciones Recientes",
+      "seeAll": "Ver Todo",
+      "merchant": "Comercio",
+      "transactionId": "ID de Transacción",
+      "amount": "Monto",
+      "date": "Fecha"
+    }
+  },
+  "accounts": {
+    "filterTabs": {
+      "all": "Todas",
+      "checking": "Corriente",
+      "savings": "Ahorro",
+      "crypto": "Cripto",
+      "investment": "Inversión"
+    },
+    "emptyState": {
+      "title": "Sin cuentas en esta categoría",
+      "description": "No tienes cuentas de este tipo aún. Prueba un filtro diferente o vincula una nueva cuenta."
+    },
+    "nicknames": {
+      "Primary Checking": "Cuenta Corriente Principal",
+      "High-Yield Savings": "Ahorros de Alto Rendimiento",
+      "Ahorro Ganadero": "Ahorro Ganadero",
+      "Brokerage Account": "Cuenta de Corretaje",
+      "Travel Fund": "Fondo de Viaje",
+      "Billetera Yape": "Billetera Yape"
+    }
+  },
+  "transactions": {
+    "merchant": "Comercio",
+    "transactionId": "ID de Transacción",
+    "amount": "Monto",
+    "date": "Fecha",
+    "status": "Estado",
+    "viewReceipt": "Ver Recibo",
+    "paidWithCard": "Pagado con tarjeta terminada en ****{last4}"
+  },
+  "transactionFilters": {
+    "searchPlaceholder": "Buscar transacciones...",
+    "allTypes": "Todos los tipos",
+    "income": "Ingresos",
+    "expense": "Gastos",
+    "allStatuses": "Todos los estados",
+    "completed": "Completado",
+    "pending": "Pendiente",
+    "failed": "Fallido",
+    "exportCsv": "Exportar CSV",
+    "clearFilters": "Limpiar filtros"
+  },
+  "transfers": {
+    "tabs": {
+      "all": "Todas",
+      "sent": "Enviadas",
+      "received": "Recibidas",
+      "scheduled": "Programadas"
+    },
+    "quickSend": {
+      "title": "Envío Rápido",
+      "sent": "{amount} enviado!",
+      "to": "Para {name}",
+      "labelTo": "Para",
+      "sendingTo": "Enviando a",
+      "labelAmount": "Monto",
+      "labelNote": "Nota",
+      "noteOptional": "(opcional)",
+      "notePlaceholder": "¿Para qué es?",
+      "sending": "Enviando...",
+      "send": "Enviar"
+    },
+    "list": {
+      "noNote": "Sin nota"
+    }
+  },
+  "cards": {
+    "nicknames": {
+      "Main Debit": "Débito Principal",
+      "Travel Credit": "Crédito de Viaje",
+      "Virtual Shopping": "Compras Virtual",
+      "Business Expense": "Gastos Empresariales"
+    },
+    "controls": {
+      "freeze": "Congelar Tarjeta",
+      "unfreeze": "Descongelar Tarjeta",
+      "frozen": "Congelada",
+      "active": "Activa",
+      "dailyLimit": "Límite Diario",
+      "monthlySpend": "Gasto Mensual",
+      "monthlyLimit": "Límite Mensual"
+    },
+    "virtualGenerator": {
+      "generate": "Generar Tarjeta Virtual"
+    }
+  },
+  "crypto": {
+    "myPortfolio": {
+      "title": "Mi Portafolio",
+      "totalAssets": "Activos Totales",
+      "profit30d": "Ganancia en los últimos 30 días",
+      "buyMore": "Comprar Más",
+      "sell": "Vender",
+      "viewChart": "Ver Gráfico"
+    },
+    "coinInsight": {
+      "insight": "Insight de {coinName}",
+      "moreInsight": "Más Insight",
+      "bullish": "Alcista",
+      "bearish": "Bajista",
+      "open": "Apertura",
+      "high": "Máximo",
+      "low": "Mínimo",
+      "close": "Cierre"
+    },
+    "myBalance": {
+      "title": "Mi Saldo",
+      "totalProfit": "Ganancia Total",
+      "avgGrowing": "Crecimiento Promedio",
+      "bestToken": "Mejor Token",
+      "toppedUp": "Recargado {val}",
+      "withdrew": "Retirado {val}",
+      "enterAmountTopUp": "Ingresar monto...",
+      "enterAmountWithdraw": "Ingresar monto...",
+      "confirm": "Confirmar",
+      "processing": "Procesando...",
+      "topUp": "Recargar",
+      "withdraw": "Retirar"
+    },
+    "marketOverview": {
+      "title": "Vista del Mercado",
+      "allCoins": "Todas",
+      "gainers": "Ganadoras",
+      "losers": "Perdedoras"
+    },
+    "tradeForm": {
+      "buy": "Comprar",
+      "sell": "Vender"
+    }
+  },
+  "analytics": {
+    "spendingHeatmap": {
+      "title": "Mapa de Calor de Gastos",
+      "less": "Menos",
+      "more": "Más"
+    },
+    "marketOverview": {
+      "title": "Vista del Mercado",
+      "topGainers": "Mayores Ganancias",
+      "topLosers": "Mayores Pérdidas"
+    }
+  },
+  "investments": {
+    "performanceChart": {
+      "title": "Rendimiento",
+      "myPortfolio": "Mi Portafolio",
+      "sp500": "S&P 500"
+    },
+    "watchlist": {
+      "title": "Lista de Seguimiento",
+      "empty": "Tu lista de seguimiento está vacía.",
+      "add": "Agregar a Lista",
+      "removeAria": "Quitar {symbol}"
+    },
+    "portfolioAllocation": {
+      "title": "Asignación del Portafolio",
+      "totalValue": "Valor Total"
+    },
+    "holdingsTable": {
+      "symbol": "Símbolo",
+      "quantity": "Cantidad"
+    }
+  },
+  "budgets": {
+    "savingsGoals": {
+      "title": "Metas de Ahorro",
+      "onTrack": "En camino",
+      "behind": "Atrasado",
+      "perMonth": "/mes",
+      "target": "Meta: {date}"
+    }
+  },
+  "settings": {
+    "tabs": {
+      "profile": "Perfil",
+      "security": "Seguridad",
+      "notifications": "Notificaciones",
+      "billing": "Facturación",
+      "appearance": "Apariencia"
+    },
+    "profile": {
+      "title": "Información del Perfil",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "saveChanges": "Guardar cambios",
+      "saving": "Guardando..."
+    },
+    "security": {
+      "title": "Seguridad",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "changePassword": "Cambiar contraseña",
+      "twoFactor": "Autenticación de dos factores",
+      "twoFactorDesc": "Agrega una capa adicional de seguridad a tu cuenta"
+    },
+    "notifications": {
+      "title": "Preferencias de Notificaciones",
+      "transactions": "Transacciones",
+      "transactionsDesc": "Recibe alertas por pagos y transferencias",
+      "security": "Seguridad",
+      "securityDesc": "Alertas de inicio de sesión y cambios de cuenta",
+      "budgetAlerts": "Alertas de Presupuesto",
+      "budgetAlertsDesc": "Notificaciones cuando te acercas al límite",
+      "marketing": "Marketing",
+      "marketingDesc": "Noticias sobre productos y ofertas especiales",
+      "weeklyReport": "Informe Semanal",
+      "weeklyReportDesc": "Resumen semanal de actividad financiera",
+      "priceAlerts": "Alertas de Precio",
+      "priceAlertsDesc": "Alertas de movimientos de precio de cripto"
+    },
+    "billing": {
+      "title": "Plan y Facturación",
+      "currentPlan": "Plan actual",
+      "freePlan": "Plan Gratuito",
+      "proPlan": "Plan Pro",
+      "upgradeToPro": "Mejorar a Pro",
+      "cancelPlan": "Cancelar Plan",
+      "perMonth": "/mes"
+    },
+    "appearance": {
+      "title": "Apariencia",
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema"
+    }
+  },
+  "support": {
+    "tabs": {
+      "faq": "Preguntas Frecuentes",
+      "tickets": "Tickets",
+      "chat": "Chat",
+      "contact": "Contacto"
+    },
+    "ticketStatus": {
+      "open": "Abierto",
+      "inProgress": "En Progreso",
+      "resolved": "Resuelto"
+    },
+    "newTicket": "Nuevo Ticket",
+    "chatPlaceholder": "Escribe tu mensaje...",
+    "send": "Enviar",
+    "contactChannels": {
+      "email": "Correo",
+      "phone": "Teléfono",
+      "livechat": "Chat en Vivo"
+    }
+  },
+  "notifications": {
+    "markAllRead": "Marcar todo como leído",
+    "allTab": "Todas",
+    "unreadTab": "Sin leer"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Bienvenido de vuelta",
+      "subtitle": "Inicia sesión en tu cuenta",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "signInButton": "Iniciar Sesión",
+      "signingIn": "Iniciando sesión...",
+      "noAccount": "¿No tienes cuenta?",
+      "signUpLink": "Regístrate",
+      "encrypted": "256-bit SSL cifrado"
+    },
+    "signUp": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Empieza a gestionar tus finanzas hoy",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "terms": "Acepto los términos y condiciones",
+      "privacyPolicy": "política de privacidad",
+      "signUpButton": "Registrarse",
+      "signingUp": "Registrando...",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "signInLink": "Inicia sesión"
+    }
+  },
+  "categories": {
+    "Entertainment": "Entretenimiento",
+    "Technology": "Tecnología",
+    "Income": "Ingresos",
+    "Design": "Diseño",
+    "AI Tools": "Herramientas IA",
+    "Productivity": "Productividad",
+    "Transport": "Transporte",
+    "Shopping": "Compras",
+    "Subscriptions": "Suscripciones",
+    "Health & Fitness": "Salud y Bienestar",
+    "Travel": "Viajes",
+    "Education": "Educación",
+    "Food & Dining": "Comida y Restaurantes",
+    "Savings": "Ahorros"
+  },
+  "sectors": {
+    "Technology": "Tecnología",
+    "Consumer": "Consumo",
+    "Automotive": "Automotriz",
+    "Financial": "Financiero"
+  },
+  "status": {
+    "completed": "Completado",
+    "pending": "Pendiente",
+    "failed": "Fallido",
+    "scheduled": "Programado"
+  },
+  "systemStatus": {
+    "operational": "Operativo",
+    "degraded": "Degradado"
+  },
+  "recurringStatus": {
+    "wanted": "Deseado",
+    "review": "Revisar",
+    "unset": "Sin definir"
+  },
+  "cryptoTxType": {
+    "buy": "Comprar",
+    "sell": "Vender",
+    "swap": "Canjear",
+    "receive": "Recibir",
+    "send": "Enviar"
+  },
+  "priority": {
+    "high": "Alta",
+    "medium": "Media",
+    "low": "Baja"
+  }
+}

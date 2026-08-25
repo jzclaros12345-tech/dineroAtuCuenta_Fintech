@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/budgets/page.tsx
 import { BudgetRings } from "@/components/budgets/budget-rings"
 import { SavingsGoals } from "@/components/budgets/savings-goals"
 import { SpendingCalendar } from "@/components/budgets/spending-calendar"

@@ -1,3 +1,4 @@
+// @fp-path: src/components/settings/settings-page-client.tsx
 "use client"
 
 import * as React from "react"

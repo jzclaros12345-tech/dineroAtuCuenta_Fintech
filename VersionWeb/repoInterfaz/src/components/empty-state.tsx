@@ -1,5 +1,7 @@
+// @fp-path: src/components/empty-state.tsx
 "use client"
 
+import { useTranslations } from "next-intl"
 import { motion } from "motion/react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -329,73 +331,21 @@ function GenericIllustration() {
   )
 }
 
-// ── Variant config ───────────────────────────────────────────────────────────
+// ── Illustration map ──────────────────────────────────────────────────────────
 
-const variants: Record<EmptyStateVariant, {
-  illustration: React.ReactNode
-  title: string
-  description: string
-}> = {
-  accounts: {
-    illustration: <WalletIllustration />,
-    title: "No accounts linked",
-    description: "Connect your bank accounts to see balances, track spending, and manage everything in one place.",
-  },
-  transactions: {
-    illustration: <TransactionIllustration />,
-    title: "No transactions yet",
-    description: "Your transactions will appear here once you link an account or make your first transfer.",
-  },
-  cards: {
-    illustration: <CardIllustration />,
-    title: "No cards added",
-    description: "Add a physical or virtual card to manage spending limits, freeze cards, and track payments.",
-  },
-  transfers: {
-    illustration: <TransactionIllustration />,
-    title: "No transfers yet",
-    description: "Send money to friends, family, or businesses. Your transfer history will show up here.",
-  },
-  investments: {
-    illustration: <ChartIllustration />,
-    title: "No investments",
-    description: "Start building your portfolio by connecting a brokerage account or making your first investment.",
-  },
-  crypto: {
-    illustration: <ChartIllustration />,
-    title: "No crypto assets",
-    description: "Buy, sell, or transfer cryptocurrency to get started. Real-time prices update every 3 seconds.",
-  },
-  analytics: {
-    illustration: <ChartIllustration />,
-    title: "Not enough data",
-    description: "Analytics will become available once you have at least one month of transaction history.",
-  },
-  budgets: {
-    illustration: <ChartIllustration />,
-    title: "No budgets set",
-    description: "Create your first budget to track spending by category and get alerts when you're close to limits.",
-  },
-  notifications: {
-    illustration: <BellIllustration />,
-    title: "All caught up!",
-    description: "You have no notifications right now. We'll let you know when something needs your attention.",
-  },
-  search: {
-    illustration: <SearchIllustration />,
-    title: "No results found",
-    description: "Try adjusting your search terms or check for typos.",
-  },
-  filter: {
-    illustration: <SearchIllustration />,
-    title: "No matching results",
-    description: "No items match your current filters. Try adjusting or clearing your filters.",
-  },
-  generic: {
-    illustration: <GenericIllustration />,
-    title: "Nothing here yet",
-    description: "This section is empty. Content will appear here when data becomes available.",
-  },
+const illustrationMap: Record<EmptyStateVariant, React.ReactNode> = {
+  accounts: <WalletIllustration />,
+  transactions: <TransactionIllustration />,
+  cards: <CardIllustration />,
+  transfers: <TransactionIllustration />,
+  investments: <ChartIllustration />,
+  crypto: <ChartIllustration />,
+  analytics: <ChartIllustration />,
+  budgets: <ChartIllustration />,
+  notifications: <BellIllustration />,
+  search: <SearchIllustration />,
+  filter: <SearchIllustration />,
+  generic: <GenericIllustration />,
 }
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -408,7 +358,11 @@ export function EmptyState({
   onAction,
   className,
 }: EmptyStateProps) {
-  const config = variants[variant]
+  const t = useTranslations("emptyState")
+  const illustration = illustrationMap[variant]
+
+  const defaultTitle = t(`${variant}.title` as Parameters<typeof t>[0])
+  const defaultDescription = t(`${variant}.description` as Parameters<typeof t>[0])
 
   return (
     <motion.div
@@ -426,7 +380,7 @@ export function EmptyState({
         animate={{ scale: 1 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        {config.illustration}
+        {illustration}
       </motion.div>
 
       {/* Text */}
@@ -437,7 +391,7 @@ export function EmptyState({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          {title ?? config.title}
+          {title ?? defaultTitle}
         </motion.h3>
         <motion.p
           className="text-xs leading-relaxed text-muted-foreground"
@@ -445,7 +399,7 @@ export function EmptyState({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          {description ?? config.description}
+          {description ?? defaultDescription}
         </motion.p>
       </div>
 

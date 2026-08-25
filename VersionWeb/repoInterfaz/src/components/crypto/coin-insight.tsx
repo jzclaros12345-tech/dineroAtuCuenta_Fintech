@@ -1,3 +1,4 @@
+// @fp-path: src/components/crypto/coin-insight.tsx
 "use client"
 
 import * as React from "react"

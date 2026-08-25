@@ -1,6 +1,8 @@
+// @fp-path: src/components/dashboard/quick-transfer.tsx
 "use client"
 
 import { useState, useRef } from "react"
+import { useTranslations } from "next-intl"
 import {
   Card,
   CardContent,
@@ -22,6 +24,7 @@ import { motion, AnimatePresence } from "motion/react"
 type SendState = "idle" | "sending" | "success"
 
 export function QuickTransfer() {
+  const t = useTranslations("dashboard.quickTransfer")
   const [selectedContact, setSelectedContact] = useState(contacts[0].id)
   const [amount, setAmount] = useState("250.00")
   const [sendState, setSendState] = useState<SendState>("idle")
@@ -45,10 +48,10 @@ export function QuickTransfer() {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
         <CardTitle className="text-base font-semibold">
-          Quick Transfer
+          {t("title")}
         </CardTitle>
         <Button variant="ghost" size="sm" className="h-auto gap-1 px-0 text-xs text-muted-foreground">
-          See All Contacts
+          {t("seeAllContacts")}
           <ChevronRightIcon className="size-3" />
         </Button>
       </CardHeader>
@@ -110,7 +113,7 @@ export function QuickTransfer() {
             transition={{ duration: 0.15 }}
             className="text-xs text-muted-foreground"
           >
-            Sending to{" "}
+            {t("sendingTo")}{" "}
             <span className="font-medium text-foreground">
               {selected?.name}
             </span>
@@ -135,10 +138,10 @@ export function QuickTransfer() {
                 <CheckCircle2Icon className="size-10 text-emerald-500" />
               </motion.div>
               <p className="text-sm font-semibold">
-                ${parseFloat(amount).toLocaleString("en-US", { minimumFractionDigits: 2 })} sent!
+                ${parseFloat(amount).toLocaleString("en-US", { minimumFractionDigits: 2 })} {t("sent")}
               </p>
               <p className="text-xs text-muted-foreground">
-                To {selected?.name}
+                {t("to")} {selected?.name}
               </p>
             </motion.div>
           ) : (
@@ -150,7 +153,7 @@ export function QuickTransfer() {
               className="flex items-end gap-3"
             >
               <div className="flex-1 space-y-1.5">
-                <label className="text-xs text-muted-foreground">Amount</label>
+                <label className="text-xs text-muted-foreground">{t("labelAmount")}</label>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground">
                     $
@@ -174,7 +177,7 @@ export function QuickTransfer() {
                 ) : (
                   <SendIcon className="size-4" />
                 )}
-                {sendState === "sending" ? "Sending..." : "Send"}
+                {sendState === "sending" ? t("sending") : t("send")}
               </Button>
             </motion.div>
           )}

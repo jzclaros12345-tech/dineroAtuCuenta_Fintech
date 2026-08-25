@@ -1,3 +1,4 @@
+// @fp-path: src/components/crypto/crypto-page-client.tsx
 "use client"
 
 import * as React from "react"

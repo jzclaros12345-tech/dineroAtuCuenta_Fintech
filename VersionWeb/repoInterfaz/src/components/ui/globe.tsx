@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/globe.tsx
 /* eslint-disable */
 // @ts-nocheck
 // Vendored from Aceternity UI — do not lint

@@ -1,3 +1,4 @@
+// @fp-path: src/components/analytics/recurring-detector.tsx
 "use client"
 
 import { useMemo, useState } from "react"

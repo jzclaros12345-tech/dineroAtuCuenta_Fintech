@@ -1,6 +1,8 @@
+// @fp-path: src/components/theme-toggle.tsx
 "use client"
 
 import { useTheme } from "next-themes"
+import { useTranslations } from "next-intl"
 import { useSyncExternalStore } from "react"
 import { Button } from "@/components/ui/button"
 
@@ -35,11 +37,12 @@ function ContrastIcon({ className }: { className?: string }) {
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
   const mounted = useIsMounted()
+  const t = useTranslations("themeToggle")
 
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon" className="size-8 rounded-full">
-        <span className="sr-only">Toggle theme</span>
+        <span className="sr-only">{t("toggle")}</span>
       </Button>
     )
   }
@@ -52,7 +55,7 @@ export function ThemeToggle() {
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       <ContrastIcon className="size-[18px]" />
-      <span className="sr-only">Toggle theme</span>
+      <span className="sr-only">{t("toggle")}</span>
     </Button>
   )
 }

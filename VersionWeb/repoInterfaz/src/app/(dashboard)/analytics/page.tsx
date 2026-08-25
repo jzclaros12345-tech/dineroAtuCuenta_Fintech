@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/analytics/page.tsx
 import { SpendingHeatmap } from "@/components/analytics/spending-heatmap"
 import { CategoryDonut } from "@/components/analytics/category-donut"
 import { MonthComparison } from "@/components/analytics/month-comparison"

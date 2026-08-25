@@ -1,0 +1,83 @@
+// AGREGAR esto dentro de messages/es.json (no reemplaza el archivo, son 3 namespaces nuevos)
+{
+  "crypto": {
+    "myPortfolio": {
+      "title": "Mi Portafolio",
+      "totalAssets": "{count} Activos en Total",
+      "profitLast30Days": "Ganancia en los últimos 30 días",
+      "buyMore": "Comprar Más",
+      "sell": "Vender",
+      "viewChart": "Ver Gráfico"
+    }
+  },
+  "dashboard": {
+    "quickTransfer": {
+      "title": "Transferencia Rápida",
+      "seeAllContacts": "Ver Todos los Contactos",
+      "sendingTo": "Enviando a",
+      "labelAmount": "Monto",
+      "send": "Enviar",
+      "sending": "Enviando...",
+      "sent": "¡enviado!",
+      "to": "A"
+    }
+  },
+  "accounts": {
+    "addAccount": {
+      "linkNewAccount": "Vincular Nueva Cuenta",
+      "institutionPlaceholder": "Nombre de la institución",
+      "accountTypePlaceholder": "Tipo de cuenta",
+      "accountNumberPlaceholder": "Número de cuenta",
+      "typeChecking": "Corriente",
+      "typeSavings": "Ahorros",
+      "typeCrypto": "Cripto",
+      "typeInvestment": "Inversión",
+      "cancel": "Cancelar",
+      "connect": "Conectar",
+      "connecting": "Conectando...",
+      "connected": "¡Conectado!"
+    }
+  }
+}
+
+// AGREGAR esto dentro de messages/en.json (mismo shape, mismas keys)
+{
+  "crypto": {
+    "myPortfolio": {
+      "title": "My Portfolio",
+      "totalAssets": "{count} Total Assets",
+      "profitLast30Days": "Profit in last 30 days",
+      "buyMore": "Buy More",
+      "sell": "Sell",
+      "viewChart": "View Chart"
+    }
+  },
+  "dashboard": {
+    "quickTransfer": {
+      "title": "Quick Transfer",
+      "seeAllContacts": "See All Contacts",
+      "sendingTo": "Sending to",
+      "labelAmount": "Amount",
+      "send": "Send",
+      "sending": "Sending...",
+      "sent": "sent!",
+      "to": "To"
+    }
+  },
+  "accounts": {
+    "addAccount": {
+      "linkNewAccount": "Link New Account",
+      "institutionPlaceholder": "Institution name",
+      "accountTypePlaceholder": "Account type",
+      "accountNumberPlaceholder": "Account number",
+      "typeChecking": "Checking",
+      "typeSavings": "Savings",
+      "typeCrypto": "Crypto",
+      "typeInvestment": "Investment",
+      "cancel": "Cancel",
+      "connect": "Connect",
+      "connecting": "Connecting...",
+      "connected": "Connected!"
+    }
+  }
+}

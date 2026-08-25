@@ -1,3 +1,4 @@
+// @fp-path: src/components/transfers/transfer-list.tsx
 "use client"
 
 import Image from "next/image"

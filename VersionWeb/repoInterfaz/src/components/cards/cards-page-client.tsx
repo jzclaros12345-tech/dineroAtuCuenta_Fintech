@@ -1,3 +1,4 @@
+// @fp-path: src/components/cards/cards-page-client.tsx
 "use client"
 
 import { useState, useCallback } from "react"

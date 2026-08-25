@@ -1,3 +1,4 @@
+// @fp-path: src/components/investments/portfolio-allocation.tsx
 "use client"
 
 import { useMemo, useState, useCallback } from "react"

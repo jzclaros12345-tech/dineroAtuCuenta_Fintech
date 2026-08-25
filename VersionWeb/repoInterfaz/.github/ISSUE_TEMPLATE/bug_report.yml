@@ -1,3 +1,4 @@
+# @fp-path: .github/ISSUE_TEMPLATE/bug_report.yml
 name: Bug Report
 description: Report a bug or unexpected behavior
 title: "[Bug]: "

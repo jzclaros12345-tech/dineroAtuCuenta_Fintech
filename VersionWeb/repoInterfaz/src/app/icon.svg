@@ -1,3 +1,4 @@
+<!-- @fp-path: src/app/icon.svg -->
 <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
   <rect width="256" height="256" rx="48" fill="#141a24"/>
   <path d="M128 56 L128 140" stroke="#2dd4bf" stroke-width="20" stroke-linecap="round"/>

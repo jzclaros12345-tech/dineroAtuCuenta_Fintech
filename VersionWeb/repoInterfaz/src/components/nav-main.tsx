@@ -1,3 +1,4 @@
+// @fp-path: src/components/nav-main.tsx
 "use client"
 
 import Link from "next/link"

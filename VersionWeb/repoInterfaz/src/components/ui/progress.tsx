@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/progress.tsx
 "use client"
 
 import { Progress as ProgressPrimitive } from "@base-ui/react/progress"

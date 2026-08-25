@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/support/loading.tsx
 import { Skeleton } from "@/components/ui/skeleton"
 
 export default function Loading() {

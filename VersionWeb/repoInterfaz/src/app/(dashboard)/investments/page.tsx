@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/investments/page.tsx
 import { LiveTicker } from "@/components/investments/live-ticker"
 import { PortfolioAllocation } from "@/components/investments/portfolio-allocation"
 import { PerformanceChart } from "@/components/investments/performance-chart"

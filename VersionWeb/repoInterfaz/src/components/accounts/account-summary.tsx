@@ -1,3 +1,4 @@
+// @fp-path: src/components/accounts/account-summary.tsx
 import {
   WalletIcon,
   TrendingUpIcon,

@@ -1,3 +1,4 @@
+// @fp-path: src/components/cards/virtual-card-generator.tsx
 "use client"
 
 import { useState, useCallback } from "react"

@@ -1,3 +1,4 @@
+// @fp-path: src/components/budgets/month-projection.tsx
 "use client"
 
 import { useMemo } from "react"

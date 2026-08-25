@@ -1,7 +1,9 @@
+// @fp-path: src/app/(dashboard)/layout.tsx
 import { AppSidebar } from "@/components/app-sidebar"
 import { CommandPalette } from "@/components/command-palette"
 import { DynamicBreadcrumb } from "@/components/dynamic-breadcrumb"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageToggle } from "@/components/language-toggle"
 import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
@@ -31,6 +33,7 @@ export default function DashboardLayout({
             <kbd className="pointer-events-none hidden h-6 select-none items-center gap-1 rounded border bg-muted px-2 font-mono text-[10px] font-medium text-muted-foreground sm:flex">
               <span className="text-xs">⌘</span>K
             </kbd>
+            <LanguageToggle />
             <ThemeToggle />
           </div>
         </header>

@@ -1,3 +1,4 @@
+// @fp-path: src/components/cards/interactive-card.tsx
 "use client"
 
 import { useState } from "react"

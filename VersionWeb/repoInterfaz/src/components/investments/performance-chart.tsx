@@ -1,3 +1,4 @@
+// @fp-path: src/components/investments/performance-chart.tsx
 "use client"
 
 import { useMemo, useState } from "react"

@@ -1,7 +1,9 @@
+// @fp-path: src/components/command-palette.tsx
 "use client"
 
 import { useEffect, useState, useCallback } from "react"
 import { useRouter } from "next/navigation"
+import { useTranslations } from "next-intl"
 import {
   Command,
   CommandDialog,
@@ -39,6 +41,7 @@ export function CommandPalette() {
   const [open, setOpen] = useState(false)
   const router = useRouter()
   const { setTheme } = useTheme()
+  const t = useTranslations("commandPalette")
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -59,6 +62,23 @@ export function CommandPalette() {
     []
   )
 
+  const pages = [
+    { key: "dashboard", icon: LayoutDashboardIcon, href: "/dashboard" },
+    { key: "accounts", icon: WalletIcon, href: "/accounts" },
+    { key: "transactions", icon: ArrowLeftRightIcon, href: "/transactions" },
+    { key: "transfers", icon: SendIcon, href: "/transfers" },
+    { key: "cards", icon: CreditCardIcon, href: "/cards" },
+    { key: "crypto", icon: BitcoinIcon, href: "/crypto" },
+    { key: "analytics", icon: ChartAreaIcon, href: "/analytics" },
+    { key: "investments", icon: TrendingUpIcon, href: "/investments" },
+    { key: "budgets", icon: TargetIcon, href: "/budgets" },
+    { key: "settings", icon: SettingsIcon, href: "/settings" },
+    { key: "notifications", icon: BellIcon, href: "/notifications" },
+    { key: "helpSupport", icon: LifeBuoyIcon, href: "/support" },
+    { key: "signIn", icon: LogInIcon, href: "/sign-in" },
+    { key: "signUp", icon: UserPlusIcon, href: "/sign-up" },
+  ] as const
+
   return (
     <CommandDialog
       open={open}
@@ -67,37 +87,22 @@ export function CommandPalette() {
       description="Search pages, transactions, contacts, and more"
     >
       <Command>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput placeholder={t("placeholder")} />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>{t("noResults")}</CommandEmpty>
 
-          <CommandGroup heading="Pages">
-            {[
-              { label: "Dashboard", icon: LayoutDashboardIcon, href: "/dashboard" },
-              { label: "Accounts", icon: WalletIcon, href: "/accounts" },
-              { label: "Transactions", icon: ArrowLeftRightIcon, href: "/transactions" },
-              { label: "Transfers", icon: SendIcon, href: "/transfers" },
-              { label: "Cards", icon: CreditCardIcon, href: "/cards" },
-              { label: "Crypto", icon: BitcoinIcon, href: "/crypto" },
-              { label: "Analytics", icon: ChartAreaIcon, href: "/analytics" },
-              { label: "Investments", icon: TrendingUpIcon, href: "/investments" },
-              { label: "Budgets", icon: TargetIcon, href: "/budgets" },
-              { label: "Settings", icon: SettingsIcon, href: "/settings" },
-              { label: "Notifications", icon: BellIcon, href: "/notifications" },
-              { label: "Help & Support", icon: LifeBuoyIcon, href: "/support" },
-              { label: "Sign In", icon: LogInIcon, href: "/sign-in" },
-              { label: "Sign Up", icon: UserPlusIcon, href: "/sign-up" },
-            ].map((page) => (
+          <CommandGroup heading={t("groupPages")}>
+            {pages.map((page) => (
               <CommandItem key={page.href} onSelect={() => run(() => router.push(page.href))}>
                 <page.icon className="mr-2 size-4" />
-                {page.label}
+                {t(page.key)}
               </CommandItem>
             ))}
           </CommandGroup>
 
           <CommandSeparator />
 
-          <CommandGroup heading="Recent Transactions">
+          <CommandGroup heading={t("groupRecentTransactions")}>
             {recentTransactions.slice(0, 5).map((tx) => (
               <CommandItem key={tx.id} onSelect={() => run(() => router.push("/transactions"))}>
                 <SearchIcon className="mr-2 size-4" />
@@ -111,18 +116,18 @@ export function CommandPalette() {
 
           <CommandSeparator />
 
-          <CommandGroup heading="Quick Transfer">
+          <CommandGroup heading={t("groupQuickTransfer")}>
             {contacts.slice(0, 4).map((c) => (
               <CommandItem key={c.id} onSelect={() => run(() => router.push("/transfers"))}>
                 <SendIcon className="mr-2 size-4" />
-                Send to {c.name}
+                {t("sendTo", { name: c.name })}
               </CommandItem>
             ))}
           </CommandGroup>
 
           <CommandSeparator />
 
-          <CommandGroup heading="Crypto">
+          <CommandGroup heading={t("groupCrypto")}>
             {cryptoCoins.slice(0, 4).map((coin) => (
               <CommandItem key={coin.id} onSelect={() => run(() => router.push("/crypto"))}>
                 <BitcoinIcon className="mr-2 size-4" />
@@ -136,18 +141,18 @@ export function CommandPalette() {
 
           <CommandSeparator />
 
-          <CommandGroup heading="Theme">
+          <CommandGroup heading={t("groupTheme")}>
             <CommandItem onSelect={() => run(() => setTheme("light"))}>
               <SunIcon className="mr-2 size-4" />
-              Light Mode
+              {t("lightMode")}
             </CommandItem>
             <CommandItem onSelect={() => run(() => setTheme("dark"))}>
               <MoonIcon className="mr-2 size-4" />
-              Dark Mode
+              {t("darkMode")}
             </CommandItem>
             <CommandItem onSelect={() => run(() => setTheme("system"))}>
               <MonitorIcon className="mr-2 size-4" />
-              System Theme
+              {t("systemTheme")}
             </CommandItem>
           </CommandGroup>
         </CommandList>

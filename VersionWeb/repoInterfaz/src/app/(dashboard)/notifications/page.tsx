@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/notifications/page.tsx
 import { NotificationsPageClient } from "@/components/notifications/notifications-page-client"
 
 export default function Page() {

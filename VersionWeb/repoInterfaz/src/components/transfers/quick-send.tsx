@@ -1,3 +1,4 @@
+// @fp-path: src/components/transfers/quick-send.tsx
 "use client"
 
 import { useState, useRef } from "react"

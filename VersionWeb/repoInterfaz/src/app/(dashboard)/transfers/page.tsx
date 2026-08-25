@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/transfers/page.tsx
 import { TransfersPageClient } from "@/components/transfers/transfers-page-client"
 
 export default function Page() {

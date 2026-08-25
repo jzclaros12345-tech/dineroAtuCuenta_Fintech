@@ -1,3 +1,4 @@
+// @fp-path: src/components/budgets/budget-rings.tsx
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"

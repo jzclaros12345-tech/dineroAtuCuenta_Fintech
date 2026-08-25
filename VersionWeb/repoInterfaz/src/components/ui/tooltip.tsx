@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/tooltip.tsx
 "use client"
 
 import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip"

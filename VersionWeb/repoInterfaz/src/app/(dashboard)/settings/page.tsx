@@ -1,3 +1,4 @@
+// @fp-path: src/app/(dashboard)/settings/page.tsx
 import { Suspense } from "react"
 import { SettingsPageClient } from "@/components/settings/settings-page-client"
 

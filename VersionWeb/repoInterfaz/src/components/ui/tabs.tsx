@@ -1,3 +1,4 @@
+// @fp-path: src/components/ui/tabs.tsx
 "use client"
 
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs"

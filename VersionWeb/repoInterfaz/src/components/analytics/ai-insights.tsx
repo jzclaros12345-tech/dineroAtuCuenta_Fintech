@@ -1,3 +1,4 @@
+// @fp-path: src/components/analytics/ai-insights.tsx
 "use client"
 
 import { motion } from "motion/react"

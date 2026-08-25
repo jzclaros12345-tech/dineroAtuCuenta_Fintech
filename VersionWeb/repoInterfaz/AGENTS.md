@@ -1,3 +1,4 @@
+<!-- @fp-path: AGENTS.md -->
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 

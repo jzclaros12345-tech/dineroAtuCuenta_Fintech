@@ -1,5 +1,7 @@
+// @fp-path: src/components/nav-user.tsx
 "use client"
 
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import {
   Avatar,
@@ -33,6 +35,7 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
+  const t = useTranslations("navUser")
 
   return (
     <SidebarMenu>
@@ -78,7 +81,7 @@ export function NavUser({
               <DropdownMenuItem>
                 <SparklesIcon
                 />
-                Upgrade to Pro
+                {t("upgradePro")}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
@@ -86,19 +89,19 @@ export function NavUser({
               <DropdownMenuItem render={<Link href="/settings" />}>
                 <BadgeCheckIcon
                 />
-                Account
+                {t("account")}
               </DropdownMenuItem>
               <DropdownMenuItem render={<Link href="/settings?tab=billing" />}>
                 <CreditCardIcon
                 />
-                Billing
+                {t("billing")}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem render={<Link href="/sign-in" />}>
               <LogOutIcon
               />
-              Log out
+              {t("logOut")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
