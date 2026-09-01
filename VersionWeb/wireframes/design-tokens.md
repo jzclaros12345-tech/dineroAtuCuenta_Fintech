@@ -12,7 +12,7 @@ wireframe.md (estructura)  +  design-tokens.md (valores visuales)
       HTML/CSS
 ```
 
-El producto soporta **2 temas** (dark / light) y **2 idiomas** (es / en). Los temas se documentan aquí. El idioma NO es un token visual — se documenta aparte en la sección 7 de este archivo, y su contenido real vivirá en archivos de traducción (`locales/es.json`, `locales/en.json`) cuando lleguemos al código.
+El producto soporta **2 temas** (dark / light) y **2 idiomas** (es / en). Los temas se documentan aquí. El idioma NO es un token visual — se documenta aparte en la sección 8 de este archivo, y su contenido real vivirá en archivos de traducción (`locales/es.json`, `locales/en.json`) cuando lleguemos al código.
 
 Idioma por defecto: **Español (es)**. Inglés (en) debe estar disponible desde el día uno como alternativa.
 
@@ -47,7 +47,34 @@ color-active-badge-text       #2ED9A3         Texto del badge "Active"
 
 ---
 
-## 3. Colores — Tema Light (pendiente de definir)
+## 3. Identidad de marca e iconos
+
+```text
+MARCA / FAVICON:
+color-brand-primary           #FF6B4A         Fondo coral del favicon y logo del sidebar
+icon-brand-glyph              d (minúscula)   Glifo blanco, peso bold
+icon-brand-corner-radius      9px / 32px      Esquina redondeada del favicon
+```
+
+Los assets públicos de la marca viven en la raíz de `htmls/`:
+
+```text
+favicon.svg             Icono vectorial preferido (32 × 32 viewBox)
+favicon-32.png          Fallback PNG de 32 × 32
+apple-touch-icon.png    Icono para dispositivos Apple
+```
+
+Toda página HTML debe declararlos dentro de `<head>` con rutas absolutas:
+
+```html
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+```
+
+---
+
+## 4. Colores — Tema Light (pendiente de definir)
 
 Mismos tokens semánticos, valores a definir cuando tengamos una referencia visual del modo claro. Estructura reservada:
 
@@ -75,7 +102,7 @@ color-warning                 (pendiente)     Estados de advertencia
 
 ---
 
-## 4. Tipografía
+## 5. Tipografía
 
 ```text
 FAMILIA PRINCIPAL:
@@ -95,7 +122,7 @@ Se observa uso de **mayúsculas + letter-spacing** en tags como "PILLAR 01", "CA
 
 ---
 
-## 5. Espaciado
+## 6. Espaciado
 
 ```text
 ESCALA BASE (múltiplos de 8px):
@@ -109,7 +136,7 @@ USO OBSERVADO:
 
 ---
 
-## 6. Bordes y otros
+## 7. Bordes y otros
 
 ```text
 BORDER RADIUS:
@@ -128,7 +155,7 @@ Estilo lineal/outline (no filled), trazo delgado.
 
 ---
 
-## 7. Idioma (i18n) — no es un token visual
+## 8. Idioma (i18n) — no es un token visual
 
 Se documenta aquí solo como referencia rápida, pero el contenido real no vive en este archivo.
 
@@ -149,7 +176,7 @@ locales/
 
 ---
 
-## 8. Componente global: Theme & Language Switcher
+## 9. Componente global: Theme & Language Switcher
 
 Dado que **todas las Pages** ofrecen elegir tema (dark/light) e idioma (es/en), este control se documenta **una sola vez** como componente compartido, no repetido en cada wireframe.
 
@@ -163,7 +190,7 @@ Cada wireframe individual solo debe **referenciar** este componente dentro de su
 
 ---
 
-## 9. Componente global: Sidebar (app autenticada)
+## 10. Componente global: Sidebar (app autenticada)
 
 ```text
 COMPONENTE: Sidebar
@@ -176,7 +203,7 @@ Igual criterio que el switcher: cada wireframe de la app referencia este compone
 
 ---
 
-## 10. Componente global: Exchange Rate Board (Bs / USD)
+## 11. Componente global: Exchange Rate Board (Bs / USD)
 
 ```text
 COMPONENTE: Exchange Rate Board
@@ -191,13 +218,13 @@ globales: se referencia, no se redocumenta en cada wireframe.
 
 ---
 
-## 11. Animaciones (Motion Tokens)
+## 12. Animaciones (Motion Tokens)
 
 Definidas por primera vez a partir de `transfers.md` (primer wireframe con flujo interactivo real). Se documentan aquí como tokens reutilizables para que **toda página futura copie el mismo lenguaje de movimiento**, en vez de que cada wireframe invente el suyo.
 
 Fuente de inspiración (evaluadas por seguridad/licencia antes de portarlas — ver Nota de origen al final): [magicui.design](https://magicui.design) (MIT, open source) y [codefronts.com](https://codefronts.com) (MIT). Ninguna se usó tal cual (son componentes React/Tailwind) — se **porteó el concepto visual** a CSS/JS vanilla usando nuestros propios `color-*` tokens.
 
-### 10.1 Principio general
+### 12.1 Principio general
 
 ```text
 Toda animación debe:
@@ -211,7 +238,7 @@ Toda animación debe:
   ver DECISIÓN DE ALCANCE abajo.
 ```
 
-### 10.2 motion-shine-border
+### 12.2 motion-shine-border
 
 ```text
 QUÉ ES: Borde animado (barrido de luz sutil en color-primary) alrededor
@@ -229,7 +256,7 @@ CUÁNDO USARLO: en cualquier card que sea "el resultado/destino" de un
         No usar en más de una card por pantalla.
 ```
 
-### 10.3 motion-stagger-in (avatar chips / listas)
+### 12.3 motion-stagger-in (avatar chips / listas)
 
 ```text
 QUÉ ES: Entrada escalonada de una fila de ítems (ej. avatares de
@@ -247,7 +274,7 @@ CUÁNDO USARLO: listas cortas (3-6 ítems) que aparecen al cargar la
         (>8 ítems): el delay total se vuelve perceptible y molesto.
 ```
 
-### 10.4 motion-progress-steps
+### 12.4 motion-progress-steps
 
 ```text
 QUÉ ES: Reemplazo del spinner genérico para estados de "procesando"
@@ -264,7 +291,7 @@ CUÁNDO USARLO: cualquier estado de carga que represente un proceso
         datos (ahí alcanza con un spinner o skeleton).
 ```
 
-### 10.5 motion-panel-transition
+### 12.5 motion-panel-transition
 
 ```text
 QUÉ ES: Transición sutil (fade + translateY 10px) al cambiar de panel
@@ -274,7 +301,7 @@ TIMING: .38s, cubic-bezier(.2,.8,.2,1).
 CUÁNDO USARLO: en cualquier wireframe con stepper (ver sistemaswireframe.md).
 ```
 
-### 10.6 Reservados para pages de marketing (sin especificar todavía)
+### 12.6 Reservados para pages de marketing (sin especificar todavía)
 
 ```text
 Estas SÍ están disponibles como referencia para pages de marketing
@@ -287,7 +314,7 @@ Lo que NO está decidido todavía: timing, color, page exacta de uso.
 Están en la lista porque le gustan al equipo y se van a querer usar
 más adelante — quedan reservados, no descartados — pero hasta que no
 se les asigne una page real y su propia sub-sección (mismo formato
-que 10.2–10.5), no se consideran "listos para codear". Si se
+que 12.2–12.5), no se consideran "listos para codear". Si se
 implementan sin esa especificación, cada dev inventa su propio timing
 y se pierde la consistencia que este documento existe para garantizar.
 
@@ -309,12 +336,12 @@ y se pierde la consistencia que este documento existe para garantizar.
   califican: el contenido no requiere scroll significativo)
 
 Cuando una page de marketing concreta quiera usar alguno de estos,
-agregar acá su propia sub-sección (10.6a, 10.6b, etc.) con timing,
-color y criterio de uso — mismo formato que 10.2–10.5 — antes de
+agregar acá su propia sub-sección (12.6a, 12.6b, etc.) con timing,
+color y criterio de uso — mismo formato que 12.2–12.5 — antes de
 codearla, no durante.
 ```
 
-### 10.6b motion-progress-queue (reservado, sin especificar)
+### 12.6b motion-progress-queue (reservado, sin especificar)
 
 ```text
 QUÉ ES: Variante en cola de motion-progress-steps — varias barras de
@@ -329,7 +356,7 @@ ESTADO: reservado — ninguna page actual (transfers.md, compra-dolares.md)
         "transacciones en curso" en dashboard.md).
 ```
 
-### 10.7 Nota de origen
+### 12.7 Nota de origen
 
 ```text
 Componentes de referencia (solo como inspiración visual, no se
@@ -340,16 +367,16 @@ importó código ni dependencias de terceros):
   avatar-circles    https://magicui.design/docs/components/avatar-circles
   animated-list     https://magicui.design/docs/components/animated-list
   (los 3 anteriores: base de motion-shine-border y motion-stagger-in,
-  ya en uso — sección 10.2 y 10.3)
+  ya en uso — sección 12.2 y 12.3)
 
 - codefronts.com (MIT) →
   fetch-upload-progress-bar-with-xhr-onprogress-event
     https://codefronts.com/components/css-progress-bars/fetch-upload-progress-bar-with-xhr-onprogress-event/
-    → base de motion-progress-steps (sección 10.4), single progress,
+    → base de motion-progress-steps (sección 12.4), single progress,
       confirmado como la fuente correcta (no la variante en cola).
   download-queue-progress-with-per-file-bars-and-overall-total
     https://codefronts.com/components/css-progress-bars/download-queue-progress-with-per-file-bars-and-overall-total/
-    → base de motion-progress-queue (sección 10.6b), reservado.
+    → base de motion-progress-queue (sección 12.6b), reservado.
 
 Verificados como fuentes legítimas y de uso libre antes de portear
 el concepto. La implementación real en nuestro código es 100% CSS/JS
@@ -358,7 +385,7 @@ propio usando los color-tokens de la sección 2, sin librerías externas.
 
 ---
 
-## 12. Pendientes
+## 13. Pendientes
 
 ```text
 - Confirmar hex exactos de la paleta dark con color picker sobre diseño final.
@@ -367,7 +394,7 @@ propio usando los color-tokens de la sección 2, sin librerías externas.
 - Definir ubicación exacta del switcher (¿ícono en navbar visible siempre,
   o dentro de un menú de cuenta/settings?) — ver pregunta en el chat.
 - Confirmar si motion-shine-border / motion-stagger-in / motion-progress-steps
-  (sección 11) se adoptan tal cual en el resto de las pages transaccionales
+  (sección 12) se adoptan tal cual en el resto de las pages transaccionales
   (crypto.md, etc.) o si cada una amerita su propia variante.
 - Actualizar transfers.md/transfers.html y homepage-preview.html de
   ARS/EUR a BOB/USD (ver exchange-rate-board.md, sección "Corrección

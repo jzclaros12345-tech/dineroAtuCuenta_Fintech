@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>dineroAtucuenta — Cuentas y Billeteras</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
   :root[data-theme="dark"]{
     --bg:#0B0C10; --surface:#15171C; --surface-alt:#1B1E24; --border:#2A2D34;
@@ -176,7 +179,7 @@
     max-width:760px; isolation:isolate;
   }
   .page-hero svg{
-    display:block; width:100%; height:auto; position:relative; z-index:0;
+    display:block; width:100%; height:auto; position:relative; z-index:2;
     /* flotación MUY sutil de la ilustración completa (2px, 9s).
        El artwork ahora está inline (no data-URI) para evitar problemas
        de renderizado del <img src="data:..."> en algunos visores. */
@@ -194,10 +197,15 @@
      El intento anterior (SMIL <animate> sobre un <linearGradient>) no
      renderizaba de forma confiable — SMIL sobre atributos de gradiente
      depende de soporte que varía mucho según motor de render.
-     Este approach es 100% CSS (sin SVG, sin JS de posicionamiento):
-     un pseudo-elemento con conic-gradient que gira con @property,
-     recortado a un anillo delgado con mask-composite. Es el mismo
-     mecanismo que usa el ShineBorder de MagicUI, pero sin dependencias. */
+     El approach con mask-composite:exclude (ShineBorder de MagicUI) TAMPOCO
+     es confiable: en Thorium el recorte falla y el pseudo-elemento se pinta
+     como un rectángulo sólido, tapando todo el hero en blanco/claro.
+     Solución actual: doble capa SIN mask-composite. ::before pinta el
+     conic-gradient completo (detrás), y ::after —encogido 1.5px hacia
+     adentro— tapa el centro con el mismo color de fondo del hero. Lo único
+     que queda visible es el anillo de 1.5px del gradiente. El artwork (svg)
+     va por encima de ambas capas. Sin mask, sin depender de compositing por
+     GPU: mismo resultado visual, compatible en todos los motores. */
   @property --shine-angle{
     syntax:'<angle>';
     inherits:false;
@@ -205,8 +213,7 @@
   }
   .page-hero::before{
     content:"";
-    position:absolute; inset:0; z-index:2; border-radius:inherit;
-    padding:1.5px;
+    position:absolute; inset:0; z-index:1; border-radius:inherit;
     background:conic-gradient(
       from var(--shine-angle),
       transparent 0deg,
@@ -218,13 +225,14 @@
       transparent 45deg,
       transparent 360deg
     );
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite:xor;
-            mask-composite:exclude;
     pointer-events:none;
     animation:shine-rotate 4.5s linear infinite;
+  }
+  .page-hero::after{
+    content:"";
+    position:absolute; inset:1.5px; z-index:1; border-radius:calc(16px - 1.5px);
+    background:#08080B;
+    pointer-events:none;
   }
   @keyframes shine-rotate{
     to{ --shine-angle:360deg; }
