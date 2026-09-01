@@ -4,6 +4,7 @@
   'use strict';
 
   const routes = {
+    'Resumen': 'resumen.html',
     'Cuentas': 'cuentas-billeteras.html',
     'Cuentas y Billeteras': 'cuentas-billeteras.html',
     'Transacciones': 'enviar-dinero.html',
@@ -11,13 +12,15 @@
     'Compra USDT': 'comprar-dolares.html',
     'Apuestas y Predicciones': 'apuestas-predicciones.html',
     'Refiere y Gana': 'refiere-y-gana.html',
+    'Analíticas': 'analiticas.html',
     'Notificaciones': 'notifications.html',
     'Ajustes': 'ajustes.html',
     'Ayuda y Soporte': 'ayuda-y-soporte.html'
   };
 
   function labelFor(item) {
-    return item.getAttribute('title') || item.dataset.tip || '';
+    return (item.getAttribute('title') || item.dataset.tip || '')
+      .replace(/\s+—\s+Próximamente$/i, '');
   }
 
   function disable(item) {
@@ -31,13 +34,32 @@
     const route = routes[labelFor(item)];
 
     if (!route) {
-      // Resumen y Analíticas todavía no tienen wireframe destino.
+      // El ítem no tiene una pantalla disponible todavía.
       disable(item);
       return;
     }
 
+    // Una ruta ya disponible deja de ser un placeholder aunque el HTML
+    // anterior hubiera marcado el ítem como «Próx.».
+    item.classList.remove('disabled');
+    item.removeAttribute('aria-disabled');
+    item.removeAttribute('disabled');
+    item.removeAttribute('title');
+    const soon = item.querySelector('.soon, .soon-badge, .badge-soon');
+    if (soon) soon.remove();
+
     item.dataset.href = route;
-    if (item.classList.contains('active')) item.setAttribute('aria-current', 'page');
+    const isCurrent = window.location.pathname.endsWith('/' + route);
+    if (isCurrent) {
+      document.querySelectorAll('.sidebar .nav-item.active').forEach((active) => {
+        active.classList.remove('active');
+        active.removeAttribute('aria-current');
+      });
+      item.classList.add('active');
+      item.setAttribute('aria-current', 'page');
+    } else if (item.classList.contains('active')) {
+      item.setAttribute('aria-current', 'page');
+    }
     if (item.tagName !== 'BUTTON') {
       item.setAttribute('role', 'link');
       item.setAttribute('tabindex', '0');

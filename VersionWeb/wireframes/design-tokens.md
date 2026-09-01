@@ -353,7 +353,7 @@ ESTADO: reservado — ninguna page actual (transfers.md, compra-dolares.md)
         necesita procesar varios ítems a la vez todavía. No tiene
         timing/color definido. Se activa el día que aparezca ese caso
         de uso real (candidato: alguna vista de "actividad" o
-        "transacciones en curso" en dashboard.md).
+        "transacciones en curso" en resumen.md).
 ```
 
 ### 12.7 Nota de origen
@@ -399,4 +399,7 @@ propio usando los color-tokens de la sección 2, sin librerías externas.
 - Actualizar transfers.md/transfers.html y homepage-preview.html de
   ARS/EUR a BOB/USD (ver exchange-rate-board.md, sección "Corrección
   de moneda") — pendiente de confirmar cuándo se hace este cambio.
+- [RESUELTO] "dashboard.md" fue renombrado a "resumen.md" (ver
+  resumen.md, DECISIONES #4). Referencia en §12.6b ya actualizada;
+  revisar si queda algún otro archivo con "dashboard.md" suelto.
 ```

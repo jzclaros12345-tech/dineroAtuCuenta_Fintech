@@ -196,7 +196,7 @@ Label pequeño en mayúsculas (mismo tratamiento que `.eyebrow`/label de design-
 ELEMENT: [ Resumen ]
 TYPE: Navigation item
 CLICK: Navega a /dashboard
-TARGET WIREFRAME: dashboard.md (pendiente)
+TARGET WIREFRAME: resumen.md (ya definido)
 
 ELEMENT: [ Cuentas ]
 TYPE: Navigation item
