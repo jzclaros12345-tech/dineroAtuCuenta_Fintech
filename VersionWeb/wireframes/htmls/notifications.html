@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dineroAtucuenta — Notificaciones</title>
+<style>
+  :root[data-theme="dark"]{
+    --bg:#0B0C10; --surface:#15171C; --surface-alt:#1B1E24; --border:#2A2D34;
+    --text-primary:#F5F5F7; --text-secondary:#A0A4AC; --text-muted:#6C7078;
+    --primary:#FF6B4A; --primary-hover:#FF8163;
+    --success:#2ED9A3; --error:#F25C5C; --warning:#E8B84B;
+    --badge-bg:#1F3D34; --badge-text:#2ED9A3;
+  }
+  :root[data-theme="light"]{
+    --bg:#FFFFFF; --surface:#F7F7F8; --surface-alt:#FFFFFF; --border:#E4E4E7;
+    --text-primary:#16181D; --text-secondary:#4B4F58; --text-muted:#8A8F98;
+    --primary:#FF6B4A; --primary-hover:#FF8163;
+    --success:#1FAE81; --error:#D93F3F; --warning:#C98A1E;
+    --badge-bg:#E3F5EE; --badge-text:#1FAE81;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text-primary);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.5; transition:background .2s, color .2s;
+  }
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3{font-weight:700; letter-spacing:-0.02em;}
+  p{color:var(--text-secondary);}
+  button{font-family:inherit;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:6px; font-weight:600; font-size:14px;
+    padding:12px 22px; border-radius:10px; border:1px solid transparent; cursor:pointer;
+    transition:background .15s, border-color .15s, opacity .15s;
+  }
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-primary:hover{background:var(--primary-hover);}
+  .btn-primary:disabled{background:var(--surface-alt); color:var(--text-muted); cursor:not-allowed; border:1px solid var(--border);}
+  .btn-outline{background:transparent; color:var(--text-primary); border-color:var(--border);}
+  .btn-outline:hover{border-color:var(--text-secondary);}
+  .btn-sm{padding:8px 14px; font-size:13px; border-radius:8px;}
+  .card{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px;}
+
+  /* THEME/LANG SWITCHER */
+  .switcher{display:flex; align-items:center; gap:6px; border:1px solid var(--border); border-radius:999px; padding:4px;}
+  .switcher button{background:none; border:none; color:var(--text-secondary); font-size:12px; font-weight:600; padding:6px 10px; border-radius:999px; cursor:pointer; transition:.15s;}
+  .switcher button.active{background:var(--surface-alt); color:var(--text-primary);}
+  .lang-toggle{font-size:12px; font-weight:700; color:var(--text-secondary); border:1px solid var(--border); border-radius:999px; padding:6px 10px; cursor:pointer; background:none;}
+  .lang-toggle:hover{color:var(--text-primary);}
+
+  /* ===== APP SHELL: SIDEBAR (fijo) + MAIN ===== */
+  .app-shell{display:flex; min-height:100vh;}
+
+  .sidebar{
+    width:252px; flex-shrink:0; background:var(--surface); border-right:1px solid var(--border);
+    display:flex; flex-direction:column; padding:20px 14px;
+    position:sticky; top:0; height:100vh; overflow-y:auto; transition:width .18s, transform .2s;
+    z-index:30;
+  }
+  .sidebar.collapsed{width:72px;}
+  .sidebar.collapsed .hide-on-collapse{display:none;}
+  .sidebar.collapsed .nav-item{justify-content:center;}
+  .sidebar.collapsed .sidebar-logo{justify-content:center;}
+  .sidebar.collapsed .profile-item{justify-content:center;}
+
+  .sidebar-logo{display:flex; align-items:center; gap:9px; padding:4px 8px 22px;}
+  .sidebar-logo .dot{width:26px; height:26px; border-radius:8px; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; font-weight:700; flex-shrink:0;}
+  .sidebar-logo .lt strong{display:block; font-size:14px; font-weight:700; white-space:nowrap;}
+  .sidebar-logo .lt span{display:block; font-size:10px; color:var(--text-muted); white-space:nowrap;}
+
+  .nav-group{margin-bottom:18px;}
+  .nav-group-label{display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.09em; color:var(--text-muted); padding:0 10px; margin-bottom:8px;}
+  .nav-item{
+    display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:8px; font-size:14px;
+    color:var(--text-secondary); cursor:pointer; margin-bottom:2px; white-space:nowrap; position:relative;
+  }
+  .nav-item:hover{color:var(--text-primary); background:var(--surface-alt);}
+  .nav-item.active{background:var(--surface-alt); color:var(--text-primary);}
+  .nav-item.active .nav-icon{color:var(--primary);}
+  .nav-item.disabled{color:var(--text-muted); cursor:not-allowed;}
+  .nav-item.disabled:hover{background:none; color:var(--text-muted);}
+  .nav-icon{width:18px; height:18px; flex-shrink:0; display:flex; align-items:center; justify-content:center; position:relative;}
+  .nav-icon svg{width:18px; height:18px;}
+  .soon-badge{margin-left:auto; font-size:9px; font-weight:700; text-transform:uppercase; color:var(--text-muted); background:var(--bg); border:1px solid var(--border); padding:2px 6px; border-radius:999px; flex-shrink:0;}
+
+  /* Badge de conteo sobre el ícono de campana (footer del sidebar) — ver notifications-panel.md */
+  .bell-badge{
+    position:absolute; top:-4px; right:-4px; min-width:15px; height:15px; padding:0 3px; border-radius:999px;
+    background:var(--primary); color:#fff; font-size:9px; font-weight:800; line-height:15px; text-align:center;
+  }
+  .sidebar.collapsed .bell-badge{top:-2px; right:2px;}
+
+  .sidebar-footer{margin-top:auto; padding-top:14px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:2px;}
+  .profile-item{display:flex; align-items:center; gap:10px; padding:9px; border-radius:8px; cursor:pointer; position:relative;}
+  .profile-item:hover{background:var(--surface-alt);}
+  .avatar{width:30px; height:30px; border-radius:999px; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0;}
+  .profile-info{display:flex; flex-direction:column; overflow:hidden;}
+  .profile-info strong{font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .profile-info span{font-size:11px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .profile-chevron{margin-left:auto; display:flex; align-items:center; color:var(--text-muted); flex-shrink:0;}
+  .profile-chevron svg{width:14px; height:14px;}
+
+  /* Menú de perfil: dropdown hacia arriba, anclado al trigger — ver components/profile-menu.md */
+  .profile-menu{
+    display:none; position:absolute; left:0; right:0; bottom:calc(100% + 6px); width:220px;
+    background:var(--surface-alt); border:1px solid var(--border); border-radius:12px;
+    box-shadow:0 8px 24px rgba(0,0,0,.28); padding:6px; z-index:40;
+    animation:profile-menu-in .16s cubic-bezier(.2,.8,.2,1);
+  }
+  .profile-menu.open{display:block;}
+  @keyframes profile-menu-in{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+  .sidebar.collapsed .profile-menu{left:8px; width:220px;}
+  .profile-menu-header{display:flex; align-items:center; gap:10px; padding:8px 8px 10px;}
+  .profile-menu-header .profile-info strong{font-size:13px;}
+  .profile-menu-header .profile-info span{font-size:11px;}
+  .profile-menu-divider{height:1px; background:var(--border); margin:2px 4px 6px;}
+  .profile-menu-item{
+    display:flex; align-items:center; gap:10px; width:100%; padding:9px 8px; border-radius:8px;
+    font-size:13.5px; color:var(--text-secondary); cursor:pointer; background:none; border:none; text-align:left; font-family:inherit;
+  }
+  .profile-menu-item:hover, .profile-menu-item:focus-visible{color:var(--text-primary); background:var(--surface); outline:none;}
+  .profile-menu-item svg{width:16px; height:16px; flex-shrink:0;}
+
+  /* ===== MODAL base (no existía en este archivo — patrón .modal-overlay/.modal, ver profile-menu.md) ===== */
+  .modal-overlay{
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:100;
+    align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px; max-width:420px; width:100%; position:relative;}
+  .modal-close{position:absolute; top:14px; right:14px; width:28px; height:28px; border-radius:8px; border:none; background:none; color:var(--text-secondary); cursor:pointer; display:flex; align-items:center; justify-content:center;}
+  .modal-close:hover{color:var(--text-primary); background:var(--surface-alt);}
+  .modal-close svg{width:16px; height:16px;}
+
+  /* ===== MODAL: CERRAR SESIÓN ===== */
+  .logout-modal .modal{max-width:380px; padding:22px;}
+  .logout-modal-title{font-size:16px; font-weight:700; margin-bottom:8px;}
+  .logout-modal-desc{font-size:13px; color:var(--text-secondary); margin-bottom:20px; line-height:1.5;}
+  .logout-modal-actions{display:flex; gap:10px;}
+  .logout-modal-actions .btn{flex:1;}
+
+  .sidebar-backdrop{display:none;}
+
+  .nav-item:focus-visible,
+  .profile-item:focus-visible,
+  .profile-menu-item:focus-visible,
+  .chip:focus-visible,
+  .seg-btn:focus-visible,
+  .notif-item:focus-visible{
+    outline:2px solid var(--primary); outline-offset:2px;
+  }
+
+  /* ===== MAIN / TOOLBAR ===== */
+  .main{flex:1; min-width:0;}
+  .toolbar{
+    position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px; border-bottom:1px solid var(--border);
+    background:color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter:blur(8px);
+  }
+  .toolbar-left{display:flex; align-items:center; gap:14px;}
+  .icon-btn{width:34px; height:34px; border-radius:8px; border:1px solid var(--border); background:var(--surface); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text-secondary); flex-shrink:0;}
+  .icon-btn:hover{color:var(--text-primary); border-color:var(--text-secondary);}
+  .icon-btn svg{width:16px; height:16px;}
+  .toolbar h1{font-size:15px; font-weight:700;}
+  .toolbar-right{display:flex; align-items:center; gap:12px;}
+  .hamburger{display:none;}
+
+  /* ===== CONTENT ===== */
+  .content{padding:32px 28px 140px; max-width:920px; margin:0 auto;}
+  .page-header{margin-bottom:22px;}
+  .page-header h2{font-size:26px; margin-bottom:6px;}
+  .page-header p{font-size:14px;}
+
+  /* ===== SEGMENTED CONTROL (Notificaciones / Configuración) ===== */
+  .segmented{display:inline-flex; gap:4px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:4px; margin-bottom:20px;}
+  .seg-btn{background:none; border:none; color:var(--text-secondary); font-size:13px; font-weight:600; padding:9px 18px; border-radius:9px; cursor:pointer; transition:.15s;}
+  .seg-btn.active{background:var(--primary); color:#fff;}
+  .seg-btn:not(.active):hover{color:var(--text-primary);}
+
+  .view{display:none;}
+  .view.visible{display:block;}
+
+  /* ===== FILTROS POR PRODUCTO ===== */
+  .filter-row{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; flex-wrap:wrap;}
+  .chip-row{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{
+    display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:var(--text-secondary);
+    background:var(--surface); border:1px solid var(--border); border-radius:999px; padding:7px 14px; cursor:pointer; transition:.15s;
+  }
+  .chip:hover{color:var(--text-primary); border-color:var(--text-secondary);}
+  .chip.active{background:var(--primary); border-color:var(--primary); color:#fff;}
+  .chip .chip-count{font-size:10.5px; font-weight:700; opacity:.85;}
+  .mark-all-btn{background:none; border:none; color:var(--text-secondary); font-size:12.5px; font-weight:600; cursor:pointer; padding:6px 4px; white-space:nowrap;}
+  .mark-all-btn:hover{color:var(--text-primary);}
+  .mark-all-btn:disabled{color:var(--text-muted); cursor:not-allowed;}
+
+  /* ===== LISTA DE NOTIFICACIONES ===== */
+  .notif-panel{background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden;}
+  .notif-group-label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-muted); padding:14px 20px 8px;}
+  .notif-item{
+    display:flex; align-items:flex-start; gap:12px; padding:14px 20px; cursor:pointer; border-top:1px solid var(--border);
+    transition:background .12s;
+  }
+  .notif-group-label + .notif-item, .notif-panel > .notif-item:first-child{border-top:none;}
+  .notif-item:hover{background:var(--surface-alt);}
+  .notif-dot-col{width:8px; flex-shrink:0; padding-top:6px;}
+  .notif-dot{width:7px; height:7px; border-radius:999px; background:var(--primary);}
+  .notif-icon{
+    width:36px; height:36px; border-radius:10px; background:var(--surface-alt); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--text-secondary);
+  }
+  .notif-icon svg{width:17px; height:17px;}
+  .notif-icon.compra{color:#3E9BFF;}
+  .notif-icon.envio{color:var(--success);}
+  .notif-icon.apuestas{color:var(--warning);}
+  .notif-icon.refiere{color:var(--primary);}
+  .notif-body{flex:1; min-width:0;}
+  .notif-text{font-size:13.5px; color:var(--text-secondary); line-height:1.45;}
+  .notif-text.unread{color:var(--text-primary); font-weight:500;}
+  .notif-time{font-size:11.5px; color:var(--text-muted); margin-top:4px;}
+  .notif-chevron{color:var(--text-muted); flex-shrink:0; align-self:center;}
+  .notif-chevron svg{width:15px; height:15px;}
+
+  .loadmore-row{padding:16px 20px; text-align:center; border-top:1px solid var(--border);}
+
+  /* ===== SKELETON ===== */
+  .skel-item{display:flex; gap:12px; padding:14px 20px; border-top:1px solid var(--border);}
+  .skel-item:first-child{border-top:none;}
+  .skel-box{background:var(--surface-alt); border-radius:8px; position:relative; overflow:hidden;}
+  .skel-box::after{
+    content:""; position:absolute; inset:0; transform:translateX(-100%);
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent);
+    animation:shimmer 1.4s infinite;
+  }
+  @keyframes shimmer{100%{transform:translateX(100%);}}
+  .skel-icon{width:36px; height:36px; border-radius:10px; flex-shrink:0;}
+  .skel-lines{flex:1; display:flex; flex-direction:column; gap:8px; justify-content:center;}
+  .skel-line{height:10px; border-radius:6px;}
+
+  /* ===== EMPTY / ERROR STATES ===== */
+  .empty-state{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:64px 24px; color:var(--text-muted);}
+  .empty-state svg{width:40px; height:40px; margin-bottom:14px; opacity:.7;}
+  .empty-state p{font-size:13.5px; color:var(--text-muted);}
+  .error-state{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:56px 24px;}
+  .error-state svg{width:34px; height:34px; margin-bottom:12px; color:var(--error);}
+  .error-state p{font-size:13.5px; margin-bottom:16px;}
+
+  /* ===== CONFIGURACIÓN DE ALERTAS ===== */
+  .config-card{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:22px; margin-bottom:16px;}
+  .config-card-head{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
+  .config-card-head .notif-icon{width:34px; height:34px;}
+  .config-card-head h3{font-size:15px;}
+  .config-card-sub{font-size:12.5px; color:var(--text-muted); margin:2px 0 16px 46px;}
+  .config-row{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:12px 0; border-top:1px solid var(--border);}
+  .config-card-head + .config-card-sub + .config-row{border-top:none;}
+  .config-row-text strong{display:block; font-size:13.5px; font-weight:600; margin-bottom:2px;}
+  .config-row-text span{font-size:12px; color:var(--text-muted);}
+  .config-subblock{padding:0 0 14px 0; margin-top:-4px; display:none;}
+  .config-subblock.visible{display:block;}
+  .threshold-row{display:flex; align-items:center; gap:10px; margin-top:10px; flex-wrap:wrap;}
+  .threshold-row label{font-size:12.5px; color:var(--text-secondary);}
+  .threshold-input{width:64px; background:var(--surface-alt); border:1px solid var(--border); border-radius:8px; color:var(--text-primary); font-size:13px; font-weight:600; padding:7px 8px; text-align:center;}
+  .radio-pill-row{display:flex; gap:6px;}
+  .radio-pill{font-size:12px; font-weight:600; color:var(--text-secondary); background:var(--surface-alt); border:1px solid var(--border); border-radius:999px; padding:6px 12px; cursor:pointer;}
+  .radio-pill.active{background:var(--primary); border-color:var(--primary); color:#fff;}
+
+  /* Toggle switch */
+  .toggle{position:relative; width:38px; height:22px; flex-shrink:0; display:inline-block;}
+  .toggle input{opacity:0; width:0; height:0; position:absolute;}
+  .toggle .track{position:absolute; inset:0; background:var(--border); border-radius:999px; cursor:pointer; transition:.15s;}
+  .toggle .thumb{position:absolute; left:2px; top:2px; width:18px; height:18px; background:#fff; border-radius:50%; transition:.15s;}
+  .toggle input:checked + .track{background:var(--primary);}
+  .toggle input:checked + .track .thumb{transform:translateX(16px);}
+
+  /* Equipos que sigo (chips) */
+  .team-input-row{display:flex; gap:8px; margin-top:12px;}
+  .team-input-row input{flex:1; background:var(--surface-alt); border:1px solid var(--border); border-radius:8px; color:var(--text-primary); font-size:13px; padding:9px 12px;}
+  .team-chip-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+  .team-chip{
+    display:inline-flex; align-items:center; gap:6px; background:var(--surface-alt); border:1px solid var(--border);
+    border-radius:999px; padding:6px 8px 6px 12px; font-size:12.5px; font-weight:600; color:var(--text-primary);
+  }
+  .team-chip button{background:none; border:none; color:var(--text-muted); cursor:pointer; width:16px; height:16px; display:flex; align-items:center; justify-content:center; border-radius:50%;}
+  .team-chip button:hover{color:var(--error); background:var(--bg);}
+  .team-chip button svg{width:11px; height:11px;}
+
+  .config-actions{display:flex; justify-content:flex-end; margin-top:4px;}
+
+  /* Preview toolbar (solo para revisión del wireframe, no es parte del producto) */
+  .dev-toggle{
+    position:fixed; bottom:16px; left:16px; z-index:50; display:flex; align-items:center; gap:8px;
+    background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:8px 10px; font-size:11px; color:var(--text-muted);
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+  }
+  .dev-toggle button{font-size:11px; font-weight:600; color:var(--text-secondary); background:var(--surface-alt); border:1px solid var(--border); border-radius:6px; padding:5px 8px; cursor:pointer;}
+  .dev-toggle button.active{color:var(--primary); border-color:var(--primary);}
+
+  @media (max-width: 880px){
+    .sidebar{position:fixed; left:0; top:0; transform:translateX(-100%); z-index:35;}
+    .sidebar.mobile-open{transform:translateX(0);}
+    .hamburger{display:flex;}
+    .sidebar-backdrop{display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:25;}
+    .sidebar-backdrop.visible{display:block;}
+    .hide-on-collapse-btn{display:none;}
+    .content{padding:22px 16px 140px;}
+    .config-card-sub{margin-left:0;}
+    .dev-toggle{left:8px; right:8px; flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ============ SIDEBAR (ver components/sidebar.md) ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="dot">d</span>
+      <div class="lt hide-on-collapse">
+        <strong>dineroAtucuenta</strong>
+        <span data-i18n="tagline">Al instante, sin vueltas.</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpDaily">DIARIO</span>
+        <div class="nav-item" title="Resumen" tabindex="0" role="button">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navResumen">Resumen</span>
+        </div>
+        <div class="nav-item" title="Cuentas" tabindex="0" role="button">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navCuentas">Cuentas</span>
+        </div>
+        <div class="nav-item" title="Transacciones" tabindex="0" role="button">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 7h13M7 7l3-3M7 7l3 3M17 17H4M17 17l-3-3M17 17l-3 3"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navTx">Transacciones</span>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpMoney">DINERO</span>
+        <div class="nav-item" data-product="envio" title="Transferencias" tabindex="0" role="button">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 3l4 4-4 4M21 7H7M7 21l-4-4 4-4M3 17h14"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navTransfers">Transferencias</span>
+        </div>
+        <div class="nav-item" data-product="compra" title="Compra USDT" tabindex="0" role="button">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5h3.2a2 2 0 010 4H9m0 0h3.7a2 2 0 010 4H9.5M11 7v1.2M11 15.8V17"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navCompraUsdt">Compra USDT</span>
+        </div>
+        <div class="nav-item" data-product="apuestas" title="Apuestas y Predicciones" tabindex="0" role="button">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><circle cx="9" cy="9" r="1.4" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navApuestas">Apuestas y Predicciones</span>
+        </div>
+        <div class="nav-item" data-product="refiere" title="Refiere y Gana" tabindex="0" role="button">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7c-1.8 0-4-1-4-3a2.5 2.5 0 015 0v3zm0 0c1.8 0 4-1 4-3a2.5 2.5 0 00-5 0v3z"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navRefiere">Refiere y Gana</span>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpAnalysis">ANÁLISIS</span>
+        <div class="nav-item disabled" title="Analíticas — Próximamente" tabindex="0" role="button" aria-disabled="true">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navAnalytics">Analíticas</span>
+          <span class="soon-badge hide-on-collapse" data-i18n="soon">PRÓX.</span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="nav-item active" title="Notificaciones" tabindex="0" role="button">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          <span class="bell-badge" id="sidebar-bell-badge">4</span>
+        </span>
+        <span class="hide-on-collapse" data-i18n="navNotif">Notificaciones</span>
+      </div>
+      <div class="nav-item" title="Ajustes" tabindex="0" role="button">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.2a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.2a1.7 1.7 0 00-1.5 1z"/></svg></span>
+        <span class="hide-on-collapse" data-i18n="navSettings">Ajustes</span>
+      </div>
+      <div class="nav-item" title="Ayuda y Soporte" tabindex="0" role="button">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.5-2 1.8-2 3.2M12 17.2v.1"/></svg></span>
+        <span class="hide-on-collapse" data-i18n="navHelp">Ayuda y Soporte</span>
+      </div>
+
+      <!-- Perfil de usuario: trigger + menú (2 opciones), ver components/profile-menu.md -->
+      <div class="profile-item" id="profile-trigger" title="Cuenta" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu">
+        <span class="avatar">AL</span>
+        <div class="profile-info hide-on-collapse">
+          <strong>Albert Almanz</strong>
+          <span>albert@fintech.com</span>
+        </div>
+        <span class="profile-chevron hide-on-collapse" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 15l-6-6-6 6"/></svg>
+        </span>
+
+        <div class="profile-menu" id="profile-menu" role="menu" aria-hidden="true">
+          <div class="profile-menu-header">
+            <span class="avatar">AL</span>
+            <div class="profile-info">
+              <strong>Albert Almanz</strong>
+              <span>albert@fintech.com</span>
+            </div>
+          </div>
+          <div class="profile-menu-divider"></div>
+          <a class="profile-menu-item" id="profile-menu-view" href="ajustes.html#perfil" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg>
+            <span data-i18n="navVerPerfil">Ver perfil</span>
+          </a>
+          <button type="button" class="profile-menu-item" id="profile-menu-logout" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+            <span data-i18n="navCerrarSesion">Cerrar sesión</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="icon-btn hamburger" id="hamburger-btn" aria-label="Abrir menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <button class="icon-btn hide-on-collapse-btn" id="collapse-btn" aria-label="Colapsar sidebar" style="display:flex;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+        </button>
+        <h1 data-i18n="toolbarTitle">Notificaciones</h1>
+      </div>
+      <div class="toolbar-right">
+        <div class="switcher" id="theme-switcher">
+          <button data-theme-btn="dark" class="active">◐</button>
+          <button data-theme-btn="light">☀</button>
+        </div>
+        <button class="lang-toggle" id="lang-toggle">EN</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="page-header">
+        <h2 data-i18n="h2">Notificaciones</h2>
+        <p data-i18n="subtitle">Todo lo que pasa en tus transferencias, tu compra de USD y tus apuestas, separado por producto.</p>
+      </div>
+
+      <!-- SEGMENTED: Notificaciones / Configuración -->
+      <div class="segmented" role="tablist">
+        <button class="seg-btn active" id="seg-notif" data-i18n="segNotif" role="tab" aria-selected="true">Notificaciones</button>
+        <button class="seg-btn" id="seg-config" data-i18n="segConfig" role="tab" aria-selected="false">Configuración de alertas</button>
+      </div>
+
+      <!-- ===================== VISTA: NOTIFICACIONES ===================== -->
+      <div class="view visible" id="view-notif">
+
+        <div class="filter-row">
+          <div class="chip-row" id="chip-row">
+            <button class="chip active" data-filter="todas" data-i18n="chipAll">Todas</button>
+            <button class="chip" data-filter="envio" data-i18n="chipEnvio">Envío de dinero</button>
+            <button class="chip" data-filter="compra" data-i18n="chipCompra">Compra USD</button>
+            <button class="chip" data-filter="apuestas" data-i18n="chipApuestas">Apuestas y Predicciones</button>
+            <button class="chip" data-filter="refiere" data-i18n="chipRefiere">Refiere y Gana</button>
+          </div>
+          <button class="mark-all-btn" id="mark-all-btn" data-i18n="markAll">Marcar todas como leídas</button>
+        </div>
+
+        <div class="notif-panel" id="notif-panel"><!-- render JS --></div>
+
+      </div>
+
+      <!-- ===================== VISTA: CONFIGURACIÓN DE ALERTAS ===================== -->
+      <div class="view" id="view-config">
+
+        <!-- ENVÍO DE DINERO -->
+        <div class="config-card">
+          <div class="config-card-head">
+            <span class="notif-icon envio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 3l4 4-4 4M21 7H7M7 21l-4-4 4-4M3 17h14"/></svg></span>
+            <h3 data-i18n="cfgEnvioTitle">Envío de dinero</h3>
+          </div>
+          <p class="config-card-sub" data-i18n="cfgEnvioSub">Confirmaciones de tus transferencias y oportunidades de tipo de cambio.</p>
+
+          <div class="config-row">
+            <div class="config-row-text">
+              <strong data-i18n="cfgEnvioConfirmTitle">Confirmaciones de transferencias</strong>
+              <span data-i18n="cfgEnvioConfirmSub">Avisarme cuando una transferencia se envía, se recibe o falla.</span>
+            </div>
+            <label class="toggle"><input type="checkbox" id="cfg-envio-confirm" checked><span class="track"><span class="thumb"></span></span></label>
+          </div>
+
+          <div class="config-row">
+            <div class="config-row-text">
+              <strong data-i18n="cfgEnvioRateTitle">Tipo de cambio favorable</strong>
+              <span data-i18n="cfgEnvioRateSub">Avisarme cuando el tipo de cambio suba por encima del umbral.</span>
+            </div>
+            <label class="toggle"><input type="checkbox" id="cfg-envio-rate"><span class="track"><span class="thumb"></span></span></label>
+          </div>
+          <div class="config-subblock" id="cfg-envio-rate-block">
+            <div class="threshold-row">
+              <label data-i18n="cfgThresholdLabel">Avisarme si sube más de</label>
+              <input type="number" class="threshold-input" id="cfg-envio-rate-threshold" value="3" min="1" max="50">
+              <span>%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMPRA USD -->
+        <div class="config-card">
+          <div class="config-card-head">
+            <span class="notif-icon compra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5h3.2a2 2 0 010 4H9m0 0h3.7a2 2 0 010 4H9.5M11 7v1.2M11 15.8V17"/></svg></span>
+            <h3 data-i18n="cfgCompraTitle">Compra USD</h3>
+          </div>
+          <p class="config-card-sub" data-i18n="cfgCompraSub">Alertas de precio del dólar según el umbral y la dirección que elijas.</p>
+
+          <div class="config-row">
+            <div class="config-row-text">
+              <strong data-i18n="cfgCompraPriceTitle">Alertas de precio</strong>
+              <span data-i18n="cfgCompraPriceSub">Avisarme cuando el precio del dólar se mueva.</span>
+            </div>
+            <label class="toggle"><input type="checkbox" id="cfg-compra-price" checked><span class="track"><span class="thumb"></span></span></label>
+          </div>
+          <div class="config-subblock visible" id="cfg-compra-price-block">
+            <div class="threshold-row">
+              <label data-i18n="cfgThresholdLabel">Avisarme si sube más de</label>
+              <input type="number" class="threshold-input" id="cfg-compra-price-threshold" value="5" min="1" max="50">
+              <span>%</span>
+            </div>
+            <div class="threshold-row">
+              <label data-i18n="cfgDirectionLabel">Dirección</label>
+              <div class="radio-pill-row" id="cfg-compra-direction">
+                <button class="radio-pill" data-value="sube" data-i18n="dirUp">Sube</button>
+                <button class="radio-pill" data-value="baja" data-i18n="dirDown">Baja</button>
+                <button class="radio-pill active" data-value="ambas" data-i18n="dirBoth">Ambas</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APUESTAS Y PREDICCIONES -->
+        <div class="config-card">
+          <div class="config-card-head">
+            <span class="notif-icon apuestas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><circle cx="9" cy="9" r="1.4" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg></span>
+            <h3 data-i18n="cfgApuestasTitle">Apuestas y Predicciones</h3>
+          </div>
+          <p class="config-card-sub" data-i18n="cfgApuestasSub">Resultados de tus apuestas y avisos de los equipos que seguís.</p>
+
+          <div class="config-row">
+            <div class="config-row-text">
+              <strong data-i18n="cfgApuestasResultTitle">Resultados de mis apuestas</strong>
+              <span data-i18n="cfgApuestasResultSub">Avisarme cuando termine un evento en el que participé.</span>
+            </div>
+            <label class="toggle"><input type="checkbox" id="cfg-apuestas-results" checked><span class="track"><span class="thumb"></span></span></label>
+          </div>
+
+          <div class="config-row" style="border-top:1px solid var(--border);">
+            <div class="config-row-text">
+              <strong data-i18n="cfgApuestasTeamsTitle">Equipos que sigo</strong>
+              <span data-i18n="cfgApuestasTeamsSub">Avisarme cuando juegue alguno de estos equipos.</span>
+            </div>
+          </div>
+          <div class="team-input-row">
+            <input type="text" id="team-input" placeholder="Ej. Bolívar" data-i18n-placeholder="teamPlaceholder">
+            <button class="btn btn-outline btn-sm" id="team-add-btn" data-i18n="teamAdd">Agregar</button>
+          </div>
+          <div class="team-chip-row" id="team-chip-row"><!-- render JS --></div>
+        </div>
+
+        <!-- REFIERE Y GANA -->
+        <div class="config-card">
+          <div class="config-card-head">
+            <span class="notif-icon refiere"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7c-1.8 0-4-1-4-3a2.5 2.5 0 015 0v3zm0 0c1.8 0 4-1 4-3a2.5 2.5 0 00-5 0v3z"/></svg></span>
+            <h3 data-i18n="cfgRefiereTitle">Refiere y Gana</h3>
+          </div>
+          <p class="config-card-sub" data-i18n="cfgRefiereSub">Promociones y bonos del programa de referidos.</p>
+
+          <div class="config-row">
+            <div class="config-row-text">
+              <strong data-i18n="cfgRefierePromosTitle">Promociones y bonos</strong>
+              <span data-i18n="cfgRefierePromosSub">Avisarme de promociones nuevas y cambios de nivel.</span>
+            </div>
+            <label class="toggle"><input type="checkbox" id="cfg-refiere-promos" checked><span class="track"><span class="thumb"></span></span></label>
+          </div>
+        </div>
+
+        <div class="config-actions">
+          <button class="btn btn-primary" id="cfg-save-btn" data-i18n="cfgSave">Guardar cambios</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Control de previsualización — no forma parte de la UI real, solo para revisar estados del wireframe -->
+<div class="dev-toggle">
+  <span>Preview:</span>
+  <button data-preview="normal" class="active">Normal</button>
+  <button data-preview="loading">Cargando</button>
+  <button data-preview="empty">Vacío</button>
+  <button data-preview="error">Error</button>
+</div>
+
+<!-- ============ MODAL: CONFIRMAR CIERRE DE SESIÓN (ver components/profile-menu.md) ============ -->
+<div class="modal-overlay logout-modal" id="logout-modal-overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="logout-modal-title">
+    <button class="modal-close" id="logout-modal-close" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="logout-modal-title" id="logout-modal-title" data-i18n="logoutModalTitle">¿Cerrar sesión?</div>
+    <p class="logout-modal-desc" data-i18n="logoutModalDesc">Vas a tener que volver a iniciar sesión para acceder a tu cuenta.</p>
+    <div class="logout-modal-actions">
+      <button class="btn btn-outline" id="logout-cancel" data-i18n="logoutCancelBtn">Cancelar</button>
+      <button class="btn btn-primary" id="logout-confirm" data-i18n="logoutConfirmBtn">Cerrar sesión</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== DATA MOCK: notificaciones =====
+  const NOTIFICATIONS = [
+    { id:1, product:'envio', group:'hoy', unread:true, time:'hace 5 min',
+      text:'Tu transferencia a Sarah Chen por $500 fue confirmada' },
+    { id:2, product:'compra', group:'hoy', unread:true, time:'hace 12 min',
+      text:'El dólar subió 5% en la última hora' },
+    { id:3, product:'apuestas', group:'hoy', unread:true, time:'hace 20 min',
+      text:'Real Madrid ganó 2-1: tu predicción fue correcta' },
+    { id:4, product:'compra', group:'hoy', unread:false, time:'hace 1 h',
+      text:'El tipo de cambio alcanzó tu umbral configurado (12.50 Bs/USD)' },
+    { id:5, product:'envio', group:'hoy', unread:false, time:'hace 2 h',
+      text:'Recibiste una transferencia de $120 de Carlos Rojas' },
+    { id:6, product:'refiere', group:'hoy', unread:false, time:'hace 3 h',
+      text:'Ganaste 500 puntos por la actividad de tu referido' },
+    { id:7, product:'apuestas', group:'ayer', unread:true, time:'ayer',
+      text:'Boca Juniors juega en 30 minutos — equipo que seguís' },
+    { id:8, product:'envio', group:'ayer', unread:false, time:'ayer',
+      text:'Tu transferencia a BancoSol fue rechazada, revisá los datos' },
+    { id:9, product:'compra', group:'ayer', unread:false, time:'ayer',
+      text:'El dólar bajó 3% respecto a ayer' },
+    { id:10, product:'refiere', group:'ayer', unread:false, time:'ayer',
+      text:'Nueva promoción: 2x puntos este fin de semana en Compra USDT' },
+    { id:11, product:'apuestas', group:'semana', unread:false, time:'hace 2 días',
+      text:'Resultado de Liga Boliviana: tu predicción no acertó' },
+    { id:12, product:'envio', group:'semana', unread:false, time:'hace 2 días',
+      text:'Transferencia a Perú completada exitosamente' },
+    { id:13, product:'compra', group:'semana', unread:false, time:'hace 3 días',
+      text:'Alcanzaste el límite mensual de compra de USDT' },
+    { id:14, product:'refiere', group:'semana', unread:false, time:'hace 4 días',
+      text:'Subiste de nivel: ahora sos Plata' },
+  ];
+
+  const ICONS = {
+    envio: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 3l4 4-4 4M21 7H7M7 21l-4-4 4-4M3 17h14"/></svg>',
+    compra: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5h3.2a2 2 0 010 4H9m0 0h3.7a2 2 0 010 4H9.5M11 7v1.2M11 15.8V17"/></svg>',
+    apuestas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><circle cx="9" cy="9" r="1.4" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>',
+    refiere: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7c-1.8 0-4-1-4-3a2.5 2.5 0 015 0v3zm0 0c1.8 0 4-1 4-3a2.5 2.5 0 00-5 0v3z"/></svg>'
+  };
+  const ROUTES = { envio:'/transferencias', compra:'/compra-usdt', apuestas:'/apuestas-predicciones', refiere:'/refiere-y-gana' };
+  const GROUP_LABELS = { hoy:'Hoy', ayer:'Ayer', semana:'Esta semana' };
+
+  let currentFilter = 'todas';
+  let previewState = 'normal';
+
+  function unreadCountFor(filter){
+    return NOTIFICATIONS.filter(n => n.unread && (filter === 'todas' || n.product === filter)).length;
+  }
+
+  function updateChipCounts(){
+    document.querySelectorAll('.chip').forEach(chip=>{
+      const f = chip.dataset.filter;
+      const count = unreadCountFor(f);
+      let badge = chip.querySelector('.chip-count');
+      if(count > 0){
+        if(!badge){ badge = document.createElement('span'); badge.className='chip-count'; chip.appendChild(badge); }
+        badge.textContent = '· ' + count;
+      } else if(badge){ badge.remove(); }
+    });
+    const totalUnread = unreadCountFor('todas');
+    document.getElementById('mark-all-btn').disabled = totalUnread === 0;
+    const bellBadge = document.getElementById('sidebar-bell-badge');
+    bellBadge.textContent = totalUnread;
+    bellBadge.style.display = totalUnread > 0 ? 'block' : 'none';
+  }
+
+  function renderNotifications(){
+    const panel = document.getElementById('notif-panel');
+    panel.innerHTML = '';
+
+    if(previewState === 'loading'){
+      for(let i=0;i<4;i++){
+        panel.insertAdjacentHTML('beforeend', `
+          <div class="skel-item">
+            <div class="skel-box skel-icon"></div>
+            <div class="skel-lines">
+              <div class="skel-box skel-line" style="width:70%"></div>
+              <div class="skel-box skel-line" style="width:30%"></div>
+            </div>
+          </div>`);
+      }
+      return;
+    }
+
+    if(previewState === 'error'){
+      panel.insertAdjacentHTML('beforeend', `
+        <div class="error-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+          <p data-i18n="errorMsg">No pudimos cargar tus notificaciones.</p>
+          <button class="btn btn-outline btn-sm" id="retry-btn" data-i18n="retryBtn">Reintentar</button>
+        </div>`);
+      document.getElementById('retry-btn').addEventListener('click', ()=>{
+        setPreview('normal');
+      });
+      return;
+    }
+
+    const filtered = previewState === 'empty' ? [] : NOTIFICATIONS.filter(n => currentFilter === 'todas' || n.product === currentFilter);
+
+    if(filtered.length === 0){
+      panel.insertAdjacentHTML('beforeend', `
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          <p data-i18n="emptyMsg">No tenés notificaciones todavía</p>
+        </div>`);
+      return;
+    }
+
+    let lastGroup = null;
+    filtered.forEach(n=>{
+      if(n.group !== lastGroup){
+        panel.insertAdjacentHTML('beforeend', `<div class="notif-group-label">${GROUP_LABELS[n.group]}</div>`);
+        lastGroup = n.group;
+      }
+      panel.insertAdjacentHTML('beforeend', `
+        <div class="notif-item" tabindex="0" role="button" data-id="${n.id}">
+          <div class="notif-dot-col">${n.unread ? '<span class="notif-dot"></span>' : ''}</div>
+          <span class="notif-icon ${n.product}">${ICONS[n.product]}</span>
+          <div class="notif-body">
+            <div class="notif-text ${n.unread ? 'unread' : ''}">${n.text}</div>
+            <div class="notif-time">${n.time}</div>
+          </div>
+          <span class="notif-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>`);
+    });
+
+    panel.insertAdjacentHTML('beforeend', `
+      <div class="loadmore-row">
+        <button class="btn btn-outline btn-sm" id="loadmore-btn" data-i18n="loadMore">Cargar más</button>
+      </div>`);
+
+    panel.querySelectorAll('.notif-item').forEach(item=>{
+      const openIt = ()=>{
+        const n = NOTIFICATIONS.find(x => x.id === Number(item.dataset.id));
+        if(n){
+          n.unread = false;
+          updateChipCounts();
+          alert('Marca como leída y navega a ' + ROUTES[n.product] + ' (demo de wireframe)');
+          renderNotifications();
+        }
+      };
+      item.addEventListener('click', openIt);
+      item.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openIt(); } });
+    });
+
+    const loadMoreBtn = document.getElementById('loadmore-btn');
+    if(loadMoreBtn){
+      loadMoreBtn.addEventListener('click', ()=>{
+        alert('Carga el siguiente lote de notificaciones más antiguas (demo de wireframe)');
+      });
+    }
+  }
+
+  function setPreview(state){
+    previewState = state;
+    document.querySelectorAll('[data-preview]').forEach(b=>b.classList.toggle('active', b.dataset.preview===state));
+    renderNotifications();
+  }
+  document.querySelectorAll('[data-preview]').forEach(btn=>{
+    btn.addEventListener('click', ()=> setPreview(btn.dataset.preview));
+  });
+
+  // ===== FILTROS POR PRODUCTO =====
+  document.getElementById('chip-row').addEventListener('click', e=>{
+    const chip = e.target.closest('.chip');
+    if(!chip) return;
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    currentFilter = chip.dataset.filter;
+    renderNotifications();
+  });
+
+  // ===== MARCAR TODAS COMO LEÍDAS =====
+  document.getElementById('mark-all-btn').addEventListener('click', ()=>{
+    NOTIFICATIONS.forEach(n=>{
+      if(currentFilter === 'todas' || n.product === currentFilter) n.unread = false;
+    });
+    updateChipCounts();
+    renderNotifications();
+  });
+
+  updateChipCounts();
+  renderNotifications();
+
+  // ===== SEGMENTED CONTROL: Notificaciones / Configuración =====
+  const segNotif = document.getElementById('seg-notif');
+  const segConfig = document.getElementById('seg-config');
+  const viewNotif = document.getElementById('view-notif');
+  const viewConfig = document.getElementById('view-config');
+  function showView(which){
+    const isNotif = which === 'notif';
+    segNotif.classList.toggle('active', isNotif);
+    segConfig.classList.toggle('active', !isNotif);
+    segNotif.setAttribute('aria-selected', String(isNotif));
+    segConfig.setAttribute('aria-selected', String(!isNotif));
+    viewNotif.classList.toggle('visible', isNotif);
+    viewConfig.classList.toggle('visible', !isNotif);
+  }
+  segNotif.addEventListener('click', ()=>showView('notif'));
+  segConfig.addEventListener('click', ()=>showView('config'));
+
+  // ===== CONFIGURACIÓN: toggles que revelan sub-bloques =====
+  function bindToggleReveal(toggleId, blockId){
+    const toggle = document.getElementById(toggleId);
+    const block = document.getElementById(blockId);
+    if(!toggle || !block) return;
+    const sync = ()=> block.classList.toggle('visible', toggle.checked);
+    toggle.addEventListener('change', sync);
+    sync();
+  }
+  bindToggleReveal('cfg-envio-rate', 'cfg-envio-rate-block');
+  bindToggleReveal('cfg-compra-price', 'cfg-compra-price-block');
+
+  // ===== CONFIGURACIÓN: pills de dirección (Sube / Baja / Ambas) =====
+  document.getElementById('cfg-compra-direction').addEventListener('click', e=>{
+    const pill = e.target.closest('.radio-pill');
+    if(!pill) return;
+    document.querySelectorAll('#cfg-compra-direction .radio-pill').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+
+  // ===== CONFIGURACIÓN: equipos que sigo (chips) =====
+  let teams = ['Real Madrid', 'Boca Juniors'];
+  function renderTeams(){
+    const row = document.getElementById('team-chip-row');
+    row.innerHTML = teams.map((t,i)=>`
+      <span class="team-chip">${t}
+        <button data-i="${i}" aria-label="Quitar ${t}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </span>`).join('');
+    row.querySelectorAll('button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        teams.splice(Number(btn.dataset.i), 1);
+        renderTeams();
+      });
+    });
+  }
+  renderTeams();
+  document.getElementById('team-add-btn').addEventListener('click', ()=>{
+    const input = document.getElementById('team-input');
+    const val = input.value.trim();
+    if(val && !teams.includes(val)){
+      teams.push(val);
+      input.value = '';
+      renderTeams();
+    }
+  });
+  document.getElementById('team-input').addEventListener('keydown', e=>{
+    if(e.key === 'Enter'){ e.preventDefault(); document.getElementById('team-add-btn').click(); }
+  });
+
+  document.getElementById('cfg-save-btn').addEventListener('click', ()=>{
+    alert('Guarda la configuración de alertas (demo de wireframe)');
+  });
+
+  // ===== THEME SWITCHER =====
+  const root = document.documentElement;
+  document.querySelectorAll('[data-theme-btn]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      root.setAttribute('data-theme', btn.dataset.themeBtn);
+      document.querySelectorAll('[data-theme-btn]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // ===== SIDEBAR: colapsar (desktop) =====
+  const sidebar = document.getElementById('sidebar');
+  document.getElementById('collapse-btn').addEventListener('click', ()=>{
+    sidebar.classList.toggle('collapsed');
+  });
+
+  // ===== SIDEBAR: mobile drawer =====
+  const backdrop = document.getElementById('sidebar-backdrop');
+  document.getElementById('hamburger-btn').addEventListener('click', ()=>{
+    sidebar.classList.add('mobile-open');
+    backdrop.classList.add('visible');
+  });
+  backdrop.addEventListener('click', ()=>{
+    sidebar.classList.remove('mobile-open');
+    backdrop.classList.remove('visible');
+  });
+
+  // ===== SIDEBAR: navegación a otras pages (demo) =====
+  document.querySelectorAll('.nav-item[data-product]').forEach(item=>{
+    item.addEventListener('click', ()=> alert('Navega a ' + ROUTES[item.dataset.product] + ' (demo de wireframe)'));
+  });
+
+  // ===== SIDEBAR: accesibilidad por teclado =====
+  document.querySelectorAll('.sidebar [tabindex]').forEach(function(el){
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
+
+  // ===== SIDEBAR: menú de perfil — ver components/profile-menu.md =====
+  const profileTrigger = document.getElementById('profile-trigger');
+  const profileMenu = document.getElementById('profile-menu');
+
+  function openProfileMenu(){
+    profileMenu.classList.add('open');
+    profileTrigger.setAttribute('aria-expanded', 'true');
+    profileMenu.setAttribute('aria-hidden', 'false');
+    const firstItem = profileMenu.querySelector('.profile-menu-item');
+    if(firstItem) firstItem.focus();
+  }
+  function closeProfileMenu(returnFocus){
+    profileMenu.classList.remove('open');
+    profileTrigger.setAttribute('aria-expanded', 'false');
+    profileMenu.setAttribute('aria-hidden', 'true');
+    if(returnFocus) profileTrigger.focus();
+  }
+  function toggleProfileMenu(){
+    if(profileMenu.classList.contains('open')) closeProfileMenu(false);
+    else openProfileMenu();
+  }
+
+  profileTrigger.addEventListener('click', (e)=>{
+    if(e.target.closest('.profile-menu')) return;
+    toggleProfileMenu();
+  });
+  // Nota: Enter/Space sobre profileTrigger ya dispara .click() vía el listener
+  // genérico de accesibilidad de más arriba ('.sidebar [tabindex]') — no se
+  // agrega un keydown propio acá para no duplicar el toggle.
+  document.addEventListener('click', (e)=>{
+    if(profileMenu.classList.contains('open') && !profileTrigger.contains(e.target)){
+      closeProfileMenu(false);
+    }
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && profileMenu.classList.contains('open')){
+      closeProfileMenu(true);
+    }
+  });
+
+  document.getElementById('profile-menu-view').addEventListener('click', ()=>{
+    closeProfileMenu(false);
+  });
+
+  const logoutOverlay = document.getElementById('logout-modal-overlay');
+  const logoutConfirmBtn = document.getElementById('logout-confirm');
+  const logoutCancelBtn = document.getElementById('logout-cancel');
+  const logoutCloseBtn = document.getElementById('logout-modal-close');
+
+  function openLogoutModal(){
+    closeProfileMenu(false);
+    logoutOverlay.classList.add('open');
+    logoutCancelBtn.focus();
+  }
+  function closeLogoutModal(){
+    logoutOverlay.classList.remove('open');
+    profileTrigger.focus();
+  }
+
+  document.getElementById('profile-menu-logout').addEventListener('click', openLogoutModal);
+  logoutCancelBtn.addEventListener('click', closeLogoutModal);
+  logoutCloseBtn.addEventListener('click', closeLogoutModal);
+  logoutOverlay.addEventListener('click', (e)=>{ if(e.target === logoutOverlay) closeLogoutModal(); });
+  logoutConfirmBtn.addEventListener('click', ()=>{
+    // Placeholder: ejecutar logout real y redirigir a login.md/Homepage — ver PENDIENTES #3 de profile-menu.md
+    closeLogoutModal();
+  });
+
+  logoutOverlay.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){ closeLogoutModal(); return; }
+    if(e.key !== 'Tab') return;
+    const focusables = logoutOverlay.querySelectorAll('button');
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if(e.shiftKey && document.activeElement === first){
+      e.preventDefault(); last.focus();
+    } else if(!e.shiftKey && document.activeElement === last){
+      e.preventDefault(); first.focus();
+    }
+  });
+
+  // ===== IDIOMA (ES/EN) — mismo patrón que el resto del wireframe =====
+  let currentLang = 'es';
+  const en = {
+    tagline:'Instant, no detours.', grpDaily:'DAILY', navResumen:'Overview', navCuentas:'Accounts', navTx:'Transactions',
+    grpMoney:'MONEY', navTransfers:'Transfers', navCompraUsdt:'Buy USDT', navApuestas:'Bets & Predictions', navRefiere:'Refer & Earn',
+    grpAnalysis:'ANALYSIS', navAnalytics:'Analytics', soon:'SOON', navNotif:'Notifications', navSettings:'Settings', navHelp:'Help & Support',
+    navVerPerfil:'View profile', navCerrarSesion:'Log out',
+    logoutModalTitle:'Log out?', logoutModalDesc:"You'll need to sign in again to access your account.",
+    logoutCancelBtn:'Cancel', logoutConfirmBtn:'Log out',
+    toolbarTitle:'Notifications', h2:'Notifications', subtitle:'Everything happening in your transfers, USD purchases and bets, split by product.',
+    segNotif:'Notifications', segConfig:'Alert settings',
+    chipAll:'All', chipEnvio:'Money transfers', chipCompra:'Buy USD', chipApuestas:'Bets & Predictions', chipRefiere:'Refer & Earn',
+    markAll:'Mark all as read', loadMore:'Load more', emptyMsg:"You don't have any notifications yet",
+    errorMsg:"We couldn't load your notifications.", retryBtn:'Retry',
+    cfgEnvioTitle:'Money transfers', cfgEnvioSub:'Confirmations for your transfers and favorable exchange rate opportunities.',
+    cfgEnvioConfirmTitle:'Transfer confirmations', cfgEnvioConfirmSub:'Notify me when a transfer is sent, received or fails.',
+    cfgEnvioRateTitle:'Favorable exchange rate', cfgEnvioRateSub:'Notify me when the exchange rate rises above the threshold.',
+    cfgThresholdLabel:'Notify me if it rises more than', cfgDirectionLabel:'Direction', dirUp:'Up', dirDown:'Down', dirBoth:'Both',
+    cfgCompraTitle:'Buy USD', cfgCompraSub:'Dollar price alerts based on the threshold and direction you choose.',
+    cfgCompraPriceTitle:'Price alerts', cfgCompraPriceSub:'Notify me when the dollar price moves.',
+    cfgApuestasTitle:'Bets & Predictions', cfgApuestasSub:'Results of your bets and alerts for the teams you follow.',
+    cfgApuestasResultTitle:'Results of my bets', cfgApuestasResultSub:'Notify me when an event I took part in ends.',
+    cfgApuestasTeamsTitle:'Teams I follow', cfgApuestasTeamsSub:'Notify me when any of these teams play.',
+    teamPlaceholder:'E.g. Bolívar', teamAdd:'Add',
+    cfgRefiereTitle:'Refer & Earn', cfgRefiereSub:'Promotions and bonuses from the referral program.',
+    cfgRefierePromosTitle:'Promotions and bonuses', cfgRefierePromosSub:'Notify me about new promotions and level changes.',
+    cfgSave:'Save changes'
+  };
+  const es = {};
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ es[el.dataset.i18n] = el.textContent; });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{ es[el.dataset.i18nPlaceholder] = el.getAttribute('placeholder'); });
+
+  document.getElementById('lang-toggle').addEventListener('click', ()=>{
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    const dict = currentLang === 'es' ? es : en;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.dataset.i18n;
+      if(dict[key]) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+      const key = el.dataset.i18nPlaceholder;
+      if(dict[key]) el.setAttribute('placeholder', dict[key]);
+    });
+    document.documentElement.lang = currentLang;
+    document.getElementById('lang-toggle').textContent = currentLang === 'es' ? 'EN' : 'ES';
+    renderNotifications();
+  });
+</script>
+
+<script src="app-navigation.js"></script>
+<script src="ui-preferences.js"></script>
+</body>
+</html>

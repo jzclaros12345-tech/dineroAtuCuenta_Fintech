@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dineroAtucuenta — Ajustes</title>
+<style>
+  :root[data-theme="dark"]{
+    --bg:#0B0C10; --surface:#15171C; --surface-alt:#1B1E24; --border:#2A2D34;
+    --text-primary:#F5F5F7; --text-secondary:#A0A4AC; --text-muted:#6C7078;
+    --primary:#FF6B4A; --primary-hover:#FF8163;
+    --success:#2ED9A3; --error:#F25C5C; --warning:#E8B84B;
+    --badge-bg:#1F3D34; --badge-text:#2ED9A3;
+  }
+  :root[data-theme="light"]{
+    --bg:#FFFFFF; --surface:#F7F7F8; --surface-alt:#FFFFFF; --border:#E4E4E7;
+    --text-primary:#16181D; --text-secondary:#4B4F58; --text-muted:#8A8F98;
+    --primary:#FF6B4A; --primary-hover:#FF8163;
+    --success:#1FAE81; --error:#D93F3F; --warning:#C98A1E;
+    --badge-bg:#E3F5EE; --badge-text:#1FAE81;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text-primary);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.5; transition:background .2s, color .2s;
+  }
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3{font-weight:700; letter-spacing:-0.02em;}
+  p{color:var(--text-secondary);}
+  button{font-family:inherit;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:6px; font-weight:600; font-size:14px;
+    padding:12px 22px; border-radius:10px; border:1px solid transparent; cursor:pointer;
+    transition:background .15s, border-color .15s, opacity .15s;
+  }
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-primary:hover{background:var(--primary-hover);}
+  .btn-primary:disabled{background:var(--surface-alt); color:var(--text-muted); cursor:not-allowed; border:1px solid var(--border);}
+  .btn-outline{background:transparent; color:var(--text-primary); border-color:var(--border);}
+  .btn-outline:hover{border-color:var(--text-secondary);}
+  .btn-outline.alert{color:var(--error); border-color:rgba(242,92,92,.35);}
+  .btn-outline.alert:hover{border-color:var(--error);}
+  .btn-block{width:100%;}
+  .btn-sm{padding:8px 14px; font-size:12.5px;}
+  .card{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px;}
+  .eyebrow-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted);}
+
+  /* THEME/LANG SWITCHER */
+  .switcher{display:flex; align-items:center; gap:6px; border:1px solid var(--border); border-radius:999px; padding:4px;}
+  .switcher button{background:none; border:none; color:var(--text-secondary); font-size:12px; font-weight:600; padding:6px 10px; border-radius:999px; cursor:pointer; transition:.15s;}
+  .switcher button.active{background:var(--surface-alt); color:var(--text-primary);}
+  .lang-toggle{font-size:12px; font-weight:700; color:var(--text-secondary); border:1px solid var(--border); border-radius:999px; padding:6px 10px; cursor:pointer; background:none;}
+  .lang-toggle:hover{color:var(--text-primary);}
+
+  /* ===== APP SHELL: SIDEBAR + MAIN ===== */
+  .app-shell{display:flex; min-height:100vh;}
+  .sidebar{
+    width:252px; flex-shrink:0; background:var(--surface); border-right:1px solid var(--border);
+    display:flex; flex-direction:column; padding:20px 14px;
+    position:sticky; top:0; height:100vh; overflow-y:auto; transition:width .18s, transform .2s;
+    z-index:30;
+  }
+  .sidebar.collapsed{width:72px;}
+  .sidebar.collapsed .hide-on-collapse{display:none;}
+  .sidebar.collapsed .nav-item{justify-content:center;}
+  .sidebar.collapsed .sidebar-logo{justify-content:center;}
+  .sidebar.collapsed .profile-item{justify-content:center;}
+  .sidebar-logo{display:flex; align-items:center; gap:9px; padding:4px 8px 22px;}
+  .sidebar-logo .dot{width:26px; height:26px; border-radius:8px; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; font-weight:700; flex-shrink:0;}
+  .sidebar-logo .lt strong{display:block; font-size:14px; font-weight:700; white-space:nowrap;}
+  .sidebar-logo .lt span{display:block; font-size:10px; color:var(--text-muted); white-space:nowrap;}
+  .nav-group{margin-bottom:18px;}
+  .nav-group-label{display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.09em; color:var(--text-muted); padding:0 10px; margin-bottom:8px;}
+  .nav-item{
+    display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:8px; font-size:14px;
+    color:var(--text-secondary); cursor:pointer; margin-bottom:2px; white-space:nowrap;
+  }
+  .nav-item:hover{color:var(--text-primary); background:var(--surface-alt);}
+  .nav-item.active{background:var(--surface-alt); color:var(--text-primary);}
+  .nav-item.active .nav-icon{color:var(--primary);}
+  .nav-item.disabled{color:var(--text-muted); cursor:not-allowed;}
+  .nav-item.disabled:hover{background:none; color:var(--text-muted);}
+  .nav-icon{width:18px; height:18px; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+  .nav-icon svg{width:18px; height:18px;}
+  .soon-badge{margin-left:auto; font-size:9px; font-weight:700; text-transform:uppercase; color:var(--text-muted); background:var(--bg); border:1px solid var(--border); padding:2px 6px; border-radius:999px; flex-shrink:0;}
+  .sidebar-footer{margin-top:auto; padding-top:14px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:2px;}
+  .profile-item{display:flex; align-items:center; gap:10px; padding:9px; border-radius:8px; cursor:pointer; position:relative;}
+  .profile-item:hover{background:var(--surface-alt);}
+  .avatar{width:30px; height:30px; border-radius:999px; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0;}
+  .profile-info{display:flex; flex-direction:column; overflow:hidden;}
+  .profile-info strong{font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .profile-info span{font-size:11px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .sidebar-backdrop{display:none;}
+
+  /* profile menu dropdown (footer) */
+  .profile-menu{
+    display:none; position:absolute; left:0; right:0; bottom:calc(100% + 6px); width:220px;
+    background:var(--surface-alt); border:1px solid var(--border); border-radius:12px;
+    box-shadow:0 8px 24px rgba(0,0,0,.28); padding:6px; z-index:40;
+    animation:profile-menu-in .16s cubic-bezier(.2,.8,.2,1);
+  }
+  .profile-menu.open{display:block;}
+  @keyframes profile-menu-in{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+  .sidebar.collapsed .profile-menu{left:8px; width:220px;}
+  .profile-menu-header{display:flex; align-items:center; gap:10px; padding:8px 8px 10px;}
+  .profile-menu-header .profile-info strong{font-size:13px;}
+  .profile-menu-header .profile-info span{font-size:11px;}
+  .profile-menu-divider{height:1px; background:var(--border); margin:2px 4px 6px;}
+  .profile-menu button{
+    display:flex; align-items:center; gap:10px; width:100%; background:none; border:none; text-align:left;
+    padding:9px 8px; border-radius:8px; font-size:13.5px; color:var(--text-secondary); cursor:pointer; font-family:inherit;
+  }
+  .profile-menu button:hover, .profile-menu button:focus-visible{background:var(--surface); color:var(--text-primary); outline:none;}
+  .profile-menu button svg{width:16px; height:16px; flex-shrink:0;}
+
+  /* ===== MAIN / TOOLBAR ===== */
+  .main{flex:1; min-width:0;}
+  .toolbar{
+    position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px; border-bottom:1px solid var(--border);
+    background:color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter:blur(8px);
+  }
+  .toolbar-left{display:flex; align-items:center; gap:14px;}
+  .icon-btn{width:34px; height:34px; border-radius:8px; border:1px solid var(--border); background:var(--surface); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text-secondary); flex-shrink:0;}
+  .icon-btn:hover{color:var(--text-primary); border-color:var(--text-secondary);}
+  .icon-btn svg{width:16px; height:16px;}
+  .toolbar h1{font-size:15px; font-weight:700;}
+  .kbd{font-size:11px; color:var(--text-muted); border:1px solid var(--border); border-radius:6px; padding:6px 9px; display:flex; gap:4px; align-items:center; cursor:default;}
+  .toolbar-right{display:flex; align-items:center; gap:12px;}
+  .hamburger{display:none;}
+
+  /* ===== CONTENT ===== */
+  .content{padding:32px 28px 120px; max-width:1180px; margin:0 auto;}
+  .page-header{margin-bottom:28px;}
+  .page-header h2{font-size:26px; margin-bottom:6px;}
+  .page-header p{font-size:14px; max-width:640px;}
+
+  /* ===== SETTINGS LAYOUT ===== */
+  .settings-shell{display:flex; align-items:flex-start; gap:28px;}
+  .settings-subnav{width:230px; flex-shrink:0; display:flex; flex-direction:column; gap:2px; position:sticky; top:80px;}
+  .settings-subnav .nav-item{font-size:14px;}
+  .settings-panels{flex:1; min-width:0;}
+
+  /* mobile tab bar */
+  .settings-tabbar{display:none; gap:8px; overflow-x:auto; padding-bottom:4px; margin-bottom:20px;}
+  .settings-tabbar::-webkit-scrollbar{display:none;}
+  .settings-tabbar button{
+    flex-shrink:0; padding:9px 16px; border-radius:999px; font-size:13px; font-weight:600;
+    color:var(--text-secondary); background:var(--surface); border:1px solid var(--border); cursor:pointer; white-space:nowrap;
+  }
+  .settings-tabbar button.active{background:var(--surface-alt); color:var(--text-primary); border-color:var(--text-secondary);}
+
+  .settings-panel{display:none;}
+  .settings-panel.visible{display:block;}
+
+  .panel-section{margin-bottom:28px;}
+  .panel-section:last-child{margin-bottom:0;}
+  .panel-section-title{font-size:15px; font-weight:700; margin-bottom:4px;}
+  .panel-section-sub{font-size:12.5px; margin-bottom:16px;}
+
+  /* skeleton */
+  .skeleton{background:linear-gradient(90deg, var(--surface-alt) 25%, var(--border) 37%, var(--surface-alt) 63%); background-size:400% 100%; animation:skeleton-loading 1.4s ease infinite; border-radius:8px;}
+  @keyframes skeleton-loading{ 0%{background-position:100% 50%;} 100%{background-position:0 50%;} }
+
+  /* ===== PROFILE SECTION ===== */
+  .avatar-edit-wrap{display:flex; align-items:center; gap:18px; margin-bottom:24px;}
+  .avatar-lg{
+    width:72px; height:72px; border-radius:999px; background:var(--primary); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; flex-shrink:0;
+    position:relative; cursor:pointer; border:none; overflow:hidden;
+  }
+  .avatar-lg .edit-badge{
+    position:absolute; bottom:0; right:0; width:24px; height:24px; border-radius:999px; background:var(--surface-alt);
+    border:2px solid var(--surface); display:flex; align-items:center; justify-content:center; color:var(--text-primary);
+  }
+  .avatar-lg .edit-badge svg{width:12px; height:12px;}
+  .avatar-lg img{width:100%; height:100%; object-fit:cover;}
+  .avatar-meta strong{display:block; font-size:15px; margin-bottom:2px;}
+  .avatar-meta span{font-size:12.5px; color:var(--text-muted);}
+
+  .field-group{display:flex; flex-direction:column; gap:16px; max-width:420px; margin-bottom:20px;}
+  .field label{display:block; font-size:12px; color:var(--text-muted); margin-bottom:7px; font-weight:600;}
+  .field input{
+    width:100%; background:var(--surface-alt); border:1px solid var(--border); border-radius:10px;
+    padding:11px 14px; font-size:14px; color:var(--text-primary); outline:none; transition:border-color .15s, box-shadow .15s;
+  }
+  .field input:focus{border-color:var(--primary); box-shadow:0 0 0 3px rgba(255,107,74,.12);}
+  .field-hint{font-size:11.5px; color:var(--text-muted); margin-top:6px;}
+
+  /* ===== SECURITY BLOCKS ===== */
+  .sec-block{border-top:1px solid var(--border); padding:20px 0;}
+  .sec-block:first-of-type{border-top:none; padding-top:0;}
+  .sec-block-head{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .sec-block-title{font-size:14.5px; font-weight:700; margin-bottom:4px;}
+  .sec-block-desc{font-size:12.5px; color:var(--text-muted); max-width:440px;}
+  .status-pill{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:3px 10px; border-radius:999px; display:inline-block; margin-top:8px;}
+  .status-pill.on{background:var(--badge-bg); color:var(--badge-text);}
+  .status-pill.off{background:var(--surface-alt); color:var(--text-muted); border:1px solid var(--border);}
+
+  /* switch */
+  .switch{position:relative; display:inline-block; width:42px; height:24px; flex-shrink:0;}
+  .switch input{opacity:0; width:0; height:0;}
+  .switch-track{position:absolute; inset:0; background:var(--surface-alt); border:1px solid var(--border); border-radius:999px; cursor:pointer; transition:.2s;}
+  .switch-track::before{content:""; position:absolute; width:16px; height:16px; left:3px; top:3px; background:var(--text-muted); border-radius:999px; transition:.2s;}
+  .switch input:checked + .switch-track{background:rgba(255,107,74,.18); border-color:var(--primary);}
+  .switch input:checked + .switch-track::before{transform:translateX(18px); background:var(--primary);}
+  .switch input:focus-visible + .switch-track{box-shadow:0 0 0 3px rgba(255,107,74,.2);}
+
+  .session-list{display:flex; flex-direction:column; gap:10px; margin-top:14px;}
+  .session-row{display:flex; align-items:center; gap:14px; background:var(--surface-alt); border:1px solid var(--border); border-radius:12px; padding:13px 16px;}
+  .session-icon{width:36px; height:36px; border-radius:10px; background:var(--bg); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--text-secondary); flex-shrink:0;}
+  .session-icon svg{width:17px; height:17px;}
+  .session-main{flex:1; min-width:0;}
+  .session-main strong{display:block; font-size:13.5px; margin-bottom:2px;}
+  .session-main span{font-size:11.5px; color:var(--text-muted);}
+  .session-current-tag{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--badge-text); background:var(--badge-bg); padding:2px 8px; border-radius:999px; margin-left:8px;}
+
+  /* ===== NOTIFICATIONS PANEL ===== */
+  .notif-row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0; border-top:1px solid var(--border); flex-wrap:wrap;}
+  .notif-row:first-of-type{border-top:none; padding-top:0;}
+  .notif-row-label strong{display:block; font-size:14px; margin-bottom:2px;}
+  .notif-row-label span{font-size:12px; color:var(--text-muted);}
+  .notif-channels{display:flex; align-items:center; gap:22px; flex-shrink:0;}
+  .notif-channel{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--text-secondary); font-weight:600;}
+
+  .cta-card{
+    display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--surface-alt);
+    border:1px solid var(--border); border-radius:12px; padding:16px 18px; margin-top:20px; cursor:pointer; transition:border-color .15s;
+  }
+  .cta-card:hover{border-color:var(--text-secondary);}
+  .cta-card-text strong{display:block; font-size:13.5px; margin-bottom:2px;}
+  .cta-card-text span{font-size:12px; color:var(--text-muted);}
+  .cta-card-arrow{color:var(--primary); flex-shrink:0; display:flex;}
+  .cta-card-arrow svg{width:16px; height:16px;}
+
+  /* ===== LINKED ACCOUNTS ===== */
+  .linked-list{display:flex; flex-direction:column; gap:10px; margin-bottom:20px;}
+  .linked-row{display:flex; align-items:center; gap:14px; background:var(--surface-alt); border:1px solid var(--border); border-radius:12px; padding:13px 16px;}
+  .linked-icon{width:36px; height:36px; border-radius:10px; background:var(--bg); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--primary); flex-shrink:0;}
+  .linked-icon svg{width:17px; height:17px;}
+  .linked-main{flex:1; min-width:0;}
+  .linked-main strong{display:block; font-size:13.5px; margin-bottom:2px;}
+  .linked-main span{font-size:11.5px; color:var(--text-muted);}
+  .linked-actions{display:flex; gap:10px; margin-top:6px;}
+
+  /* ===== SAVE BAR ===== */
+  .save-bar{display:flex; align-items:center; gap:12px; margin-top:24px;}
+  .save-bar .saved-hint{font-size:12px; color:var(--text-muted);}
+
+  /* ===== MODAL ===== */
+  .modal-overlay{
+    display:none; position:fixed; inset:0; z-index:60; background:rgba(0,0,0,.55);
+    align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--surface); border:1px solid var(--border); border-radius:16px; width:100%; max-width:420px;
+    max-height:90vh; overflow-y:auto; padding:24px; position:relative;
+    animation:panel-in .3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes panel-in{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  .modal-close{position:absolute; top:16px; right:16px; width:30px; height:30px; border-radius:8px; border:1px solid var(--border); background:var(--surface-alt); color:var(--text-secondary); display:flex; align-items:center; justify-content:center; cursor:pointer;}
+  .modal-close:hover{color:var(--text-primary);}
+  .modal-close svg{width:14px; height:14px;}
+  .modal-icon{width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;}
+  .modal-icon.alert{background:rgba(242,92,92,.12); color:var(--error);}
+  .modal-icon.info{background:rgba(255,107,74,.12); color:var(--primary);}
+  .modal-icon svg{width:20px; height:20px;}
+  .modal h3{font-size:17px; margin-bottom:8px;}
+  .modal p.desc{font-size:13px; margin-bottom:20px;}
+  .modal-actions{display:flex; gap:10px; margin-top:6px;}
+  .modal-actions .btn{flex:1;}
+  .modal .field-group{margin-bottom:6px;}
+
+  /* ===== TOAST ===== */
+  .toast{
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); opacity:0; pointer-events:none;
+    background:var(--surface-alt); border:1px solid var(--border); color:var(--text-primary); font-size:13px; font-weight:600;
+    padding:12px 20px; border-radius:10px; display:flex; align-items:center; gap:8px; z-index:80; transition:opacity .2s, transform .2s;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+  }
+  .toast.visible{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto;}
+  .toast svg{width:15px; height:15px; color:var(--success); flex-shrink:0;}
+
+  /* ===== REDUCED MOTION ===== */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1024px){
+    .sidebar{position:fixed; top:0; left:0;}
+  }
+  @media (max-width:900px){
+    .sidebar{transform:translateX(-100%);}
+    .sidebar.mobile-open{transform:translateX(0); box-shadow:20px 0 60px rgba(0,0,0,.4);}
+    .sidebar-backdrop{display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:25;}
+    .sidebar-backdrop.visible{display:block;}
+    .hamburger{display:flex;}
+    .content{padding:24px 16px 100px;}
+    .toolbar{padding:14px 16px;}
+    .kbd{display:none;}
+    .settings-subnav{display:none;}
+    .settings-tabbar{display:flex;}
+  }
+  @media (max-width:640px){
+    .page-header h2{font-size:22px;}
+    .modal{max-width:none; width:100%; max-height:100vh; height:100vh; border-radius:0; position:fixed; inset:0;}
+    .modal-overlay{padding:0;}
+    .avatar-edit-wrap{flex-wrap:wrap;}
+    .notif-row{flex-direction:column; align-items:flex-start;}
+    .notif-channels{width:100%; justify-content:flex-start;}
+    .sec-block-head{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ============ SIDEBAR (ver components/sidebar.md) ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="dot">d</span>
+      <div class="lt hide-on-collapse">
+        <strong>dineroAtucuenta</strong>
+        <span data-i18n="tagline">Al instante, sin vueltas.</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpDaily">DIARIO</span>
+        <div class="nav-item" title="Resumen">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navResumen">Resumen</span>
+        </div>
+        <div class="nav-item" title="Cuentas">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navCuentas">Cuentas</span>
+        </div>
+        <div class="nav-item" title="Transacciones">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 7h13M7 7l3-3M7 7l3 3M17 17H4M17 17l-3-3M17 17l-3 3"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navTx">Transacciones</span>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpMoney">DINERO</span>
+        <div class="nav-item" title="Transferencias">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 3l4 4-4 4M21 7H7M7 21l-4-4 4-4M3 17h14"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navTransfers">Transferencias</span>
+        </div>
+        <div class="nav-item" title="Compra USDT">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5a2.5 2.5 0 012.5-2h1a2.5 2.5 0 010 5h-1a2.5 2.5 0 000 5h1a2.5 2.5 0 002.5-2"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navBuyUsdt">Compra USDT</span>
+        </div>
+        <div class="nav-item" title="Apuestas y Predicciones">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navBets">Apuestas y Predicciones</span>
+        </div>
+        <div class="nav-item" title="Refiere y Gana">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="M3 13h18M12 9v12M12 9c-1.8 0-4-1-4-3a2.2 2.2 0 014-1.2c0-1.4 2.2-2.4 4-1.2 0 2-2.2 3-4 3zM7 4.8a2.2 2.2 0 013 0"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navRefer">Refiere y Gana</span>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpAnalysis">ANÁLISIS</span>
+        <div class="nav-item disabled" title="Analíticas — Próximamente">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navAnalytics">Analíticas</span>
+          <span class="soon-badge hide-on-collapse" data-i18n="soon">PRÓX.</span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="nav-item" title="Notificaciones">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></span>
+        <span class="hide-on-collapse" data-i18n="navNotif">Notificaciones</span>
+      </div>
+      <div class="nav-item active" title="Ajustes">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.2a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.2a1.7 1.7 0 00-1.5 1z"/></svg></span>
+        <span class="hide-on-collapse" data-i18n="navSettings">Ajustes</span>
+      </div>
+      <div class="nav-item" title="Ayuda y Soporte">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.5-2 1.8-2 3.2M12 17.2v.1"/></svg></span>
+        <span class="hide-on-collapse" data-i18n="navHelp">Ayuda y Soporte</span>
+      </div>
+      <div class="profile-item" id="profile-item" title="Cuenta" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu">
+        <span class="avatar">AL</span>
+        <div class="profile-info hide-on-collapse">
+          <strong>Albert Almanz</strong>
+          <span>albert@fintech.com</span>
+        </div>
+        <span class="nav-icon hide-on-collapse" style="margin-left:auto; width:14px; height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 15l6-6 6 6"/></svg></span>
+        <div class="profile-menu" id="profile-menu" role="menu" aria-hidden="true">
+          <div class="profile-menu-header">
+            <span class="avatar">AL</span>
+            <div class="profile-info">
+              <strong>Albert Almanz</strong>
+              <span>albert@fintech.com</span>
+            </div>
+          </div>
+          <div class="profile-menu-divider"></div>
+          <button type="button" id="profile-menu-view" role="menuitem" data-i18n="menuVerPerfil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+            Ver perfil
+          </button>
+          <button type="button" id="profile-menu-logout" role="menuitem" data-i18n="menuCerrarSesion">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="icon-btn hamburger" id="hamburger-btn" aria-label="Abrir menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <button class="icon-btn" id="collapse-btn" aria-label="Colapsar sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+        </button>
+        <h1 data-i18n="toolbarTitle">Ajustes</h1>
+      </div>
+      <div class="toolbar-right">
+        <div class="kbd">⌘K</div>
+        <div class="switcher" id="theme-switcher">
+          <button data-theme-btn="dark" class="active">◐</button>
+          <button data-theme-btn="light">☀</button>
+        </div>
+        <button class="lang-toggle" id="lang-toggle">EN</button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="page-header">
+        <h2 data-i18n="pageTitle">Ajustes</h2>
+        <p data-i18n="pageSubtitle">Gestioná tu perfil, seguridad, notificaciones y cuentas vinculadas.</p>
+      </div>
+
+      <!-- mobile tab bar -->
+      <div class="settings-tabbar" id="settings-tabbar">
+        <button class="active" data-target="perfil" data-i18n="tabPerfil">Perfil</button>
+        <button data-target="seguridad" data-i18n="tabSeguridad">Seguridad</button>
+        <button data-target="notificaciones" data-i18n="tabNotificaciones">Notificaciones</button>
+        <button data-target="cuentas" data-i18n="tabCuentas">Cuentas vinculadas</button>
+      </div>
+
+      <div class="settings-shell">
+        <!-- desktop sub-nav -->
+        <nav class="settings-subnav" id="settings-subnav">
+          <div class="nav-item active" data-target="perfil">
+            <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></span>
+            <span data-i18n="tabPerfil">Perfil</span>
+          </div>
+          <div class="nav-item" data-target="seguridad">
+            <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span>
+            <span data-i18n="tabSeguridad">Seguridad</span>
+          </div>
+          <div class="nav-item" data-target="notificaciones">
+            <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></span>
+            <span data-i18n="tabNotificaciones">Preferencias de notificaciones</span>
+          </div>
+          <div class="nav-item" data-target="cuentas">
+            <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+            <span data-i18n="tabCuentas">Cuentas vinculadas</span>
+          </div>
+        </nav>
+
+        <div class="settings-panels">
+
+          <!-- ===================== PERFIL ===================== -->
+          <section class="settings-panel visible" id="panel-perfil">
+            <div class="card">
+              <div class="avatar-edit-wrap">
+                <button type="button" class="avatar-lg" id="avatar-edit-btn" aria-label="Cambiar foto de perfil">
+                  <span id="avatar-lg-initials">AL</span>
+                  <img id="avatar-lg-img" style="display:none;" alt="Avatar">
+                  <span class="edit-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>
+                  </span>
+                </button>
+                <input type="file" id="avatar-file-input" accept="image/*" style="display:none;">
+                <div class="avatar-meta">
+                  <strong data-i18n="avatarChangeTitle">Foto de perfil</strong>
+                  <span data-i18n="avatarChangeHint">Click para subir una imagen nueva</span>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <div class="field">
+                  <label data-i18n="fieldNombre">Nombre</label>
+                  <input type="text" id="input-nombre" value="Albert Almanz">
+                </div>
+                <div class="field">
+                  <label data-i18n="fieldEmail">Email</label>
+                  <input type="email" id="input-email" value="albert@fintech.com">
+                  <div class="field-hint" data-i18n="emailHint">Cambiar tu email puede requerir reverificación por correo.</div>
+                </div>
+              </div>
+
+              <div class="save-bar">
+                <button class="btn btn-primary" id="save-perfil" disabled data-i18n="btnGuardar">Guardar cambios</button>
+                <span class="saved-hint hide-on-collapse" id="perfil-saved-hint"></span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===================== SEGURIDAD ===================== -->
+          <section class="settings-panel" id="panel-seguridad">
+            <div class="card">
+
+              <div class="sec-block">
+                <div class="sec-block-head">
+                  <div>
+                    <div class="sec-block-title" data-i18n="secPasswordTitle">Contraseña</div>
+                    <div class="sec-block-desc" data-i18n="secPasswordDesc">Actualizá periódicamente tu contraseña para mantener tu cuenta segura.</div>
+                  </div>
+                  <button class="btn btn-outline btn-sm" id="btn-change-password" data-i18n="btnChangePassword">Cambiar contraseña</button>
+                </div>
+              </div>
+
+              <div class="sec-block">
+                <div class="sec-block-head">
+                  <div>
+                    <div class="sec-block-title" data-i18n="sec2faTitle">Verificación en dos pasos (2FA)</div>
+                    <div class="sec-block-desc" data-i18n="sec2faDesc">Agregá una capa extra de seguridad al iniciar sesión.</div>
+                    <span class="status-pill off" id="status-2fa" data-i18n="statusOff">Desactivado</span>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="toggle-2fa">
+                    <span class="switch-track"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="sec-block">
+                <div class="sec-block-head">
+                  <div>
+                    <div class="sec-block-title" data-i18n="secSessionsTitle">Sesiones activas</div>
+                    <div class="sec-block-desc" data-i18n="secSessionsDesc">Dispositivos donde iniciaste sesión actualmente.</div>
+                  </div>
+                  <button class="btn btn-outline btn-sm" id="btn-close-all-sessions" data-i18n="btnCloseAllSessions">Cerrar todas las demás sesiones</button>
+                </div>
+                <div class="session-list" id="session-list">
+                  <div class="session-row" data-session="current">
+                    <span class="session-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg></span>
+                    <div class="session-main">
+                      <strong data-i18n="sessionCurrentDevice">iPhone 15 — Cochabamba, Bolivia<span class="session-current-tag" data-i18n="sessionCurrentTag">Esta sesión</span></strong>
+                      <span data-i18n="sessionCurrentActivity">Última actividad: ahora</span>
+                    </div>
+                  </div>
+                  <div class="session-row" data-session="other-1">
+                    <span class="session-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
+                    <div class="session-main">
+                      <strong data-i18n="sessionOtherDevice1">MacBook Pro — Santa Cruz, Bolivia</strong>
+                      <span data-i18n="sessionOtherActivity1">Última actividad: hace 2 días</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm close-session-btn" data-i18n="btnCloseSession">Cerrar sesión</button>
+                  </div>
+                  <div class="session-row" data-session="other-2">
+                    <span class="session-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg></span>
+                    <div class="session-main">
+                      <strong data-i18n="sessionOtherDevice2">Android — La Paz, Bolivia</strong>
+                      <span data-i18n="sessionOtherActivity2">Última actividad: hace 5 días</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm close-session-btn" data-i18n="btnCloseSession">Cerrar sesión</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sec-block">
+                <div class="sec-block-head">
+                  <div>
+                    <div class="sec-block-title" data-i18n="secLogoutTitle">Cerrar sesión</div>
+                    <div class="sec-block-desc" data-i18n="secLogoutDesc">Vas a cerrar la sesión actual en este dispositivo.</div>
+                  </div>
+                  <button class="btn btn-outline alert btn-sm" id="btn-logout" data-i18n="btnLogout">Cerrar sesión</button>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ===================== NOTIFICACIONES ===================== -->
+          <section class="settings-panel" id="panel-notificaciones">
+            <div class="card">
+              <div class="panel-section-title" data-i18n="notifSectionTitle">Preferencias generales</div>
+              <div class="panel-section-sub" data-i18n="notifSectionSub">Qué tipo de contenido recibir y por qué canal, independientemente del producto.</div>
+
+              <div id="notif-list">
+                <div class="notif-row" data-notif="actividad">
+                  <div class="notif-row-label">
+                    <strong data-i18n="notifActivityTitle">Actividad de mi cuenta</strong>
+                    <span data-i18n="notifActivityDesc">Inicios de sesión, cambios de seguridad, movimientos importantes.</span>
+                  </div>
+                  <div class="notif-channels">
+                    <label class="notif-channel"><label class="switch"><input type="checkbox" class="notif-toggle" checked><span class="switch-track"></span></label> <span data-i18n="channelPush">Push</span></label>
+                    <label class="notif-channel"><label class="switch"><input type="checkbox" class="notif-toggle" checked><span class="switch-track"></span></label> <span data-i18n="channelEmail">Email</span></label>
+                  </div>
+                </div>
+                <div class="notif-row" data-notif="promos">
+                  <div class="notif-row-label">
+                    <strong data-i18n="notifPromoTitle">Promociones y novedades</strong>
+                    <span data-i18n="notifPromoDesc">Lanzamientos, beneficios y novedades de la plataforma.</span>
+                  </div>
+                  <div class="notif-channels">
+                    <label class="notif-channel"><label class="switch"><input type="checkbox" class="notif-toggle" checked><span class="switch-track"></span></label> <span data-i18n="channelPush">Push</span></label>
+                    <label class="notif-channel"><label class="switch"><input type="checkbox" class="notif-toggle"><span class="switch-track"></span></label> <span data-i18n="channelEmail">Email</span></label>
+                  </div>
+                </div>
+              </div>
+
+              <a class="cta-card" href="notifications.html" id="cta-notifications">
+                <div class="cta-card-text">
+                  <strong data-i18n="ctaAlertsTitle">Configurar alertas por producto →</strong>
+                  <span data-i18n="ctaAlertsDesc">Compra USD, Apuestas y Predicciones, Refiere y Gana.</span>
+                </div>
+                <span class="cta-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span>
+              </a>
+
+              <div class="save-bar">
+                <button class="btn btn-primary" id="save-notif" disabled data-i18n="btnGuardar">Guardar cambios</button>
+                <span class="saved-hint hide-on-collapse" id="notif-saved-hint"></span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===================== CUENTAS VINCULADAS ===================== -->
+          <section class="settings-panel" id="panel-cuentas">
+            <div class="card">
+              <div class="panel-section-title" data-i18n="linkedSectionTitle">Cuentas y billeteras vinculadas</div>
+              <div class="panel-section-sub" data-i18n="linkedSectionSub">Resumen corto — administrá el detalle completo desde Cuentas.</div>
+
+              <div class="linked-list">
+                <div class="linked-row">
+                  <span class="linked-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+                  <div class="linked-main">
+                    <strong data-i18n="linkedBank1">Banco Unión — Cuenta corriente</strong>
+                    <span>····4821</span>
+                  </div>
+                </div>
+                <div class="linked-row">
+                  <span class="linked-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5a2.5 2.5 0 012.5-2h1a2.5 2.5 0 010 5h-1a2.5 2.5 0 000 5h1a2.5 2.5 0 002.5-2"/></svg></span>
+                  <div class="linked-main">
+                    <strong data-i18n="linkedWallet1">Billetera USDT — TRC20</strong>
+                    <span>····9f3a</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="linked-actions">
+                <a class="btn btn-outline btn-sm" href="cuentas-billeteras.html" data-i18n="btnVerTodas">Ver todas mis cuentas</a>
+                <button class="btn btn-outline btn-sm" id="btn-link-account" data-i18n="btnVincular">Vincular nueva cuenta</button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL (compartido — patrón .modal-overlay) ============ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <button class="modal-close" id="modal-close-btn" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <!-- panel: cambiar contraseña -->
+    <div class="modal-step" id="modal-password" style="display:none;">
+      <div class="modal-icon info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      </div>
+      <h3 data-i18n="modalPasswordTitle">Cambiar contraseña</h3>
+      <p class="desc" data-i18n="modalPasswordDesc">Ingresá tu contraseña actual y elegí una nueva.</p>
+      <div class="field-group">
+        <div class="field">
+          <label data-i18n="fieldCurrentPassword">Contraseña actual</label>
+          <input type="password">
+        </div>
+        <div class="field">
+          <label data-i18n="fieldNewPassword">Nueva contraseña</label>
+          <input type="password">
+        </div>
+        <div class="field">
+          <label data-i18n="fieldConfirmPassword">Confirmar nueva contraseña</label>
+          <input type="password">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" data-modal-cancel data-i18n="btnCancelar">Cancelar</button>
+        <button class="btn btn-primary" id="confirm-password-change" data-i18n="btnGuardarPassword">Guardar contraseña</button>
+      </div>
+    </div>
+
+    <!-- panel: confirmar cierre de sesión actual -->
+    <div class="modal-step" id="modal-logout" style="display:none;">
+      <div class="modal-icon alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      </div>
+      <h3 data-i18n="modalLogoutTitle">¿Cerrar sesión?</h3>
+      <p class="desc" data-i18n="modalLogoutDesc">Vas a cerrar tu sesión actual en este dispositivo. Vas a tener que volver a ingresar tus datos para acceder.</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" data-modal-cancel data-i18n="btnCancelar">Cancelar</button>
+        <button class="btn btn-primary" id="confirm-logout" data-i18n="btnConfirmLogout">Cerrar sesión</button>
+      </div>
+    </div>
+
+    <!-- panel: confirmar cierre de todas las demás sesiones -->
+    <div class="modal-step" id="modal-close-all" style="display:none;">
+      <div class="modal-icon alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      </div>
+      <h3 data-i18n="modalCloseAllTitle">¿Cerrar todas las demás sesiones?</h3>
+      <p class="desc" data-i18n="modalCloseAllDesc">Se cerrará la sesión en todos los demás dispositivos, excepto en este.</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" data-modal-cancel data-i18n="btnCancelar">Cancelar</button>
+        <button class="btn btn-primary" id="confirm-close-all" data-i18n="btnConfirmCloseAll">Cerrar sesiones</button>
+      </div>
+    </div>
+
+    <!-- panel: confirmar desactivar 2FA -->
+    <div class="modal-step" id="modal-2fa-off" style="display:none;">
+      <div class="modal-icon alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      </div>
+      <h3 data-i18n="modal2faOffTitle">¿Desactivar verificación en dos pasos?</h3>
+      <p class="desc" data-i18n="modal2faOffDesc">Tu cuenta quedará protegida solo con tu contraseña.</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" data-modal-cancel data-i18n="btnCancelar">Cancelar</button>
+        <button class="btn btn-primary" id="confirm-2fa-off" data-i18n="btnConfirm2faOff">Desactivar</button>
+      </div>
+    </div>
+
+    <!-- panel: configurar 2FA (al activar) -->
+    <div class="modal-step" id="modal-2fa-setup" style="display:none;">
+      <div class="modal-icon info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      </div>
+      <h3 data-i18n="modal2faSetupTitle">Activar verificación en dos pasos</h3>
+      <p class="desc" data-i18n="modal2faSetupDesc">Elegí cómo querés recibir el código de verificación cada vez que inicies sesión.</p>
+      <div class="field-group">
+        <div class="field">
+          <label data-i18n="field2faMethod">Método</label>
+          <input type="text" value="App autenticadora" disabled>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" data-modal-cancel data-i18n="btnCancelar">Cancelar</button>
+        <button class="btn btn-primary" id="confirm-2fa-on" data-i18n="btnActivar">Activar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+  <span id="toast-text" data-i18n="toastSaved">Cambios guardados</span>
+</div>
+
+<script>
+  // ===== THEME SWITCHER =====
+  const root = document.documentElement;
+  document.querySelectorAll('[data-theme-btn]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      root.setAttribute('data-theme', btn.dataset.themeBtn);
+      document.querySelectorAll('[data-theme-btn]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // ===== SIDEBAR: colapsar (desktop) =====
+  const sidebar = document.getElementById('sidebar');
+  document.getElementById('collapse-btn').addEventListener('click', ()=>{
+    sidebar.classList.toggle('collapsed');
+  });
+
+  // ===== SIDEBAR: mobile drawer =====
+  const backdrop = document.getElementById('sidebar-backdrop');
+  document.getElementById('hamburger-btn').addEventListener('click', ()=>{
+    sidebar.classList.add('mobile-open');
+    backdrop.classList.add('visible');
+  });
+  backdrop.addEventListener('click', ()=>{
+    sidebar.classList.remove('mobile-open');
+    backdrop.classList.remove('visible');
+  });
+
+  // ===== PROFILE MENU (footer) =====
+  const profileItem = document.getElementById('profile-item');
+  const profileMenu = document.getElementById('profile-menu');
+
+  function openProfileMenu(){
+    profileMenu.classList.add('open');
+    profileItem.setAttribute('aria-expanded', 'true');
+    profileMenu.setAttribute('aria-hidden', 'false');
+    const firstItem = profileMenu.querySelector('button[role="menuitem"]');
+    if(firstItem) firstItem.focus();
+  }
+  function closeProfileMenu(returnFocus){
+    profileMenu.classList.remove('open');
+    profileItem.setAttribute('aria-expanded', 'false');
+    profileMenu.setAttribute('aria-hidden', 'true');
+    if(returnFocus) profileItem.focus();
+  }
+  profileItem.addEventListener('click', (e)=>{
+    if(e.target.closest('.profile-menu')) return;
+    e.stopPropagation();
+    if(profileMenu.classList.contains('open')) closeProfileMenu(false);
+    else openProfileMenu();
+  });
+  profileItem.addEventListener('keydown', (e)=>{
+    if(e.target !== profileItem) return;
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      if(profileMenu.classList.contains('open')) closeProfileMenu(false);
+      else openProfileMenu();
+    }
+  });
+  document.addEventListener('click', ()=> closeProfileMenu(false));
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && profileMenu.classList.contains('open')) closeProfileMenu(true);
+  });
+  document.getElementById('profile-menu-view').addEventListener('click', (e)=>{
+    e.stopPropagation();
+    closeProfileMenu(false);
+    switchPanel('perfil');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  document.getElementById('profile-menu-logout').addEventListener('click', (e)=>{
+    e.stopPropagation();
+    closeProfileMenu(false);
+    openModal('modal-logout', profileItem);
+  });
+
+  // ===== TABS / SUB-NAV (con aviso de cambios sin guardar) =====
+  let dirty = { perfil:false, notificaciones:false };
+
+  function switchPanel(target){
+    document.querySelectorAll('.settings-panel').forEach(p=>p.classList.remove('visible'));
+    document.getElementById('panel-' + target).classList.add('visible');
+    document.querySelectorAll('#settings-subnav .nav-item').forEach(i=>i.classList.toggle('active', i.dataset.target === target));
+    document.querySelectorAll('#settings-tabbar button').forEach(b=>b.classList.toggle('active', b.dataset.target === target));
+  }
+
+  function requestSwitchPanel(target, currentTarget){
+    if (dirty[currentTarget]) {
+      const lang = currentLang === 'en'
+        ? 'You have unsaved changes. Discard them and continue?'
+        : 'Tenés cambios sin guardar. ¿Descartarlos y continuar?';
+      if (!window.confirm(lang)) return;
+      dirty[currentTarget] = false;
+    }
+    switchPanel(target);
+  }
+
+  function getActivePanel(){
+    const active = document.querySelector('.settings-panel.visible');
+    return active ? active.id.replace('panel-', '') : 'perfil';
+  }
+
+  document.querySelectorAll('#settings-subnav .nav-item').forEach(item=>{
+    item.addEventListener('click', ()=> requestSwitchPanel(item.dataset.target, getActivePanel()));
+  });
+  document.querySelectorAll('#settings-tabbar button').forEach(btn=>{
+    btn.addEventListener('click', ()=> requestSwitchPanel(btn.dataset.target, getActivePanel()));
+  });
+
+  // ===== PERFIL: detectar cambios / guardar =====
+  const inputNombre = document.getElementById('input-nombre');
+  const inputEmail = document.getElementById('input-email');
+  const savePerfilBtn = document.getElementById('save-perfil');
+  [inputNombre, inputEmail].forEach(inp=>{
+    inp.addEventListener('input', ()=>{
+      dirty.perfil = true;
+      savePerfilBtn.disabled = false;
+    });
+  });
+  savePerfilBtn.addEventListener('click', ()=>{
+    // refleja el nombre/avatar también en el footer del sidebar (misma fuente de datos)
+    const nombre = inputNombre.value.trim() || 'Albert Almanz';
+    document.querySelector('.profile-info strong').textContent = nombre;
+    document.querySelector('.profile-info span').textContent = inputEmail.value.trim();
+    const initials = nombre.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+    document.querySelector('.sidebar-footer .avatar').textContent = initials;
+    if (!document.getElementById('avatar-lg-img').src || document.getElementById('avatar-lg-img').style.display === 'none') {
+      document.getElementById('avatar-lg-initials').textContent = initials;
+    }
+    dirty.perfil = false;
+    savePerfilBtn.disabled = true;
+    showToast();
+  });
+
+  // ===== AVATAR EDITABLE =====
+  const avatarBtn = document.getElementById('avatar-edit-btn');
+  const avatarFileInput = document.getElementById('avatar-file-input');
+  avatarBtn.addEventListener('click', ()=> avatarFileInput.click());
+  avatarFileInput.addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev)=>{
+      const img = document.getElementById('avatar-lg-img');
+      img.src = ev.target.result;
+      img.style.display = 'block';
+      document.getElementById('avatar-lg-initials').style.display = 'none';
+      dirty.perfil = true;
+      savePerfilBtn.disabled = false;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // ===== SEGURIDAD: 2FA toggle =====
+  const toggle2fa = document.getElementById('toggle-2fa');
+  const status2fa = document.getElementById('status-2fa');
+  toggle2fa.addEventListener('change', ()=>{
+    if (toggle2fa.checked) {
+      openModal('modal-2fa-setup');
+    } else {
+      toggle2fa.checked = true; // revertir hasta confirmar en el modal
+      openModal('modal-2fa-off');
+    }
+  });
+  document.getElementById('confirm-2fa-on').addEventListener('click', ()=>{
+    closeModal();
+    status2fa.textContent = currentLang === 'en' ? 'Enabled' : 'Activado';
+    status2fa.classList.remove('off'); status2fa.classList.add('on');
+    showToast();
+  });
+  document.getElementById('confirm-2fa-off').addEventListener('click', ()=>{
+    toggle2fa.checked = false;
+    closeModal();
+    status2fa.textContent = currentLang === 'en' ? 'Disabled' : 'Desactivado';
+    status2fa.classList.remove('on'); status2fa.classList.add('off');
+    showToast();
+  });
+
+  // ===== SEGURIDAD: contraseña =====
+  document.getElementById('btn-change-password').addEventListener('click', ()=> openModal('modal-password'));
+  document.getElementById('confirm-password-change').addEventListener('click', ()=>{
+    closeModal();
+    showToast();
+  });
+
+  // ===== SEGURIDAD: sesiones =====
+  document.querySelectorAll('.close-session-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      btn.closest('.session-row').remove();
+      showToast();
+    });
+  });
+  document.getElementById('btn-close-all-sessions').addEventListener('click', ()=> openModal('modal-close-all'));
+  document.getElementById('confirm-close-all').addEventListener('click', ()=>{
+    document.querySelectorAll('.session-row').forEach(row=>{
+      if (row.dataset.session !== 'current') row.remove();
+    });
+    closeModal();
+    showToast();
+  });
+
+  // ===== SEGURIDAD: cerrar sesión (actual) =====
+  document.getElementById('btn-logout').addEventListener('click', ()=> openModal('modal-logout'));
+  document.getElementById('confirm-logout').addEventListener('click', ()=>{
+    closeModal();
+    showToast(currentLang === 'en' ? 'Session closed. Redirecting to login…' : 'Sesión cerrada. Redirigiendo al login…');
+  });
+
+  // ===== NOTIFICACIONES: detectar cambios / guardar =====
+  const saveNotifBtn = document.getElementById('save-notif');
+  document.querySelectorAll('.notif-toggle').forEach(t=>{
+    t.addEventListener('change', ()=>{
+      dirty.notificaciones = true;
+      saveNotifBtn.disabled = false;
+    });
+  });
+  saveNotifBtn.addEventListener('click', ()=>{
+    dirty.notificaciones = false;
+    saveNotifBtn.disabled = true;
+    showToast();
+  });
+
+  // ===== CUENTAS: vincular nueva =====
+  document.getElementById('btn-link-account').addEventListener('click', ()=>{
+    alert(currentLang === 'en'
+      ? 'Opens the existing "link account" flow (see cuentas-billeteras.html).'
+      : 'Abre el flujo ya existente de "Vincular cuenta" (ver cuentas-billeteras.html).');
+  });
+
+  // ===== MODAL (genérico) =====
+  const modalOverlay = document.getElementById('modal-overlay');
+  let lastModalTrigger = null;
+  function openModal(id, triggerEl){
+    lastModalTrigger = triggerEl || document.activeElement;
+    document.querySelectorAll('.modal-step').forEach(s=> s.style.display = 'none');
+    const step = document.getElementById(id);
+    step.style.display = 'block';
+    modalOverlay.classList.add('open');
+    const firstFocusable = step.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if(firstFocusable) firstFocusable.focus();
+  }
+  function closeModal(){
+    modalOverlay.classList.remove('open');
+    if(lastModalTrigger && typeof lastModalTrigger.focus === 'function') lastModalTrigger.focus();
+  }
+  document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+  document.querySelectorAll('[data-modal-cancel]').forEach(btn=> btn.addEventListener('click', ()=>{
+    // si se cancela la desactivación de 2FA, el toggle vuelve a "activado"
+    if (document.getElementById('modal-2fa-off').style.display === 'block') toggle2fa.checked = true;
+    if (document.getElementById('modal-2fa-setup').style.display === 'block') toggle2fa.checked = false;
+    closeModal();
+  }));
+  modalOverlay.addEventListener('click', (e)=>{ if (e.target === modalOverlay) closeModal(); });
+  modalOverlay.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){ closeModal(); return; }
+    if(e.key !== 'Tab') return;
+    const visibleStep = [...document.querySelectorAll('.modal-step')].find(s=> s.style.display !== 'none');
+    if(!visibleStep) return;
+    const focusables = visibleStep.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if(!focusables.length) return;
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if(e.shiftKey && document.activeElement === first){
+      e.preventDefault(); last.focus();
+    } else if(!e.shiftKey && document.activeElement === last){
+      e.preventDefault(); first.focus();
+    }
+  });
+
+  // ===== TOAST =====
+  const toast = document.getElementById('toast');
+  const toastText = document.getElementById('toast-text');
+  let toastTimer;
+  function showToast(customText){
+    toastText.textContent = customText || (currentLang === 'en' ? 'Changes saved' : 'Cambios guardados');
+    toast.classList.add('visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=> toast.classList.remove('visible'), 2600);
+  }
+
+  // ===== LANGUAGE SWITCHER =====
+  let currentLang = 'es';
+  const es = {};
+  const en = {
+    tagline:"Instant, no detours.",
+    grpDaily:"DAILY", navResumen:"Overview", navCuentas:"Accounts", navTx:"Transactions",
+    grpMoney:"MONEY", navTransfers:"Transfers", navBuyUsdt:"Buy USDT", navBets:"Bets & Predictions", navRefer:"Refer & Earn", soon:"SOON",
+    grpAnalysis:"ANALYSIS", navAnalytics:"Analytics",
+    navNotif:"Notifications", navSettings:"Settings", navHelp:"Help & Support",
+    menuVerPerfil:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg> View profile',
+    menuCerrarSesion:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg> Log out',
+    toolbarTitle:"Settings",
+    pageTitle:"Settings", pageSubtitle:"Manage your profile, security, notifications and linked accounts.",
+    tabPerfil:"Profile", tabSeguridad:"Security", tabNotificaciones:"Notification preferences", tabCuentas:"Linked accounts",
+    avatarChangeTitle:"Profile photo", avatarChangeHint:"Click to upload a new image",
+    fieldNombre:"Name", fieldEmail:"Email", emailHint:"Changing your email may require re-verification by mail.",
+    btnGuardar:"Save changes",
+    secPasswordTitle:"Password", secPasswordDesc:"Update your password periodically to keep your account secure.",
+    btnChangePassword:"Change password",
+    sec2faTitle:"Two-factor verification (2FA)", sec2faDesc:"Add an extra layer of security when logging in.",
+    statusOff:"Disabled",
+    secSessionsTitle:"Active sessions", secSessionsDesc:"Devices where you're currently logged in.",
+    btnCloseAllSessions:"Log out of all other sessions",
+    sessionCurrentDevice:'iPhone 15 — Cochabamba, Bolivia<span class="session-current-tag">This session</span>', sessionCurrentTag:"This session",
+    sessionCurrentActivity:"Last activity: now",
+    sessionOtherDevice1:"MacBook Pro — Santa Cruz, Bolivia", sessionOtherActivity1:"Last activity: 2 days ago",
+    sessionOtherDevice2:"Android — La Paz, Bolivia", sessionOtherActivity2:"Last activity: 5 days ago",
+    btnCloseSession:"Log out",
+    secLogoutTitle:"Log out", secLogoutDesc:"You are about to log out of the current session on this device.",
+    btnLogout:"Log out",
+    notifSectionTitle:"General preferences", notifSectionSub:"What kind of content to receive and through which channel, regardless of the product.",
+    notifActivityTitle:"Account activity", notifActivityDesc:"Logins, security changes, important movements.",
+    notifPromoTitle:"Promotions and news", notifPromoDesc:"Launches, benefits and platform news.",
+    channelPush:"Push", channelEmail:"Email",
+    ctaAlertsTitle:"Configure alerts by product →", ctaAlertsDesc:"Buy USD, Bets & Predictions, Refer & Earn.",
+    linkedSectionTitle:"Linked accounts and wallets", linkedSectionSub:"Short summary — manage the full detail from Accounts.",
+    linkedBank1:"Banco Unión — Checking account", linkedWallet1:"USDT Wallet — TRC20",
+    btnVerTodas:"View all my accounts", btnVincular:"Link new account",
+    modalPasswordTitle:"Change password", modalPasswordDesc:"Enter your current password and choose a new one.",
+    fieldCurrentPassword:"Current password", fieldNewPassword:"New password", fieldConfirmPassword:"Confirm new password",
+    btnCancelar:"Cancel", btnGuardarPassword:"Save password",
+    modalLogoutTitle:"Log out?", modalLogoutDesc:"You are about to log out of your current session on this device. You'll need to sign in again to access it.",
+    btnConfirmLogout:"Log out",
+    modalCloseAllTitle:"Log out of all other sessions?", modalCloseAllDesc:"This will end the session on every other device, except this one.",
+    btnConfirmCloseAll:"Log out sessions",
+    modal2faOffTitle:"Disable two-factor verification?", modal2faOffDesc:"Your account will only be protected by your password.",
+    btnConfirm2faOff:"Disable",
+    modal2faSetupTitle:"Enable two-factor verification", modal2faSetupDesc:"Choose how you want to receive the verification code each time you log in.",
+    field2faMethod:"Method",
+    btnActivar:"Enable",
+    toastSaved:"Changes saved"
+  };
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ if(!es[el.dataset.i18n]) es[el.dataset.i18n]=el.innerHTML; });
+
+  function applyLang(){
+    const dict = currentLang === 'es' ? es : en;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.dataset.i18n;
+      if(dict[key]) el.innerHTML = dict[key];
+    });
+  }
+
+  document.getElementById('lang-toggle').addEventListener('click', ()=>{
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    applyLang();
+    document.documentElement.lang = currentLang;
+    document.getElementById('lang-toggle').textContent = currentLang === 'es' ? 'EN' : 'ES';
+  });
+</script>
+
+<script src="app-navigation.js"></script>
+<script src="ui-preferences.js"></script>
+</body>
+</html>

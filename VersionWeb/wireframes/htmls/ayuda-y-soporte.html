@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dineroAtucuenta — Ayuda y Soporte</title>
+<style>
+  :root[data-theme="dark"]{
+    --bg:#0B0C10; --surface:#15171C; --surface-alt:#1B1E24; --border:#2A2D34;
+    --text-primary:#F5F5F7; --text-secondary:#A0A4AC; --text-muted:#6C7078;
+    --primary:#FF6B4A; --primary-hover:#FF8163;
+    --success:#2ED9A3; --error:#F25C5C; --warning:#E8B84B;
+    --badge-bg:#1F3D34; --badge-text:#2ED9A3;
+  }
+  :root[data-theme="light"]{
+    --bg:#FFFFFF; --surface:#F7F7F8; --surface-alt:#FFFFFF; --border:#E4E4E7;
+    --text-primary:#16181D; --text-secondary:#4B4F58; --text-muted:#8A8F98;
+    --primary:#FF6B4A; --primary-hover:#FF8163;
+    --success:#1FAE81; --error:#D93F3F; --warning:#C98A1E;
+    --badge-bg:#E3F5EE; --badge-text:#1FAE81;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text-primary);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.5; transition:background .2s, color .2s;
+  }
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3{font-weight:700; letter-spacing:-0.02em;}
+  p{color:var(--text-secondary);}
+  button{font-family:inherit;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:6px; font-weight:600; font-size:14px;
+    padding:12px 22px; border-radius:10px; border:1px solid transparent; cursor:pointer;
+    transition:background .15s, border-color .15s, opacity .15s;
+  }
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-primary:hover{background:var(--primary-hover);}
+  .btn-primary:disabled{background:var(--surface-alt); color:var(--text-muted); cursor:not-allowed; border:1px solid var(--border);}
+  .btn-outline{background:transparent; color:var(--text-primary); border-color:var(--border);}
+  .btn-outline:hover{border-color:var(--text-secondary);}
+  .btn-block{width:100%;}
+  .btn-sm{padding:8px 14px; font-size:12.5px;}
+  .card{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px;}
+  .eyebrow-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted);}
+
+  /* THEME/LANG SWITCHER */
+  .switcher{display:flex; align-items:center; gap:6px; border:1px solid var(--border); border-radius:999px; padding:4px;}
+  .switcher button{background:none; border:none; color:var(--text-secondary); font-size:12px; font-weight:600; padding:6px 10px; border-radius:999px; cursor:pointer; transition:.15s;}
+  .switcher button.active{background:var(--surface-alt); color:var(--text-primary);}
+  .lang-toggle{font-size:12px; font-weight:700; color:var(--text-secondary); border:1px solid var(--border); border-radius:999px; padding:6px 10px; cursor:pointer; background:none;}
+  .lang-toggle:hover{color:var(--text-primary);}
+
+  /* ===== APP SHELL: SIDEBAR + MAIN ===== */
+  .app-shell{display:flex; min-height:100vh;}
+  .sidebar{
+    width:252px; flex-shrink:0; background:var(--surface); border-right:1px solid var(--border);
+    display:flex; flex-direction:column; padding:20px 14px;
+    position:sticky; top:0; height:100vh; overflow-y:auto; transition:width .18s, transform .2s;
+    z-index:30;
+  }
+  .sidebar.collapsed{width:72px;}
+  .sidebar.collapsed .hide-on-collapse{display:none;}
+  .sidebar.collapsed .nav-item{justify-content:center;}
+  .sidebar.collapsed .sidebar-logo{justify-content:center;}
+  .sidebar.collapsed .profile-item{justify-content:center;}
+  .sidebar-logo{display:flex; align-items:center; gap:9px; padding:4px 8px 22px;}
+  .sidebar-logo .dot{width:26px; height:26px; border-radius:8px; background:var(--primary); display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; font-weight:700; flex-shrink:0;}
+  .sidebar-logo .lt strong{display:block; font-size:14px; font-weight:700; white-space:nowrap;}
+  .sidebar-logo .lt span{display:block; font-size:10px; color:var(--text-muted); white-space:nowrap;}
+  .nav-group{margin-bottom:18px;}
+  .nav-group-label{display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.09em; color:var(--text-muted); padding:0 10px; margin-bottom:8px;}
+  .nav-item{
+    display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:8px; font-size:14px;
+    color:var(--text-secondary); cursor:pointer; margin-bottom:2px; white-space:nowrap;
+  }
+  .nav-item:hover{color:var(--text-primary); background:var(--surface-alt);}
+  .nav-item.active{background:var(--surface-alt); color:var(--text-primary);}
+  .nav-item.active .nav-icon{color:var(--primary);}
+  .nav-item.disabled{color:var(--text-muted); cursor:not-allowed;}
+  .nav-item.disabled:hover{background:none; color:var(--text-muted);}
+  .nav-icon{width:18px; height:18px; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+  .nav-icon svg{width:18px; height:18px;}
+  .soon-badge{margin-left:auto; font-size:9px; font-weight:700; text-transform:uppercase; color:var(--text-muted); background:var(--bg); border:1px solid var(--border); padding:2px 6px; border-radius:999px; flex-shrink:0;}
+  .sidebar-footer{margin-top:auto; padding-top:14px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:2px;}
+  .profile-item{display:flex; align-items:center; gap:10px; padding:9px; border-radius:8px; cursor:pointer; position:relative;}
+  .profile-item:hover{background:var(--surface-alt);}
+  .avatar{width:30px; height:30px; border-radius:999px; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0;}
+  .profile-info{display:flex; flex-direction:column; overflow:hidden;}
+  .profile-info strong{font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .profile-info span{font-size:11px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .sidebar-backdrop{display:none;}
+
+  /* ===== PROFILE MENU (dropdown del .profile-item, footer sidebar) ===== */
+  .profile-menu{
+    display:none; position:absolute; left:0; right:0; bottom:calc(100% + 6px); width:220px;
+    background:var(--surface-alt); border:1px solid var(--border); border-radius:12px;
+    box-shadow:0 8px 24px rgba(0,0,0,.28); padding:6px; z-index:40;
+    animation:profile-menu-in .16s cubic-bezier(.2,.8,.2,1);
+  }
+  .profile-menu.open{display:block;}
+  @keyframes profile-menu-in{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+  .sidebar.collapsed .profile-menu{left:8px; width:220px;}
+  .profile-menu-header{display:flex; align-items:center; gap:10px; padding:8px 8px 10px;}
+  .profile-menu-header .profile-info strong{font-size:13px;}
+  .profile-menu-header .profile-info span{font-size:11px;}
+  .profile-menu-divider{height:1px; background:var(--border); margin:2px 4px 6px;}
+  .profile-menu-item{
+    display:flex; align-items:center; gap:10px; width:100%; padding:9px 8px; border-radius:8px;
+    font-size:13.5px; color:var(--text-secondary); cursor:pointer; background:none; border:none; text-align:left; font-family:inherit;
+  }
+  .profile-menu-item:hover, .profile-menu-item:focus-visible{color:var(--text-primary); background:var(--surface); outline:none;}
+  .profile-menu-item svg{width:16px; height:16px; flex-shrink:0;}
+
+  /* ===== MODAL (base — no existía en este archivo, se agrega para el modal de confirmación) ===== */
+  .modal-overlay{
+    display:none; position:fixed; inset:0; z-index:60; background:rgba(0,0,0,.55);
+    align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--surface); border:1px solid var(--border); border-radius:16px; width:100%; max-width:460px;
+    max-height:90vh; overflow-y:auto; padding:24px; position:relative;
+    animation:panel-in .3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes panel-in{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  .modal-close{position:absolute; top:16px; right:16px; width:30px; height:30px; border-radius:8px; border:1px solid var(--border); background:var(--surface-alt); color:var(--text-secondary); display:flex; align-items:center; justify-content:center; cursor:pointer;}
+  .modal-close:hover{color:var(--text-primary);}
+  .modal-close svg{width:14px; height:14px;}
+  @media (max-width:640px){
+    .modal{max-width:none; width:100%; max-height:100vh; height:100vh; border-radius:0; position:fixed; inset:0;}
+    .modal-overlay{padding:0;}
+  }
+
+  /* ===== MODAL: CERRAR SESIÓN ===== */
+  .logout-modal .modal{max-width:380px; padding:22px;}
+  .logout-modal-title{font-size:16px; font-weight:700; margin-bottom:8px;}
+  .logout-modal-desc{font-size:13px; color:var(--text-secondary); margin-bottom:20px; line-height:1.5;}
+  .logout-modal-actions{display:flex; gap:10px;}
+  .logout-modal-actions .btn{flex:1;}
+
+  /* ===== MAIN / TOOLBAR ===== */
+  .main{flex:1; min-width:0;}
+  .toolbar{
+    position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px; border-bottom:1px solid var(--border);
+    background:color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter:blur(8px);
+  }
+  .toolbar-left{display:flex; align-items:center; gap:14px;}
+  .icon-btn{width:34px; height:34px; border-radius:8px; border:1px solid var(--border); background:var(--surface); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text-secondary); flex-shrink:0;}
+  .icon-btn:hover{color:var(--text-primary); border-color:var(--text-secondary);}
+  .icon-btn svg{width:16px; height:16px;}
+  .toolbar h1{font-size:15px; font-weight:700;}
+  .kbd{font-size:11px; color:var(--text-muted); border:1px solid var(--border); border-radius:6px; padding:6px 9px; display:flex; gap:4px; align-items:center; cursor:default;}
+  .toolbar-right{display:flex; align-items:center; gap:12px;}
+  .hamburger{display:none;}
+
+  /* ===== CONTENT ===== */
+  .content{padding:32px 28px 120px; max-width:1180px; margin:0 auto;}
+  .page-header{margin-bottom:22px;}
+  .page-header h2{font-size:26px; margin-bottom:6px;}
+  .page-header p{font-size:14px; max-width:640px;}
+
+  /* ===== BUSCADOR GLOBAL DE FAQ ===== */
+  .search-wrap{position:relative; margin-bottom:28px;}
+  .search-box{display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:13px 16px; transition:border-color .15s;}
+  .search-box:focus-within{border-color:var(--text-secondary);}
+  .search-box svg{width:17px; height:17px; color:var(--text-muted); flex-shrink:0;}
+  .search-box input{flex:1; background:none; border:none; outline:none; color:var(--text-primary); font-size:14px; font-family:inherit;}
+  .search-box input::placeholder{color:var(--text-muted);}
+  .search-dropdown{
+    position:absolute; top:calc(100% + 6px); left:0; right:0; background:var(--surface-alt);
+    border:1px solid var(--border); border-radius:12px; overflow:hidden; z-index:15;
+    box-shadow:0 12px 32px rgba(0,0,0,.35); display:none;
+  }
+  .search-dropdown.visible{display:block;}
+  .search-result{padding:12px 16px; font-size:13.5px; cursor:pointer; border-bottom:1px solid var(--border); color:var(--text-secondary);}
+  .search-result:last-child{border-bottom:none;}
+  .search-result:hover{background:var(--surface); color:var(--text-primary);}
+  .search-result .cat{display:block; font-size:10.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px;}
+  .search-empty{padding:16px; text-align:center; font-size:13px; color:var(--text-muted);}
+  .search-empty .btn{margin-top:10px;}
+
+  /* ===== LAYOUT: SUB-NAV + PANEL ===== */
+  .help-layout{display:flex; align-items:flex-start; gap:28px;}
+  .help-subnav{width:216px; flex-shrink:0; display:flex; flex-direction:column; gap:2px; position:sticky; top:78px;}
+  .subnav-item{
+    display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:9px; font-size:14px;
+    color:var(--text-secondary); cursor:pointer; transition:background .15s, color .15s;
+  }
+  .subnav-item:hover{color:var(--text-primary);}
+  .subnav-item.active{background:var(--surface-alt); color:var(--text-primary); font-weight:600;}
+  .subnav-item svg{width:17px; height:17px; flex-shrink:0;}
+  .help-panel{flex:1; min-width:0;}
+  .panel-section{display:none;}
+  .panel-section.visible{display:block;}
+
+  /* ===== CHIPS ===== */
+  .chip-row{display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; margin-bottom:20px;}
+  .chip-row::-webkit-scrollbar{display:none;}
+  .chip{
+    flex-shrink:0; padding:8px 16px; border-radius:999px; font-size:13px; font-weight:600;
+    color:var(--text-secondary); background:var(--surface); border:1px solid var(--border); cursor:pointer;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .chip:hover{color:var(--text-primary); border-color:var(--text-secondary);}
+  .chip.active{background:var(--surface-alt); color:var(--text-primary); border-color:var(--text-secondary);}
+
+  /* ===== ACORDEÓN (FAQ / Legal) ===== */
+  .accordion{border-top:1px solid var(--border);}
+  .acc-item{border-bottom:1px solid var(--border);}
+  .acc-head{
+    display:flex; align-items:center; justify-content:space-between; gap:14px; padding:16px 2px;
+    cursor:pointer; font-size:14.5px; font-weight:600; color:var(--text-primary);
+  }
+  .acc-head:hover{color:var(--primary);}
+  .acc-chevron{flex-shrink:0; color:var(--text-muted); transition:transform .2s;}
+  .acc-chevron svg{width:16px; height:16px; display:block;}
+  .acc-item.open .acc-chevron{transform:rotate(180deg); color:var(--primary);}
+  .acc-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .acc-body-inner{padding:0 2px 18px; font-size:13.5px; color:var(--text-secondary); line-height:1.65;}
+  .acc-body-inner a{color:var(--primary); text-decoration:underline; text-underline-offset:2px;}
+  .acc-body-inner ol{padding-left:18px; display:flex; flex-direction:column; gap:8px;}
+  .faq-empty{text-align:center; padding:36px 20px; color:var(--text-muted); font-size:13.5px; border:1px dashed var(--border); border-radius:14px;}
+
+  .faq-cta{
+    margin-top:24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px 22px;
+  }
+  .faq-cta p{font-size:13.5px; color:var(--text-primary); font-weight:600;}
+  .faq-cta span{font-size:12.5px; color:var(--text-secondary); font-weight:400; display:block; margin-top:2px;}
+
+  .tc-pending{display:block; margin-top:16px; font-size:11.5px; color:var(--warning); font-weight:600;}
+
+  /* ===== CONTACTAR A SOPORTE ===== */
+  .contact-channels{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:26px;}
+  .channel-card{
+    display:flex; align-items:center; gap:12px; background:var(--surface); border:1px solid var(--border);
+    border-radius:14px; padding:16px 18px; cursor:pointer; transition:border-color .15s, transform .15s;
+  }
+  .channel-card:hover{border-color:var(--text-secondary); transform:translateY(-1px);}
+  .channel-card .ic{width:38px; height:38px; border-radius:10px; background:var(--surface-alt); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--primary); flex-shrink:0;}
+  .channel-card .ic svg{width:18px; height:18px;}
+  .channel-card strong{display:block; font-size:13.5px; margin-bottom:2px;}
+  .channel-card span{font-size:12px; color:var(--text-muted);}
+
+  .form-group{margin-bottom:18px;}
+  .form-label{display:block; font-size:13px; font-weight:600; margin-bottom:8px; color:var(--text-primary);}
+  .form-select, .form-input, .form-textarea{
+    width:100%; background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:12px 14px; font-size:14px; color:var(--text-primary); font-family:inherit; outline:none;
+    transition:border-color .15s;
+  }
+  .form-select:focus, .form-input:focus, .form-textarea:focus{border-color:var(--text-secondary);}
+  .form-textarea{resize:vertical; min-height:110px; line-height:1.5;}
+  .char-counter{display:block; text-align:right; font-size:11.5px; color:var(--text-muted); margin-top:6px;}
+  .char-counter.limit{color:var(--warning);}
+
+  .file-drop{
+    border:1.5px dashed var(--border); border-radius:12px; padding:20px; text-align:center; cursor:pointer;
+    transition:border-color .15s, background .15s;
+  }
+  .file-drop:hover, .file-drop.dragover{border-color:var(--text-secondary); background:var(--surface);}
+  .file-drop svg{width:20px; height:20px; color:var(--text-muted); margin-bottom:8px;}
+  .file-drop p{font-size:13px; margin-bottom:2px;}
+  .file-drop span{font-size:11.5px; color:var(--text-muted);}
+  .file-drop input{display:none;}
+  .file-preview{display:none; align-items:center; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px 14px; margin-top:10px;}
+  .file-preview.visible{display:flex;}
+  .file-preview img{width:40px; height:40px; border-radius:8px; object-fit:cover; flex-shrink:0; background:var(--surface-alt);}
+  .file-preview .fname{flex:1; min-width:0; font-size:12.5px; color:var(--text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .file-preview .fsize{font-size:11px; color:var(--text-muted);}
+  .file-remove{width:26px; height:26px; border-radius:7px; border:1px solid var(--border); background:var(--surface-alt); color:var(--text-secondary); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;}
+  .file-remove:hover{color:var(--error); border-color:var(--error);}
+  .file-remove svg{width:13px; height:13px;}
+
+  .form-error{display:none; align-items:center; gap:8px; background:rgba(242,92,92,.1); border:1px solid rgba(242,92,92,.3); color:var(--error); font-size:12.5px; border-radius:8px; padding:10px 12px; margin-bottom:16px;}
+  .form-error.visible{display:flex;}
+  .form-error svg{width:15px; height:15px; flex-shrink:0;}
+
+  .ticket-confirm{display:none; text-align:center; padding:20px 0;}
+  .ticket-confirm.visible{display:block;}
+  .ticket-icon{width:56px; height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; background:var(--badge-bg); color:var(--badge-text);}
+  .ticket-icon svg{width:24px; height:24px;}
+  .ticket-confirm h3{font-size:18px; margin-bottom:8px;}
+  .ticket-confirm p{font-size:13.5px; max-width:400px; margin:0 auto 18px;}
+  .ticket-number{display:inline-block; background:var(--surface-alt); border:1px solid var(--border); border-radius:10px; padding:10px 18px; font-size:14px; font-weight:700; font-variant-numeric:tabular-nums; margin-bottom:22px;}
+  .form-state{display:none;}
+  .form-state.visible{display:block;}
+
+  /* ===== LEGAL Y RECURSOS: accesos directos ===== */
+  .quick-links{display:flex; flex-direction:column; gap:10px; margin-top:28px;}
+  .quick-link{
+    display:flex; align-items:center; gap:14px; background:var(--surface); border:1px solid var(--border);
+    border-radius:14px; padding:16px 18px; cursor:pointer; transition:border-color .15s, transform .15s;
+  }
+  .quick-link:hover{border-color:var(--text-secondary); transform:translateY(-1px);}
+  .quick-link .ic{width:36px; height:36px; border-radius:10px; background:var(--surface-alt); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--text-secondary); flex-shrink:0;}
+  .quick-link .ic svg{width:17px; height:17px;}
+  .quick-link-main{flex:1; min-width:0;}
+  .quick-link strong{display:block; font-size:13.5px; margin-bottom:2px;}
+  .quick-link span{font-size:12px; color:var(--text-muted);}
+  .quick-link .chev{color:var(--text-muted); flex-shrink:0;}
+  .quick-link .chev svg{width:15px; height:15px;}
+  .legal-heading{font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); margin:0 0 4px;}
+
+  /* ===== REDUCED MOTION ===== */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1024px){
+    .sidebar{position:fixed; top:0; left:0;}
+  }
+  @media (max-width:900px){
+    .sidebar{transform:translateX(-100%);}
+    .sidebar.mobile-open{transform:translateX(0); box-shadow:20px 0 60px rgba(0,0,0,.4);}
+    .sidebar-backdrop{display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:25;}
+    .sidebar-backdrop.visible{display:block;}
+    .hamburger{display:flex;}
+    .content{padding:24px 16px 100px;}
+    .toolbar{padding:14px 16px;}
+    .kbd{display:none;}
+    .help-layout{flex-direction:column; gap:18px;}
+    .help-subnav{
+      width:100%; flex-direction:row; overflow-x:auto; position:static; gap:6px;
+      border-bottom:1px solid var(--border); padding-bottom:10px;
+    }
+    .help-subnav::-webkit-scrollbar{display:none;}
+    .subnav-item{flex-shrink:0; white-space:nowrap;}
+    .contact-channels{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .page-header h2{font-size:22px;}
+    .chip-row{margin:0 -16px 20px; padding:0 16px 4px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ============ SIDEBAR (ver components/sidebar.md) ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="dot">d</span>
+      <div class="lt hide-on-collapse">
+        <strong>dineroAtucuenta</strong>
+        <span data-i18n="tagline">Al instante, sin vueltas.</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpDaily">DIARIO</span>
+        <div class="nav-item" title="Resumen">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navResumen">Resumen</span>
+        </div>
+        <div class="nav-item" title="Cuentas">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navCuentas">Cuentas</span>
+        </div>
+        <div class="nav-item" title="Transacciones">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 7h13M7 7l3-3M7 7l3 3M17 17H4M17 17l-3-3M17 17l-3 3"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navTx">Transacciones</span>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpMoney">DINERO</span>
+        <div class="nav-item" title="Transferencias">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 3l4 4-4 4M21 7H7M7 21l-4-4 4-4M3 17h14"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navTransfers">Transferencias</span>
+        </div>
+        <div class="nav-item" title="Compra USDT">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5a2.5 2.5 0 012.5-2h1a2.5 2.5 0 010 5h-1a2.5 2.5 0 000 5h1a2.5 2.5 0 002.5-2"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navBuyUsdt">Compra USDT</span>
+        </div>
+        <div class="nav-item" title="Apuestas y Predicciones">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navBets">Apuestas y Predicciones</span>
+        </div>
+        <div class="nav-item" title="Refiere y Gana">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="M3 13h18M12 9v12M12 9c-1.8 0-4-1-4-3a2.2 2.2 0 014-1.2c0-1.4 2.2-2.4 4-1.2 0 2-2.2 3-4 3zM7 4.8a2.2 2.2 0 013 0"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navRefer">Refiere y Gana</span>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <span class="nav-group-label hide-on-collapse" data-i18n="grpAnalysis">ANÁLISIS</span>
+        <div class="nav-item disabled" title="Analíticas — Próximamente">
+          <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+          <span class="hide-on-collapse" data-i18n="navAnalytics">Analíticas</span>
+          <span class="soon-badge hide-on-collapse" data-i18n="soon">PRÓX.</span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="nav-item" title="Notificaciones">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></span>
+        <span class="hide-on-collapse" data-i18n="navNotif">Notificaciones</span>
+      </div>
+      <div class="nav-item" title="Ajustes">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.2a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.2a1.7 1.7 0 00-1.5 1z"/></svg></span>
+        <span class="hide-on-collapse" data-i18n="navSettings">Ajustes</span>
+      </div>
+      <div class="nav-item active" title="Ayuda y Soporte">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.5-2 1.8-2 3.2M12 17.2v.1"/></svg></span>
+        <span class="hide-on-collapse" data-i18n="navHelp">Ayuda y Soporte</span>
+      </div>
+      <div class="profile-item" id="profile-item" title="Cuenta" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu">
+        <span class="avatar">AL</span>
+        <div class="profile-info hide-on-collapse">
+          <strong>Albert Almanz</strong>
+          <span>albert@fintech.com</span>
+        </div>
+        <span class="nav-icon hide-on-collapse" style="margin-left:auto; width:14px; height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 15l6-6 6 6"/></svg></span>
+
+        <div class="profile-menu" id="profile-menu" role="menu" aria-hidden="true">
+          <div class="profile-menu-header">
+            <span class="avatar">AL</span>
+            <div class="profile-info">
+              <strong>Albert Almanz</strong>
+              <span>albert@fintech.com</span>
+            </div>
+          </div>
+          <div class="profile-menu-divider"></div>
+          <a class="profile-menu-item" id="profile-menu-view" href="ajustes.html#perfil" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg>
+            <span data-i18n="profileMenuView">Ver perfil</span>
+          </a>
+          <button type="button" class="profile-menu-item" id="profile-menu-logout" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+            <span data-i18n="profileMenuLogout">Cerrar sesión</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="icon-btn hamburger" id="hamburger-btn" aria-label="Abrir menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <button class="icon-btn" id="collapse-btn" aria-label="Colapsar sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+        </button>
+        <h1 data-i18n="toolbarTitle">Ayuda y Soporte</h1>
+      </div>
+      <div class="toolbar-right">
+        <div class="kbd">⌘K</div>
+        <div class="switcher" id="theme-switcher">
+          <button data-theme-btn="dark" class="active">◐</button>
+          <button data-theme-btn="light">☀</button>
+        </div>
+        <button class="lang-toggle" id="lang-toggle">EN</button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ===================== PAGE HEADER ===================== -->
+      <div class="page-header">
+        <h2 data-i18n="pageTitle">Ayuda y Soporte</h2>
+        <p data-i18n="pageSub">Buscá una respuesta rápida en las preguntas frecuentes o escalá tu caso a soporte humano.</p>
+      </div>
+
+      <!-- ===================== BUSCADOR GLOBAL DE FAQ ===================== -->
+      <div class="search-wrap">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" id="faq-search" data-i18n-placeholder="searchPlaceholder" placeholder="Buscar en preguntas frecuentes...">
+        </div>
+        <div class="search-dropdown" id="search-dropdown"></div>
+      </div>
+
+      <!-- ===================== LAYOUT: SUB-NAV + PANEL ===================== -->
+      <div class="help-layout">
+
+        <nav class="help-subnav" id="help-subnav">
+          <div class="subnav-item active" data-tab="faq">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.5-2 1.8-2 3.2M12 17.2v.1"/></svg>
+            <span data-i18n="subnavFaq">Preguntas frecuentes</span>
+          </div>
+          <div class="subnav-item" data-tab="contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v13H7l-3 3V4z"/></svg>
+            <span data-i18n="subnavContact">Contactar a soporte</span>
+          </div>
+          <div class="subnav-item" data-tab="legal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2h9l5 5v15H6V2z"/><path d="M14 2v5h5M9 13h6M9 17h6M9 9h2"/></svg>
+            <span data-i18n="subnavLegal">Legal y recursos</span>
+          </div>
+        </nav>
+
+        <div class="help-panel">
+
+          <!-- ===================== SECCIÓN: PREGUNTAS FRECUENTES ===================== -->
+          <section class="panel-section visible" id="panel-faq">
+            <div class="chip-row" id="faq-chips">
+              <div class="chip active" data-cat="all" data-i18n="chipAll">Todas</div>
+              <div class="chip" data-cat="cuenta" data-i18n="catCuenta">Cuenta y seguridad</div>
+              <div class="chip" data-cat="transferencias" data-i18n="catTransferencias">Transferencias</div>
+              <div class="chip" data-cat="compra" data-i18n="catCompra">Compra USDT</div>
+              <div class="chip" data-cat="apuestas" data-i18n="catApuestas">Apuestas y Predicciones</div>
+              <div class="chip" data-cat="refiere" data-i18n="catRefiere">Refiere y Gana</div>
+              <div class="chip" data-cat="vinculadas" data-i18n="catVinculadas">Cuentas vinculadas</div>
+            </div>
+
+            <div class="accordion" id="faq-accordion"></div>
+
+            <div class="faq-cta">
+              <div>
+                <p data-i18n="faqCtaTitle">¿No encontraste lo que buscabas?</p>
+                <span data-i18n="faqCtaSub">Escribinos y te respondemos en menos de 24hs hábiles.</span>
+              </div>
+              <button class="btn btn-primary btn-sm" id="btn-faq-to-contact" data-i18n="faqCtaBtn">Contactar a soporte</button>
+            </div>
+          </section>
+
+          <!-- ===================== SECCIÓN: CONTACTAR A SOPORTE ===================== -->
+          <section class="panel-section" id="panel-contacto">
+
+            <div class="contact-channels">
+              <a class="channel-card" href="mailto:soporte@dineroatucuenta.com">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v16H4V4z"/><path d="M4 6l8 7 8-7"/></svg></span>
+                <div>
+                  <strong data-i18n="channelEmailTitle">Email de soporte</strong>
+                  <span>soporte@dineroatucuenta.com</span>
+                </div>
+              </a>
+              <a class="channel-card" href="https://wa.me/59170000000" target="_blank" rel="noopener">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21l1.6-4.8A8.5 8.5 0 113.9 20L3 21z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6"/></svg></span>
+                <div>
+                  <strong data-i18n="channelWhatsappTitle">WhatsApp</strong>
+                  <span data-i18n="channelWhatsappSub">Escribinos por WhatsApp</span>
+                </div>
+              </a>
+            </div>
+
+            <!-- ESTADO: formulario -->
+            <div class="form-state visible" id="form-state-default">
+              <div class="card">
+                <div class="form-error" id="form-error">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9L2.7 17a2 2 0 001.7 3h15.2a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
+                  <span data-i18n="formErrorTxt">Completá categoría y descripción antes de enviar.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" data-i18n="formCatLbl">Categoría</label>
+                  <select class="form-select" id="form-cat">
+                    <option value="" data-i18n="formCatPh">Seleccioná una categoría...</option>
+                    <option value="cuenta" data-i18n="catCuenta">Cuenta y seguridad</option>
+                    <option value="transferencias" data-i18n="catTransferencias">Transferencias</option>
+                    <option value="compra" data-i18n="catCompra">Compra USDT</option>
+                    <option value="apuestas" data-i18n="catApuestas">Apuestas y Predicciones</option>
+                    <option value="refiere" data-i18n="catRefiere">Refiere y Gana</option>
+                    <option value="vinculadas" data-i18n="catVinculadas">Cuentas vinculadas</option>
+                    <option value="otro" data-i18n="catOtro">Otro</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" data-i18n="formSubjectLbl">Asunto</label>
+                  <input type="text" class="form-input" id="form-subject" data-i18n-placeholder="formSubjectPh" placeholder="Ej. No me llegó una transferencia">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" data-i18n="formDescLbl">Descripción</label>
+                  <textarea class="form-textarea" id="form-desc" maxlength="1000" data-i18n-placeholder="formDescPh" placeholder="Contanos qué pasó, con el mayor detalle posible..."></textarea>
+                  <span class="char-counter" id="char-counter">0/1000</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" data-i18n="formFileLbl">Adjuntar captura (opcional)</label>
+                  <div class="file-drop" id="file-drop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+                    <p data-i18n="fileDropTxt">Arrastrá una imagen o hacé click para elegir</p>
+                    <span data-i18n="fileDropSub">JPG o PNG, máx. 5MB — un solo archivo</span>
+                    <input type="file" id="file-input" accept="image/png, image/jpeg">
+                  </div>
+                  <div class="file-preview" id="file-preview">
+                    <img id="file-preview-img" alt="">
+                    <div style="flex:1; min-width:0;">
+                      <div class="fname" id="file-preview-name"></div>
+                      <div class="fsize" id="file-preview-size"></div>
+                    </div>
+                    <button class="file-remove" id="file-remove" aria-label="Quitar adjunto">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary btn-block" id="btn-submit-ticket" data-i18n="formSubmitBtn" disabled>Enviar</button>
+              </div>
+            </div>
+
+            <!-- ESTADO: enviando -->
+            <div class="form-state" id="form-state-sending">
+              <div class="card" style="text-align:center; padding:44px 24px;">
+                <p data-i18n="sendingTxt" style="color:var(--text-primary); font-weight:600;">Enviando tu caso...</p>
+              </div>
+            </div>
+
+            <!-- ESTADO: confirmación -->
+            <div class="form-state" id="form-state-success">
+              <div class="card">
+                <div class="ticket-confirm visible">
+                  <div class="ticket-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+                  </div>
+                  <h3 data-i18n="ticketTitle">¡Listo! Recibimos tu caso</h3>
+                  <p data-i18n="ticketSub">Te vamos a responder al email de tu cuenta en menos de 24hs hábiles.</p>
+                  <div class="ticket-number" id="ticket-number">#000000</div>
+                  <div>
+                    <button class="btn btn-outline" id="btn-new-ticket" data-i18n="ticketNewBtn">Enviar otro caso</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- ===================== SECCIÓN: LEGAL Y RECURSOS ===================== -->
+          <section class="panel-section" id="panel-legal">
+
+            <p class="legal-heading" data-i18n="legalPendingLabel">Primer borrador — pendiente de revisión legal formal</p>
+
+            <div class="accordion">
+              <div class="acc-item" data-acc="terms">
+                <div class="acc-head">
+                  <span data-i18n="legalTermsTitle">Términos y condiciones</span>
+                  <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                </div>
+                <div class="acc-body">
+                  <div class="acc-body-inner">
+                    <ol data-i18n="legalTermsBody">
+                      <li>Al usar dineroAtucuenta aceptás operar bajo la normativa vigente en Bolivia, incluyendo requisitos de edad mínima y verificación de identidad.</li>
+                      <li>Sos responsable de mantener la confidencialidad de tu contraseña y de tu método de verificación en dos pasos (2FA).</li>
+                      <li>Las comisiones aplicables a cada producto (transferencias, compra USDT, apuestas y predicciones) se muestran antes de confirmar cualquier operación y no son reembolsables una vez confirmadas.</li>
+                      <li>dineroAtucuenta puede suspender temporalmente una cuenta ante indicios de actividad fraudulenta, notificando al usuario por los medios de contacto registrados.</li>
+                      <li>Estos términos pueden actualizarse; se notificará cualquier cambio relevante dentro de la app.</li>
+                    </ol>
+                    <span class="tc-pending" data-i18n="legalPendingNote">Sección pendiente de revisión legal formal antes de lanzamiento.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="acc-item" data-acc="privacy">
+                <div class="acc-head">
+                  <span data-i18n="legalPrivacyTitle">Política de privacidad</span>
+                  <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+                </div>
+                <div class="acc-body">
+                  <div class="acc-body-inner">
+                    <ol data-i18n="legalPrivacyBody">
+                      <li>Recolectamos los datos necesarios para operar tu cuenta: identidad, datos de contacto, cuentas/wallets vinculadas e historial de transacciones.</li>
+                      <li>No vendemos tus datos personales a terceros. Los compartimos solo cuando es necesario para procesar una operación (ej. con el banco destino de una transferencia) o cuando lo exige la ley.</li>
+                      <li>Guardamos tus datos mientras tu cuenta esté activa y por el plazo adicional que exija la normativa financiera vigente.</li>
+                      <li>Podés solicitar acceso, corrección o eliminación de tus datos personales contactando a soporte, sujeto a las obligaciones legales de retención que apliquen.</li>
+                      <li>Usamos cifrado y verificación en dos pasos como medidas de seguridad estándar, pero ningún sistema es 100% infalible — te recomendamos activar el 2FA y no compartir tu contraseña.</li>
+                    </ol>
+                    <span class="tc-pending" data-i18n="legalPendingNote">Sección pendiente de revisión legal formal antes de lanzamiento.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-links">
+              <a class="quick-link" href="apuestas-predicciones.html#section-responsible">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <div class="quick-link-main">
+                  <strong data-i18n="quickLimitsTitle">Juego responsable / Configurar límites</strong>
+                  <span data-i18n="quickLimitsSub">Ajustá tus límites de depósito y apuesta</span>
+                </div>
+                <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="quick-link" href="ajustes.html#seguridad">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span>
+                <div class="quick-link-main">
+                  <strong data-i18n="quickSecurityTitle">Seguridad de la cuenta</strong>
+                  <span data-i18n="quickSecuritySub">Contraseña, 2FA y sesiones activas</span>
+                </div>
+                <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
+              </a>
+            </div>
+
+          </section>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: CONFIRMAR CIERRE DE SESIÓN ============ -->
+<div class="modal-overlay logout-modal" id="logout-modal-overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="logout-modal-title">
+    <button class="modal-close" id="logout-modal-close" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="logout-modal-title" id="logout-modal-title" data-i18n="logoutModalTitle">¿Cerrar sesión?</div>
+    <p class="logout-modal-desc" data-i18n="logoutModalDesc">Vas a tener que volver a iniciar sesión para acceder a tu cuenta.</p>
+    <div class="logout-modal-actions">
+      <button class="btn btn-outline" id="logout-cancel" data-i18n="logoutCancelBtn">Cancelar</button>
+      <button class="btn btn-primary" id="logout-confirm" data-i18n="logoutConfirmBtn">Cerrar sesión</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== THEME SWITCHER =====
+  const root = document.documentElement;
+  document.querySelectorAll('[data-theme-btn]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      root.setAttribute('data-theme', btn.dataset.themeBtn);
+      document.querySelectorAll('[data-theme-btn]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // ===== SIDEBAR: colapsar (desktop) =====
+  const sidebar = document.getElementById('sidebar');
+  document.getElementById('collapse-btn').addEventListener('click', ()=>{
+    sidebar.classList.toggle('collapsed');
+  });
+
+  // ===== SIDEBAR: mobile drawer =====
+  const backdrop = document.getElementById('sidebar-backdrop');
+  document.getElementById('hamburger-btn').addEventListener('click', ()=>{
+    sidebar.classList.add('mobile-open');
+    backdrop.classList.add('visible');
+  });
+  backdrop.addEventListener('click', ()=>{
+    sidebar.classList.remove('mobile-open');
+    backdrop.classList.remove('visible');
+  });
+
+  // ===== PROFILE MENU (dropdown de .profile-item) =====
+  const profileItem = document.getElementById('profile-item');
+  const profileMenu = document.getElementById('profile-menu');
+
+  function openProfileMenu(){
+    profileMenu.classList.add('open');
+    profileItem.setAttribute('aria-expanded', 'true');
+    profileMenu.setAttribute('aria-hidden', 'false');
+    const firstItem = profileMenu.querySelector('.profile-menu-item');
+    if(firstItem) firstItem.focus();
+  }
+  function closeProfileMenu(returnFocus){
+    profileMenu.classList.remove('open');
+    profileItem.setAttribute('aria-expanded', 'false');
+    profileMenu.setAttribute('aria-hidden', 'true');
+    if(returnFocus) profileItem.focus();
+  }
+  function toggleProfileMenu(){
+    if(profileMenu.classList.contains('open')) closeProfileMenu(false);
+    else openProfileMenu();
+  }
+
+  profileItem.addEventListener('click', (e)=>{
+    if(e.target.closest('.profile-menu')) return;
+    toggleProfileMenu();
+  });
+  profileItem.addEventListener('keydown', (e)=>{
+    if(e.target !== profileItem) return;
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      toggleProfileMenu();
+    }
+  });
+  document.addEventListener('click', (e)=>{
+    if(profileMenu.classList.contains('open') && !profileItem.contains(e.target)){
+      closeProfileMenu(false);
+    }
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && profileMenu.classList.contains('open')){
+      closeProfileMenu(true);
+    }
+  });
+
+  document.getElementById('profile-menu-view').addEventListener('click', ()=>{
+    closeProfileMenu(false);
+  });
+
+  const logoutOverlay = document.getElementById('logout-modal-overlay');
+  const logoutConfirmBtn = document.getElementById('logout-confirm');
+  const logoutCancelBtn = document.getElementById('logout-cancel');
+  const logoutCloseBtn = document.getElementById('logout-modal-close');
+
+  function openLogoutModal(){
+    closeProfileMenu(false);
+    logoutOverlay.classList.add('open');
+    logoutCancelBtn.focus();
+  }
+  function closeLogoutModal(){
+    logoutOverlay.classList.remove('open');
+    profileItem.focus();
+  }
+
+  document.getElementById('profile-menu-logout').addEventListener('click', openLogoutModal);
+  logoutCancelBtn.addEventListener('click', closeLogoutModal);
+  logoutCloseBtn.addEventListener('click', closeLogoutModal);
+  logoutOverlay.addEventListener('click', (e)=>{ if(e.target === logoutOverlay) closeLogoutModal(); });
+  logoutConfirmBtn.addEventListener('click', ()=>{
+    // Placeholder: ejecutar logout real y redirigir a login.md/Homepage — ver PENDIENTES #3 en profile-menu.md
+    closeLogoutModal();
+  });
+
+  logoutOverlay.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){ closeLogoutModal(); return; }
+    if(e.key !== 'Tab') return;
+    const focusables = logoutOverlay.querySelectorAll('button');
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if(e.shiftKey && document.activeElement === first){
+      e.preventDefault(); last.focus();
+    } else if(!e.shiftKey && document.activeElement === last){
+      e.preventDefault(); first.focus();
+    }
+  });
+
+  let currentLang = 'es';
+
+  // ===== DATA: categorías =====
+  const categories = [
+    {key:'cuenta', es:'Cuenta y seguridad', en:'Account & security'},
+    {key:'transferencias', es:'Transferencias', en:'Transfers'},
+    {key:'compra', es:'Compra USDT', en:'Buy USDT'},
+    {key:'apuestas', es:'Apuestas y Predicciones', en:'Bets & Predictions'},
+    {key:'refiere', es:'Refiere y Gana', en:'Refer & Earn'},
+    {key:'vinculadas', es:'Cuentas vinculadas', en:'Linked accounts'},
+  ];
+
+  // ===== DATA: FAQ =====
+  const faqData = [
+    {id:'q1', cat:'cuenta', q:'¿Cómo cambio mi contraseña?', a:'Andá a Ajustes → Seguridad → "Cambiar contraseña". Te vamos a pedir tu contraseña actual y la nueva, dos veces.',
+      qEn:'How do I change my password?', aEn:'Go to Settings → Security → "Change password". We\'ll ask for your current password and the new one, twice.'},
+    {id:'q2', cat:'cuenta', q:'¿Qué es la verificación en dos pasos (2FA) y cómo la activo?', a:'Es una capa extra de seguridad: además de tu contraseña, te pedimos un código adicional al iniciar sesión. La activás desde Ajustes → Seguridad → "Verificación en dos pasos".',
+      qEn:'What is two-factor authentication (2FA) and how do I turn it on?', aEn:'It\'s an extra layer of security: besides your password, we ask for an additional code when you log in. Turn it on from Settings → Security → "Two-factor authentication".'},
+    {id:'q3', cat:'cuenta', q:'Cerré sesión sin querer en un dispositivo, ¿pierdo mis datos?', a:'No, cerrar sesión solo desconecta ese dispositivo. Tu cuenta y tu historial siguen intactos, iniciá sesión de nuevo cuando quieras.',
+      qEn:'I accidentally logged out on a device — do I lose my data?', aEn:'No, logging out only disconnects that device. Your account and history stay intact — just log back in whenever you want.'},
+    {id:'q4', cat:'cuenta', q:'¿Cómo cierro sesión en un dispositivo que ya no uso?', a:'Andá a Ajustes → Seguridad → "Sesiones activas" y cerrá esa sesión puntual, o usá "Cerrar todas las demás sesiones" si no estás seguro de cuál es.',
+      qEn:'How do I log out a device I no longer use?', aEn:'Go to Settings → Security → "Active sessions" and close that specific session, or use "Log out of all other sessions" if you\'re not sure which one it is.'},
+    {id:'q5', cat:'transferencias', q:'¿Cuánto tarda en llegar una transferencia?', a:'La mayoría de las transferencias se acreditan al instante. En algunos casos puede demorar unos minutos según el banco destino.',
+      qEn:'How long does a transfer take to arrive?', aEn:'Most transfers are credited instantly. In some cases it can take a few minutes depending on the destination bank.'},
+    {id:'q6', cat:'transferencias', q:'¿Tiene costo hacer una transferencia?', a:'Te mostramos la comisión (si aplica) antes de confirmar cualquier transferencia, nunca después.',
+      qEn:'Does making a transfer cost anything?', aEn:'We show you the fee (if any) before you confirm any transfer, never after.'},
+    {id:'q7', cat:'transferencias', q:'Envié una transferencia al destinatario equivocado, ¿qué hago?', a:'Contactanos apenas lo notes desde la sección "Contactar a soporte" con el comprobante — cuanto antes lo reportes, más chances de resolverlo.',
+      qEn:'I sent a transfer to the wrong person, what do I do?', aEn:'Contact us as soon as you notice from "Contact support" with the receipt — the sooner you report it, the better the chances of resolving it.'},
+    {id:'q8', cat:'compra', q:'¿Puedo comprar dólares en efectivo (fiat) o solo en USDT?', a:'Podés comprar dólares tanto en fiat como en stablecoin (USDT), el flujo es el mismo: elegís el monto y la moneda de destino.',
+      qEn:'Can I buy dollars in cash (fiat) or only in USDT?', aEn:'You can buy dollars either in fiat or in stablecoin (USDT) — the flow is the same: choose the amount and the destination currency.'},
+    {id:'q9', cat:'compra', q:'¿El tipo de cambio se actualiza en tiempo real?', a:'Sí, el tipo de cambio que ves en la pantalla de compra es el vigente al momento de confirmar la operación.',
+      qEn:'Does the exchange rate update in real time?', aEn:'Yes, the exchange rate you see on the purchase screen is the one in effect when you confirm the operation.'},
+    {id:'q10', cat:'apuestas', q:'¿Quién define el resultado de un mercado?', a:'dineroAtucuenta actúa como intermediario — el resultado lo define exclusivamente Polymarket, no tenemos injerencia sobre esa resolución.',
+      qEn:'Who determines a market\'s result?', aEn:'dineroAtucuenta acts as an intermediary — the result is determined exclusively by Polymarket, we have no say in that resolution.'},
+    {id:'q11', cat:'apuestas', q:'¿Puedo cambiar de opinión después de confirmar una apuesta?', a:'No, una vez confirmada la apuesta queda registrada y la comisión no es reembolsable.', 
+      qEn:'Can I change my mind after confirming a bet?', aEn:'No, once a bet is confirmed it\'s recorded and the fee is non-refundable.'},
+    {id:'q12', cat:'apuestas', q:'¿Cómo configuro un límite de apuesta o depósito?', a:'Desde el strip "Jugá con responsabilidad" en Apuestas y Predicciones, botón "Configurar límites" — podés ajustar montos que se adapten a vos en cualquier momento.',
+      qEn:'How do I set a betting or deposit limit?', aEn:'From the "Play responsibly" strip in Bets & Predictions, "Set limits" button — you can adjust amounts that work for you at any time.'},
+    {id:'q13', cat:'refiere', q:'¿Cómo invito a un amigo?', a:'Compartí tu link o código personal desde Refiere y Gana — cada persona que se registre con él cuenta como tu referido.',
+      qEn:'How do I invite a friend?', aEn:'Share your personal link or code from Refer & Earn — everyone who signs up with it counts as your referral.'},
+    {id:'q14', cat:'refiere', q:'¿Cuándo recibo la recompensa por un referido?', a:'Se acredita una vez que tu referido cumple la condición mínima definida en Refiere y Gana (ej. primera transacción).',
+      qEn:'When do I get the reward for a referral?', aEn:'It\'s credited once your referral meets the minimum condition defined in Refer & Earn (e.g. their first transaction).'},
+    {id:'q15', cat:'vinculadas', q:'¿Cuántas cuentas puedo vincular?', a:'No hay un límite estricto — podés vincular las cuentas o wallets que necesites desde Cuentas vinculadas.',
+      qEn:'How many accounts can I link?', aEn:'There\'s no strict limit — you can link as many accounts or wallets as you need from Linked accounts.'},
+    {id:'q16', cat:'vinculadas', q:'¿Cómo desvinculo una cuenta?', a:'Desde Ajustes → Cuentas vinculadas, o directamente en Cuentas/Billeteras, elegí la cuenta y la opción de desvincular.',
+      qEn:'How do I unlink an account?', aEn:'From Settings → Linked accounts, or directly in Accounts/Wallets, choose the account and the unlink option.'},
+  ];
+
+  // ===== RENDER FAQ ACCORDION =====
+  const faqAccordion = document.getElementById('faq-accordion');
+  let activeFaqCat = 'all';
+
+  function renderFaq(){
+    const list = faqData.filter(f=> activeFaqCat === 'all' || f.cat === activeFaqCat);
+    faqAccordion.innerHTML = '';
+    if(list.length === 0){
+      faqAccordion.innerHTML = `<div class="faq-empty">${currentLang==='es' ? 'No hay preguntas en esta categoría.' : 'No questions in this category.'}</div>`;
+      return;
+    }
+    list.forEach(f=>{
+      const item = document.createElement('div');
+      item.className = 'acc-item';
+      item.dataset.faqId = f.id;
+      item.innerHTML = `
+        <div class="acc-head">
+          <span>${currentLang==='es' ? f.q : f.qEn}</span>
+          <span class="acc-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+        <div class="acc-body"><div class="acc-body-inner">${currentLang==='es' ? f.a : f.aEn}</div></div>`;
+      faqAccordion.appendChild(item);
+    });
+  }
+  renderFaq();
+
+  function toggleAcc(item, forceOpen){
+    const body = item.querySelector('.acc-body');
+    const shouldOpen = forceOpen !== undefined ? forceOpen : !item.classList.contains('open');
+    if(shouldOpen){
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    } else {
+      item.classList.remove('open');
+      body.style.maxHeight = 0;
+    }
+  }
+
+  document.addEventListener('click', (e)=>{
+    const head = e.target.closest('.acc-head');
+    if(!head) return;
+    const item = head.closest('.acc-item');
+    const accordion = item.closest('.accordion');
+    // dentro del FAQ, una sola pregunta abierta a la vez; en Legal, independientes
+    if(accordion.id === 'faq-accordion'){
+      const wasOpen = item.classList.contains('open');
+      accordion.querySelectorAll('.acc-item.open').forEach(i=> toggleAcc(i, false));
+      if(!wasOpen) toggleAcc(item, true);
+    } else {
+      toggleAcc(item);
+    }
+  });
+
+  // ===== CHIPS: filtro de categoría FAQ =====
+  document.getElementById('faq-chips').addEventListener('click', (e)=>{
+    const chip = e.target.closest('.chip'); if(!chip) return;
+    document.querySelectorAll('#faq-chips .chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    activeFaqCat = chip.dataset.cat;
+    renderFaq();
+  });
+
+  // ===== SUB-NAV: cambio de sección =====
+  function setActiveTab(tab){
+    document.querySelectorAll('.subnav-item').forEach(i=> i.classList.toggle('active', i.dataset.tab === tab));
+    document.querySelectorAll('.panel-section').forEach(s=> s.classList.remove('visible'));
+    document.getElementById('panel-' + tab).classList.add('visible');
+  }
+  document.getElementById('help-subnav').addEventListener('click', (e)=>{
+    const item = e.target.closest('.subnav-item'); if(!item) return;
+    setActiveTab(item.dataset.tab);
+  });
+  document.getElementById('btn-faq-to-contact').addEventListener('click', ()=> setActiveTab('contacto'));
+
+  // ===== BUSCADOR GLOBAL =====
+  const searchInput = document.getElementById('faq-search');
+  const searchDropdown = document.getElementById('search-dropdown');
+  let searchDebounce;
+
+  function catLabel(key){
+    const c = categories.find(c=>c.key===key);
+    return c ? (currentLang==='es' ? c.es : c.en) : '';
+  }
+
+  searchInput.addEventListener('input', ()=>{
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(runSearch, 300);
+  });
+
+  function runSearch(){
+    const query = searchInput.value.trim().toLowerCase();
+    if(!query){ searchDropdown.classList.remove('visible'); return; }
+    const results = faqData.filter(f=>{
+      const text = currentLang==='es' ? f.q : f.qEn;
+      return text.toLowerCase().includes(query);
+    }).slice(0, 5);
+
+    if(results.length === 0){
+      searchDropdown.innerHTML = `<div class="search-empty">
+        ${currentLang==='es' ? 'No encontramos resultados para tu búsqueda.' : "We couldn't find results for your search."}
+        <div><button class="btn btn-primary btn-sm" id="search-empty-cta">${currentLang==='es' ? 'Contactar a soporte' : 'Contact support'}</button></div>
+      </div>`;
+      searchDropdown.classList.add('visible');
+      document.getElementById('search-empty-cta').addEventListener('click', ()=>{
+        searchDropdown.classList.remove('visible');
+        searchInput.value = '';
+        setActiveTab('contacto');
+      });
+      return;
+    }
+
+    searchDropdown.innerHTML = results.map(f=> `
+      <div class="search-result" data-faq-id="${f.id}">
+        <span class="cat">${catLabel(f.cat)}</span>
+        ${currentLang==='es' ? f.q : f.qEn}
+      </div>`).join('');
+    searchDropdown.classList.add('visible');
+
+    searchDropdown.querySelectorAll('.search-result').forEach(el=>{
+      el.addEventListener('click', ()=> goToFaqResult(el.dataset.faqId));
+    });
+  }
+
+  function goToFaqResult(faqId){
+    searchDropdown.classList.remove('visible');
+    searchInput.value = '';
+    activeFaqCat = 'all';
+    document.querySelectorAll('#faq-chips .chip').forEach(c=> c.classList.toggle('active', c.dataset.cat==='all'));
+    setActiveTab('faq');
+    renderFaq();
+    requestAnimationFrame(()=>{
+      const target = faqAccordion.querySelector(`[data-faq-id="${faqId}"]`);
+      if(target){
+        toggleAcc(target, true);
+        target.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    });
+  }
+
+  document.addEventListener('click', (e)=>{
+    if(!e.target.closest('.search-wrap')) searchDropdown.classList.remove('visible');
+  });
+
+  // ===== FORMULARIO DE CONTACTO =====
+  const formCat = document.getElementById('form-cat');
+  const formSubject = document.getElementById('form-subject');
+  const formDesc = document.getElementById('form-desc');
+  const charCounter = document.getElementById('char-counter');
+  const btnSubmit = document.getElementById('btn-submit-ticket');
+  const formError = document.getElementById('form-error');
+
+  function validateForm(){
+    btnSubmit.disabled = !(formCat.value && formDesc.value.trim());
+  }
+  formCat.addEventListener('change', ()=>{ validateForm(); formError.classList.remove('visible'); });
+  formDesc.addEventListener('input', ()=>{
+    const len = formDesc.value.length;
+    charCounter.textContent = `${len}/1000`;
+    charCounter.classList.toggle('limit', len >= 900);
+    validateForm();
+    formError.classList.remove('visible');
+  });
+
+  // ===== ADJUNTAR ARCHIVO =====
+  const fileDrop = document.getElementById('file-drop');
+  const fileInput = document.getElementById('file-input');
+  const filePreview = document.getElementById('file-preview');
+
+  fileDrop.addEventListener('click', ()=> fileInput.click());
+  ['dragover','dragleave','drop'].forEach(evt=>{
+    fileDrop.addEventListener(evt, (e)=>{
+      e.preventDefault();
+      fileDrop.classList.toggle('dragover', evt==='dragover');
+      if(evt==='drop' && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+    });
+  });
+  fileInput.addEventListener('change', ()=>{ if(fileInput.files[0]) handleFile(fileInput.files[0]); });
+
+  function handleFile(file){
+    if(!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      document.getElementById('file-preview-img').src = reader.result;
+      document.getElementById('file-preview-name').textContent = file.name;
+      document.getElementById('file-preview-size').textContent = (file.size/1024/1024).toFixed(1) + ' MB';
+      filePreview.classList.add('visible');
+      fileDrop.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  }
+  document.getElementById('file-remove').addEventListener('click', ()=>{
+    fileInput.value = '';
+    filePreview.classList.remove('visible');
+    fileDrop.style.display = 'block';
+  });
+
+  // ===== ENVIAR TICKET =====
+  function showFormState(state){
+    ['default','sending','success'].forEach(s=>{
+      document.getElementById('form-state-' + s).classList.toggle('visible', s === state);
+    });
+  }
+  btnSubmit.addEventListener('click', ()=>{
+    if(!formCat.value || !formDesc.value.trim()){
+      formError.classList.add('visible');
+      return;
+    }
+    showFormState('sending');
+    setTimeout(()=>{
+      const ticketNum = '#' + Math.floor(100000 + Math.random()*900000);
+      document.getElementById('ticket-number').textContent = ticketNum;
+      showFormState('success');
+    }, 1200);
+  });
+  document.getElementById('btn-new-ticket').addEventListener('click', ()=>{
+    formCat.value = ''; formSubject.value = ''; formDesc.value = '';
+    charCounter.textContent = '0/1000'; charCounter.classList.remove('limit');
+    fileInput.value = ''; filePreview.classList.remove('visible'); fileDrop.style.display = 'block';
+    validateForm();
+    showFormState('default');
+  });
+
+  // ===== LANGUAGE SWITCHER =====
+  const es = {};
+  const en = {
+    tagline:"Instant, no detours.",
+    grpDaily:"DAILY", navResumen:"Overview", navCuentas:"Accounts", navTx:"Transactions",
+    grpMoney:"MONEY", navTransfers:"Transfers", navBuyUsdt:"Buy USDT", navBets:"Bets & Predictions", navRefer:"Refer & Earn", soon:"SOON",
+    grpAnalysis:"ANALYSIS", navAnalytics:"Analytics",
+    navNotif:"Notifications", navSettings:"Settings", navHelp:"Help & Support",
+    toolbarTitle:"Help & Support",
+    pageTitle:"Help & Support", pageSub:"Find a quick answer in the FAQ, or escalate your case to human support.",
+    searchPlaceholder:"Search frequently asked questions...",
+    subnavFaq:"FAQ", subnavContact:"Contact support", subnavLegal:"Legal & resources",
+    chipAll:"All", catCuenta:"Account & security", catTransferencias:"Transfers", catCompra:"Buy USDT",
+    catApuestas:"Bets & Predictions", catRefiere:"Refer & Earn", catVinculadas:"Linked accounts", catOtro:"Other",
+    faqCtaTitle:"Didn't find what you were looking for?", faqCtaSub:"Write to us and we'll reply within 24 business hours.", faqCtaBtn:"Contact support",
+    channelEmailTitle:"Support email", channelWhatsappTitle:"WhatsApp", channelWhatsappSub:"Message us on WhatsApp",
+    formErrorTxt:"Fill in category and description before submitting.",
+    formCatLbl:"Category", formCatPh:"Select a category...",
+    formSubjectLbl:"Subject", formSubjectPh:"E.g. A transfer never arrived",
+    formDescLbl:"Description", formDescPh:"Tell us what happened, with as much detail as possible...",
+    formFileLbl:"Attach screenshot (optional)",
+    fileDropTxt:"Drag an image or click to choose", fileDropSub:"JPG or PNG, max. 5MB — one file only",
+    formSubmitBtn:"Send",
+    sendingTxt:"Sending your case...",
+    ticketTitle:"Done! We received your case", ticketSub:"We'll reply to your account email within 24 business hours.",
+    ticketNewBtn:"Send another case",
+    legalPendingLabel:"First draft — pending formal legal review",
+    legalTermsTitle:"Terms and conditions",
+    legalPrivacyTitle:"Privacy policy",
+    legalPendingNote:"Section pending formal legal review before launch.",
+    quickLimitsTitle:"Play responsibly / Set limits", quickLimitsSub:"Adjust your deposit and betting limits",
+    quickSecurityTitle:"Account security", quickSecuritySub:"Password, 2FA and active sessions",
+    profileMenuView:"View profile", profileMenuLogout:"Log out",
+    logoutModalTitle:"Log out?", logoutModalDesc:"You'll need to sign in again to access your account.",
+    logoutCancelBtn:"Cancel", logoutConfirmBtn:"Log out",
+  };
+  const legalEn = {
+    legalTermsBody: [
+      "By using dineroAtucuenta you agree to operate under Bolivia's applicable regulations, including minimum age and identity verification requirements.",
+      "You're responsible for keeping your password and two-factor authentication (2FA) method confidential.",
+      "Fees for each product (transfers, USDT purchase, bets & predictions) are shown before confirming any operation and are non-refundable once confirmed.",
+      "dineroAtucuenta may temporarily suspend an account on signs of fraudulent activity, notifying the user through their registered contact methods.",
+      "These terms may be updated; any relevant change will be notified within the app.",
+    ],
+    legalPrivacyBody: [
+      "We collect the data needed to operate your account: identity, contact details, linked accounts/wallets, and transaction history.",
+      "We don't sell your personal data to third parties. We share it only when necessary to process an operation (e.g. with the destination bank of a transfer) or when required by law.",
+      "We keep your data while your account is active and for the additional period required by applicable financial regulations.",
+      "You can request access, correction, or deletion of your personal data by contacting support, subject to any applicable legal retention obligations.",
+      "We use encryption and two-factor authentication as standard security measures, but no system is 100% foolproof — we recommend enabling 2FA and never sharing your password.",
+    ],
+  };
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ if(!es[el.dataset.i18n]) es[el.dataset.i18n]=el.innerHTML; });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{ es[el.dataset.i18nPlaceholder] = el.getAttribute('placeholder'); });
+
+  function applyLang(){
+    const dict = currentLang === 'es' ? es : en;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.dataset.i18n;
+      if(key === 'legalTermsBody' || key === 'legalPrivacyBody'){
+        if(currentLang === 'en'){
+          el.innerHTML = legalEn[key].map(li=>`<li>${li}</li>`).join('');
+        } else if(dict[key]) {
+          el.innerHTML = dict[key];
+        }
+        return;
+      }
+      if(dict[key]) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+      const key = el.dataset.i18nPlaceholder;
+      const dictAny = currentLang === 'es' ? es : en;
+      if(dictAny[key]) el.setAttribute('placeholder', dictAny[key]);
+    });
+    renderFaq();
+  }
+
+  document.getElementById('lang-toggle').addEventListener('click', ()=>{
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    applyLang();
+    document.documentElement.lang = currentLang;
+    document.getElementById('lang-toggle').textContent = currentLang === 'es' ? 'EN' : 'ES';
+  });
+</script>
+
+<script src="app-navigation.js"></script>
+<script src="ui-preferences.js"></script>
+</body>
+</html>

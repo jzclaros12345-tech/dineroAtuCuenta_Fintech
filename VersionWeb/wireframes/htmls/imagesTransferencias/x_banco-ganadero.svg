@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343 70" width="343" height="70">
+  <rect x="0" y="0" width="343" height="70" rx="35" ry="35" fill="#164F2C"/>
+
+  <g>
+    <polygon points="26,35 54,17 62,22 34,40" fill="#A9CC39"/>
+    <polygon points="36,40 64,22 72,27 44,45" fill="#A9CC39"/>
+    <polygon points="46,45 74,27 82,32 54,50" fill="#A9CC39"/>
+  </g>
+
+  <text x="98" y="42" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#FFFFFF" letter-spacing="0.5" textLength="232" lengthAdjust="spacingAndGlyphs">BANCO  GANADERO</text>
+</svg>
