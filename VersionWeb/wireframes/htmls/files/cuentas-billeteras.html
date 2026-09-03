@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>dineroAtucuenta — Cuentas y Billeteras</title>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="/favicon-32.png" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0C10">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
   :root[data-theme="dark"]{
     --bg:#0B0C10; --surface:#15171C; --surface-alt:#1B1E24; --border:#2A2D34;
@@ -1061,8 +1062,8 @@
   logoutCloseBtn.addEventListener('click', closeLogoutModal);
   logoutOverlay.addEventListener('click', (e)=>{ if(e.target === logoutOverlay) closeLogoutModal(); });
   logoutConfirmBtn.addEventListener('click', ()=>{
-    // Placeholder: ejecutar logout real y redirigir a login.md/Homepage — ver PENDIENTES #3 de profile-menu.md
-    closeLogoutModal();
+    sessionStorage.removeItem('dineroAtucuenta.authenticated');
+    window.location.replace('../homepage-preview.html');
   });
 
   logoutOverlay.addEventListener('keydown', (e)=>{

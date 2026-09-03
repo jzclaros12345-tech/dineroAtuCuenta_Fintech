@@ -4,19 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>dineroAtucuenta — Cuentas y Billeteras</title>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="/favicon-32.png" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0C10">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="motion-tokens.css">
 <style>
   :root[data-theme="dark"]{
-    --bg:#0B0C10; --surface:#15171C; --surface-alt:#1B1E24; --border:#2A2D34;
+    --color-background:#0B0C10; --bg:var(--color-background); --surface:#15171C; --surface-alt:#1B1E24; --border:#2A2D34;
     --text-primary:#F5F5F7; --text-secondary:#A0A4AC; --text-muted:#6C7078;
     --primary:#FF6B4A; --primary-hover:#FF8163;
     --success:#2ED9A3; --error:#F25C5C; --warning:#E8B84B;
     --badge-bg:#1F3D34; --badge-text:#2ED9A3;
   }
   :root[data-theme="light"]{
-    --bg:#FFFFFF; --surface:#F7F7F8; --surface-alt:#FFFFFF; --border:#E4E4E7;
+    --color-background:#FFFFFF; --bg:var(--color-background); --surface:#F7F7F8; --surface-alt:#FFFFFF; --border:#E4E4E7;
     --text-primary:#16181D; --text-secondary:#4B4F58; --text-muted:#8A8F98;
     --primary:#FF6B4A; --primary-hover:#FF8163;
     --success:#1FAE81; --error:#D93F3F; --warning:#C98A1E;
@@ -100,7 +105,7 @@
     animation:profile-menu-in .16s cubic-bezier(.2,.8,.2,1);
   }
   .profile-menu.open{display:block;}
-  @keyframes profile-menu-in{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+  /* profile-menu-in -> ahora vive en motion-tokens.css */
   .sidebar.collapsed .profile-menu{left:8px; width:220px;}
   .profile-menu-header{display:flex; align-items:center; gap:10px; padding:8px 8px 10px;}
   .profile-menu-header .profile-info strong{font-size:13px;}
@@ -183,12 +188,9 @@
     /* flotación MUY sutil de la ilustración completa (2px, 9s).
        El artwork ahora está inline (no data-URI) para evitar problemas
        de renderizado del <img src="data:..."> en algunos visores. */
-    animation:hero-float 9s ease-in-out infinite;
+    animation:ambient-float 9s ease-in-out infinite;
   }
-  @keyframes hero-float{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-2px); }
-  }
+  /* hero-float -> ahora es ambient-float, vive en motion-tokens.css */
   @media (max-width:640px){
     .page-hero{max-width:100%;}
   }
@@ -234,9 +236,7 @@
     background:#08080B;
     pointer-events:none;
   }
-  @keyframes shine-rotate{
-    to{ --shine-angle:360deg; }
-  }
+  /* shine-rotate -> ahora vive en motion-tokens.css */
   /* prefers-reduced-motion: se apaga el giro (queda un borde estático
      tenue) y se detiene la flotación del artwork */
   .page-hero.no-motion::before{ animation:none; }
@@ -295,7 +295,7 @@
 
   /* ===== SKELETON (estado de carga, ver cuentas-billeteras.md ESTADOS) ===== */
   .skeleton{background:linear-gradient(90deg, var(--surface-alt) 25%, var(--border) 37%, var(--surface-alt) 63%); background-size:400% 100%; animation:skeleton-loading 1.4s ease infinite; border-radius:6px;}
-  @keyframes skeleton-loading{0%{background-position:100% 50%;} 100%{background-position:0 50%;}}
+  /* skeleton-loading -> ahora vive en motion-tokens.css */
   .wallet-card.is-loading .wallet-live{display:none;}
   .wallet-card:not(.is-loading) .wallet-skeleton{display:none;}
   .sk-flag{width:16px; height:16px; border-radius:4px;}
@@ -344,9 +344,8 @@
     .page-header h2{font-size:22px;}
   }
 
-  @media (prefers-reduced-motion: reduce){
-    *, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
-  }
+  /* catch-all de prefers-reduced-motion -> ahora vive en motion-tokens.css.
+     Las reglas específicas de esta página (shine border, flotación) siguen abajo. */
 </style>
 </head>
 <body>
@@ -1066,8 +1065,7 @@
   logoutCloseBtn.addEventListener('click', closeLogoutModal);
   logoutOverlay.addEventListener('click', (e)=>{ if(e.target === logoutOverlay) closeLogoutModal(); });
   logoutConfirmBtn.addEventListener('click', ()=>{
-    // Placeholder: ejecutar logout real y redirigir a login.md/Homepage — ver PENDIENTES #3 de profile-menu.md
-    closeLogoutModal();
+    window.dATCSession.signOut();
   });
 
   logoutOverlay.addEventListener('keydown', (e)=>{
@@ -1146,6 +1144,7 @@
   })();
 </script>
 
+<script src="app-session.js"></script>
 <script src="app-navigation.js"></script>
 <script src="ui-preferences.js"></script>
 </body>

@@ -1,0 +1,103 @@
+/*
+  motion-tokens.css — dineroAtucuenta
+  Fuente única de verdad para timing, easing y los keyframes que se repiten
+  (con nombres distintos) en varias páginas del proyecto.
+
+  Cómo usarlo:
+  1. Enlazar ANTES del <style> propio de cada página:
+       <link rel="stylesheet" href="motion-tokens.css">
+  2. Si tu página ya tiene un @keyframes con el mismo efecto pero otro nombre
+     (ej. "modal-in", "shimmer", "shine-spin", "eb-dot-pulse"), borralo de tu
+     <style> y usá el nombre canónico de acá abajo. No dupliques.
+  3. El bloque prefers-reduced-motion catch-all de acá reemplaza al que ya
+     tenías copiado y pegado en cada archivo — también podés borrar el tuyo.
+
+  Ver beauty.md sección 3 y 6 para el mapa completo de qué nombre reemplaza a cuál.
+*/
+
+:root{
+  /* Timing */
+  --ease-standard: cubic-bezier(.2,.8,.2,1);
+  --ease-out: cubic-bezier(0,0,.2,1);
+  --dur-instant: 100ms;
+  --dur-fast: 180ms;
+  --dur-base: 280ms;
+  --dur-slow: 480ms;
+
+  /* Movimiento ambiental (glows, flotación, giro de borde) */
+  --dur-ambient: 18s;
+}
+
+/* Evita que animaciones, sombras o grids anchos creen scroll horizontal en
+   pantallas móviles. Los componentes que necesiten scroll horizontal deben
+   declararlo explícitamente en su propio contenedor. */
+html, body{
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+/* ============================================================
+   CATCH-ALL prefers-reduced-motion
+   Idéntico al que ya estaba duplicado en 9 de los 12 archivos.
+   Poner esto acá una sola vez y borrar la copia local de cada página.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   NOMBRES CANÓNICOS
+   Cada bloque de abajo reemplaza a varias variantes encontradas
+   en el audit (ver beauty.md sección 3).
+   ============================================================ */
+
+/* Entrada de modal / panel lateral / dropdown
+   Reemplaza: modal-in, panel-in (mismo efecto, dos nombres) */
+@keyframes panel-in{
+  from{ opacity:0; transform:translateY(10px) scale(.98); }
+  to{ opacity:1; transform:none; }
+}
+
+/* Menú de perfil — este nombre YA estaba consistente en 9 páginas.
+   Se incluye acá para que quede centralizado, sin cambiar su forma. */
+@keyframes profile-menu-in{
+  from{ opacity:0; transform:translateY(4px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* Shimmer de carga (skeleton)
+   Reemplaza: skeleton, skeleton-loading, shimmer (3 nombres, mismo propósito) */
+@keyframes skeleton-loading{
+  0%{ background-position: 100% 50%; }
+  100%{ background-position: 0 50%; }
+}
+
+/* Borde brillante rotando
+   Reemplaza: shine-border, shine-spin, border-beam-travel */
+@keyframes shine-rotate{
+  to{ --shine-angle: 360deg; }
+}
+
+/* Punto pulsante de estado "en vivo"
+   Reemplaza: pulse-dot, eb-dot-pulse */
+@keyframes pulse-dot{
+  0%, 100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:.55; transform:scale(1.15); }
+}
+
+/* Aparición escalonada de filas/listas (usar animation-delay por ítem) */
+@keyframes stagger-in{
+  from{ opacity:0; transform:translateY(8px); }
+  to{ opacity:1; transform:none; }
+}
+
+/* Flotación sutil (hero artwork, cards ambientales) */
+@keyframes ambient-float{
+  0%, 100%{ transform:translateY(0); }
+  50%{ transform:translateY(-2px); }
+}

@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Refiere y Gana — dineroAtucuenta</title>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="/favicon-32.png" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0C10">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="motion-tokens.css">
 <style>
 /* ============================================================
    DESIGN TOKENS — ver design-tokens.md
@@ -81,15 +86,7 @@ button{font-family:inherit;}
   border-radius:6px;
 }
 
-/* Reduced motion — obligatorio en toda page (design-tokens.md 10.1) */
-@media (prefers-reduced-motion: reduce){
-  *, *::before, *::after{
-    animation-duration:.001ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.001ms !important;
-    scroll-behavior:auto !important;
-  }
-}
+/* Reduced motion catch-all -> ahora vive en motion-tokens.css */
 
 .eyebrow{
   font-size:12px;
@@ -228,7 +225,7 @@ button{font-family:inherit;}
   animation:profile-menu-in .16s cubic-bezier(.2,.8,.2,1);
 }
 .profile-menu.open{display:block;}
-@keyframes profile-menu-in{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+/* profile-menu-in -> ahora vive en motion-tokens.css, mismo nombre/timing */
 .sidebar.collapsed .profile-menu{left:8px; width:220px;}
 .profile-menu-header{display:flex; align-items:center; gap:10px; padding:8px 8px 10px;}
 .profile-menu-header .p-name{font-size:13px;}
@@ -423,6 +420,10 @@ button{font-family:inherit;}
   pointer-events:none;
 }
 .glow-wrap > .card{position:relative; margin:1px; z-index:1;}
+/* OJO: motion-tokens.css también define @keyframes shine-rotate (con --shine-angle),
+   pero con otra técnica. Esta definición local, por venir después en el CSS, la
+   sobrescribe dentro de esta página — sigue funcionando igual que antes, pero
+   queda pendiente unificar la técnica (ver beauty.md, tarea de shine-border/shine-rotate/shine-spin). */
 @keyframes shine-rotate{to{transform:rotate(360deg);}}
 
 /* ---- Card: código de referido ---- */
@@ -565,9 +566,9 @@ table.rates tr:last-child td{border-bottom:none;}
 .modal-box{
   background:var(--color-surface); border:1px solid var(--color-border);
   border-radius:16px; padding:28px; max-width:400px; width:100%;
-  animation:modal-in .22s cubic-bezier(.2,.8,.2,1);
+  animation:panel-in .22s cubic-bezier(.2,.8,.2,1);
 }
-@keyframes modal-in{from{opacity:0; transform:translateY(10px) scale(.98);} to{opacity:1; transform:none;}}
+/* panel-in (ex modal-in) -> ahora vive en motion-tokens.css, mismo timing */
 .modal-box h3{margin:0 0 10px; font-size:19px; font-weight:700;}
 .modal-box p{margin:0 0 22px; color:var(--color-text-secondary); font-size:14px;}
 .modal-box p strong{color:var(--color-text-primary);}
@@ -1280,8 +1281,7 @@ document.getElementById('profile-menu-logout').addEventListener('click', openLog
 logoutCancelBtn.addEventListener('click', closeLogoutModal);
 logoutModalOverlay.addEventListener('click', (e)=>{ if(e.target === logoutModalOverlay) closeLogoutModal(); });
 logoutConfirmBtn.addEventListener('click', ()=>{
-  // Placeholder: ejecutar logout real y redirigir a login.md/Homepage — ver PENDIENTES #3 de profile-menu.md
-  closeLogoutModal();
+  window.dATCSession.signOut();
 });
 logoutModalOverlay.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape'){ closeLogoutModal(); return; }
@@ -1558,6 +1558,7 @@ document.getElementById('verMasBtn').addEventListener('click', function(){
 updateLevelCard();
 drawChart('1A');
 </script>
+<script src="app-session.js"></script>
 <script src="app-navigation.js"></script>
 <script src="ui-preferences.js"></script>
 </body>
